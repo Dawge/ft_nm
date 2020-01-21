@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:17:03 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/20 16:11:29 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:34:44 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void		manage(t_file inf)
 		return ;
 	i = 0;
 	printf("size of all ldcmd = %d\n", file.hdr.sizeofcmds);
-	printf("size ldcmd = 0x%x\n", LC_SEGMENT_64);
+	printf("nb cmd = %d\n", file.hdr.ncmds);
 	pad = (char *)malloc(sizeof(char) * 4);
-	if (ft_nm_read(inf, &(pad), sizeof(uint32_t)) == -1)
+	if (ft_nm_read(inf, pad, sizeof(uint32_t)) == -1)
 		return ;
 	if (!(file.sgm = (SGM_CMD*)malloc(file.hdr.ncmds * sizeof(SGM_CMD))))
 		return ;
@@ -57,7 +57,6 @@ static void		manage(t_file inf)
 	{
 		if (ft_nm_read(inf, &(file.sgm[i]), sizeof(SGM_CMD)) == -1)
 			return ;
-		//printf("0x%x 0x%x %s 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x\n", file.sgm[i].cmd, file.sgm[i].cmdsize, file.sgm[i].segname, file.sgm[i].vmaddr, file.sgm[i].vmsize, file.sgm[i].fileoff, file.sgm[i].filesize, file.sgm[i].maxprot, file.sgm[i].initprot, file.sgm[i].nsects, file.sgm[i].flags);
 
 		tmp = file.sgm[i].cmdsize - sizeof(SGM_CMD);
 		pad = (char *)malloc(sizeof(char) * tmp);
@@ -65,23 +64,16 @@ static void		manage(t_file inf)
 		printf("0x%x\n", file.sgm[i].cmdsize - (int)sizeof(SGM_CMD));
 		printf("pour i = %d segment : %s\ncmd_size = 0x%x\nnb sect : 0x%x\n", i, file.sgm[i].segname, file.sgm[i].cmdsize, file.sgm[i].nsects);
 		printf("offset : 0x%x\n", file.sgm[i].fileoff);
-		if (ft_nm_read(inf, &pad, tmp) == -1)
-			return ;
-		printf("pour i = %d segment : %s\ncmd_size = 0x%x\nnb sect : 0x%x\n", i, file.sgm[i].segname, file.sgm[i].cmdsize, file.sgm[i].nsects);
-		printf("offset : 0x%x\n", file.sgm[i].fileoff);
-		//if (ft_nm_read(inf, &(padding), (sizeof(uint32_t) * 4)) == -1)
-		//	return ;
-		//rintf("cmd = 0x%x, cmdsz = 0x%x\n", file.sgm[i].cmd, file.sgm[i].cmdsize);
-		//printf("test = 0x%ld\n", (sizeof(file.sgm[i].maxprot)));
 		if (file.sgm[i].cmd != LC_SEGMENT_64 && file.sgm[i].cmd != LC_SEGMENT)
 		{
 			ft_nm_put_error(inf.name, NOT_VALID);
 			return ;
 		}
+		if (ft_nm_read(inf, pad, tmp) == -1)
+			return ;
 		ft_putchar('\n');
 		i++;
 	}
-
 }
 
 int				main(int ac, char **av)
