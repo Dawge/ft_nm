@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/21 19:22:56 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/23 10:58:07 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_error
 typedef struct		s_file_inf
 {
 	int				fd;
+	int				sz;
 	char			*name;
 	char			*content;
 	struct stat		inf;
@@ -59,6 +60,10 @@ typedef struct		s_file_inf
 # define SCT_64 struct section_64
 # define LST_64 struct nlist_64
 
+# define TEXT_IDX 0
+# define DATA_IDX 1
+# define BSS_IDX 2
+
 typedef struct		s_list_inf
 {
 	char			*str;
@@ -70,7 +75,7 @@ typedef struct		s_macho64
 {
 	HDR_64			hdr;
 	LD				ld;
-	SGM_64			sgm;
+	SGM_64			*sgm;
 	SCT_64			**sct;
 	SYM				symtab;
 	t_list_inf		*symbol;

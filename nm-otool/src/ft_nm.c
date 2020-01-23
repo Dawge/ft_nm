@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/23 10:46:36 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/23 11:37:35 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,6 @@ static void		put_type(t_file_inf file, t_list_inf *sym)
 	offset = sizeof(HDR_64);
 	while (i < inf.hdr.ncmds)
 	{
-		ft_memcpy(&inf.ld, file.content + offset, sizeof(LD));
-		if (inf.ld.cmd == LC_SEGMENT_64)
-		{
-			ft_memcpy(&inf.sgm, file.content + offset, sizeof(SGM_64));
-			offset += sizeof(SGM_64);
-		}
 		else
 			offset += inf.ld.cmdsize;
 		i++;
@@ -113,7 +107,25 @@ static void		sym_64(t_macho64 *inf, t_file_inf file)
 		i++;
 	}
 	sort_nlist(inf->symbol, inf->symtab.nsyms);
-	print_list(file, inf->symbol, inf->symtab.nsyms);
+}
+
+static int		pars_section(t_file_inf file, int offset, int *tab)
+{
+	int			i;
+	SGM_64		sgm;
+	SCT_64		sct;
+
+	i = 0;
+	ft_memcpy(&sgm, file.content + offset, sizeof(SGM_64));
+	if ((offset += sizeof(SGM_64)) > file.sz)
+		return (-1);
+	while (i < sgm.nsects)
+	{
+		ft_memcpy(&sct, file.content + offset, sizeof(SCT_64));
+		if (ft_strcpy(sct.sectname, SECT_TEXT) == 0)
+			tab[TEXT_IDX] = i + 1;
+		i++;
+	}
 }
 
 static void		handle_64(t_file_inf file)
@@ -121,6 +133,7 @@ static void		handle_64(t_file_inf file)
 	int				i;
 	t_macho64		inf;
 	size_t			offset;
+	int				sect_idx[3];
 
 	i = 0;
 	ft_memcpy(&inf.hdr, file.content, sizeof(HDR_64));
@@ -128,15 +141,22 @@ static void		handle_64(t_file_inf file)
 	while (i < (int)inf.hdr.ncmds)
 	{
 		ft_memcpy(&inf.ld, file.content + offset, sizeof(LD));
-		if (inf.ld.cmd == LC_SYMTAB)
+		if (inf.ld.cmd == LC_SEGMENT_64)
+		{
+			offset += sizeof(SGM_64);
+			pars_section(file, offset, (int *)&sect_idx);
+		}
+		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			ft_memcpy(&inf.symtab, file.content + offset, sizeof(SYM));
 			sym_64(&inf, file);
 			printf("0x%X et 0x%X\n", inf.symtab.symoff, inf.symtab.stroff);
 		}
-		offset += inf.ld.cmdsize;
+		else
+			offset += inf.ld.cmdsize;
 		i++;
 	}
+	print_list(file, inf.symbol, inf.symtab.nsyms);
 }
 
 void			ft_nm(t_file_inf file)
