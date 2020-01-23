@@ -6,14 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/18 19:13:12 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/21 19:22:56 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NM_H
 # define NM_H
 
-#include "libft.h"
+# include "libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -39,25 +39,41 @@ typedef struct		s_error
 	char			*message;
 }					t_error;
 
-typedef struct		s_file
+typedef struct		s_file_inf
 {
 	int				fd;
 	char			*name;
-}					t_file;
+	char			*content;
+	struct stat		inf;
+}					t_file_inf;
 
-# define MACH_HDR struct mach_header
-# define SGM_CMD struct segment_command
-# define SECTION struct section
-# define SYM_CMD struct symtab_command
+# define HDR struct mach_header
+# define SGM struct segment_command
+# define SCT struct section
+# define SYM struct symtab_command
 # define LST struct nlist
-# define LD_CMD struct load_command
+# define LD struct load_command
+
+# define HDR_64 struct mach_header_64
+# define SGM_64 struct segment_command_64
+# define SCT_64 struct section_64
+# define LST_64 struct nlist_64
+
+typedef struct		s_list_inf
+{
+	char			*str;
+	LST_64			lst;
+	char			type;
+}					t_list_inf;
 
 typedef struct		s_macho64
 {
-	MACH_HDR		hdr;
-	LD_CMD			*ld;
-	SGM_CMD			*sgm;
-	SECTION			**sct;
+	HDR_64			hdr;
+	LD				ld;
+	SGM_64			sgm;
+	SCT_64			**sct;
+	SYM				symtab;
+	t_list_inf		*symbol;
 }					t_macho64;
 
 /*
@@ -67,8 +83,12 @@ void				ft_open_error(char *name, int errno);
 void				ft_read_error(char *name, int errno);
 
 /*
+**	ft_nm.c
+*/
+void				ft_nm(t_file_inf file);
+
+/*
 **	tools.c
 */
-int					ft_nm_read(t_file inf, void *buf, size_t nbytes);
 void				ft_nm_put_error(char *name, char *error);
 #endif

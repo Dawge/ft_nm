@@ -6,13 +6,13 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:43:13 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/20 16:31:57 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/21 17:06:42 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 #include <errno.h>
-
+/*
 int			ft_nm_read(t_file inf, void *buf, size_t nbytes)
 {
 	int			sz;
@@ -28,7 +28,7 @@ int			ft_nm_read(t_file inf, void *buf, size_t nbytes)
 		return (-1);
 	}
 	return (0);
-}
+}*/
 
 void		ft_nm_put_error(char *name, char *error)
 {

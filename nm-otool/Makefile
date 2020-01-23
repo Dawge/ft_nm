@@ -6,13 +6,13 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/01/18 17:48:16 by rostroh          ###   ########.fr        #
+#    Updated: 2020/01/21 17:15:18 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_nm
 
-SRC = main.c error.c tools.c
+SRC = main.c error.c tools.c ft_nm.c
 
 OBJ = $(SRC:.c=.o)
 
