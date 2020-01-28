@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/28 19:25:18 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/28 22:58:28 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,20 +110,20 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 	}
 }
 
-static void		sym_64(t_macho64 *inf, t_file_inf file)
+static void		sym_64(t_macho64 *inf, t_file_inf file, int offset)
 {
 	int			i;
-	int			offset;
+	int			off;
 
 	i = 0;
-	offset = inf->symtab.symoff;
+	off = offset + inf->symtab.symoff;
 	if (!(inf->symbol = (t_list_inf *)malloc(sizeof(t_list_inf) * inf->symtab.nsyms)))
 		return ;
 	while (i < (int)inf->symtab.nsyms)
 	{
-		ft_memcpy(&inf->symbol[i].lst, file.content + offset, sizeof(LST_64));
-		offset += sizeof(LST_64);
-		inf->symbol[i].str = file.content + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
+		ft_memcpy(&inf->symbol[i].lst, file.content + off, sizeof(LST_64));
+		off += sizeof(LST_64);
+		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
 		i++;
 	}
 	sort_nlist(inf->symbol, inf->symtab.nsyms);
@@ -160,27 +160,30 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 	return (0);
 }
 
-static void		handle_64(t_file_inf file)
+static void		handle_64(t_file_inf file, int offset)
 {
+	int				off;
 	int				i;
 	int				i_sct;
 	t_macho64		inf;
-	size_t			offset;
 	int				sect_idx[3];
 
 	i = 0;
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
 	ft_memcpy(&inf.hdr, file.content, sizeof(HDR_64));
-	offset = sizeof(HDR_64);
+	off = offset;
+	offset += sizeof(HDR_64);
 	while (i < (int)inf.hdr.ncmds)
 	{
+		ft_putstr("kek\n");
 		ft_memcpy(&inf.ld, file.content + offset, sizeof(LD));
+		ft_putstr("duh\n");
 		if (inf.ld.cmd == LC_SEGMENT_64)
 		{
 			SGM		truc;
 			ft_memcpy(&truc, file.content + offset, sizeof(SGM));
-			if (pars_section(file, offset, (int *)&sect_idx, &i_sct) == -1)
+			if (pars_section(file, off, (int *)&sect_idx, &i_sct) == -1)
 			{
 				ft_nm_put_error(file.name, NOT_VALID);
 				return ;
@@ -190,22 +193,57 @@ static void		handle_64(t_file_inf file)
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			ft_memcpy(&inf.symtab, file.content + offset, sizeof(SYM));
-			sym_64(&inf, file);
+			sym_64(&inf, file, off);
+			printf("Cheh\n");
 		}
+		printf("Mdr\n");
 		offset += inf.ld.cmdsize;
 		i++;
 	}
 	print_list(inf.symbol, inf.symtab.nsyms, (int*)&sect_idx);
 }
 
+static void		handle_arch(t_file_inf file)
+{
+	int			offset;
+	AR_HDR		hdr;
+	HDR_64		mach_hdr;
+
+	offset = SARMAG;
+	ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
+	printf("%x\n", ft_atoi(hdr.ar_size) + SARMAG + (int)sizeof(AR_HDR));
+	offset += ft_atoi(hdr.ar_size) + (int)sizeof(AR_HDR);
+	while (offset < file.inf.st_size)
+	{
+		ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
+		printf("%d\n", ft_atoi(hdr.ar_name + 3));
+		if ((offset += (int)sizeof(AR_HDR)) > file.inf.st_size)
+			return ;
+		printf("%s\n", file.content + offset);
+		if ((offset += ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
+			return ;
+		printf("%x\n", offset);
+		ft_memcpy(&mach_hdr, file.content + offset, sizeof(HDR_64));
+		if (check_magic(mach_hdr.magic, file.name) == -1)
+			break ;
+		handle_64(file, offset);
+		break ;
+	}
+}
+
 void			ft_nm(t_file_inf file)
 {
 	int				idx;
 	uint32_t		magic;
-	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file) = {NULL, NULL, &handle_64, NULL, NULL, NULL, NULL, NULL};
+	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {NULL, NULL, &handle_64, NULL, NULL, NULL, NULL, NULL};
 
+	if (ft_strncmp(ARMAG, file.content, SARMAG) == 0)
+	{
+		handle_arch(file);
+		return ;
+	}
 	ft_memcpy(&magic, file.content, sizeof(magic));
 	if ((idx = check_magic(magic, file.name)) == -1)
 		return ;
-	func_dispenser[idx](file);
+	func_dispenser[idx](file, 0);
 }

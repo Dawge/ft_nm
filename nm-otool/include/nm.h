@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/28 18:36:21 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/28 21:36:29 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct		s_file_inf
 # define SGM_64 struct segment_command_64
 # define SCT_64 struct section_64
 # define LST_64 struct nlist_64
+
+# define AR_HDR struct ar_hdr
 
 # define TEXT_IDX 0
 # define DATA_IDX 1
