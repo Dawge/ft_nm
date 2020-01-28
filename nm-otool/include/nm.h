@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/23 10:58:07 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/01/28 18:36:21 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_file_inf
 # define TEXT_IDX 0
 # define DATA_IDX 1
 # define BSS_IDX 2
+# define NB_SCT_INF 3
 
 typedef struct		s_list_inf
 {
