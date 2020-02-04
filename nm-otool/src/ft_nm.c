@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/28 22:58:28 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/04 17:07:26 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 				printf("-");
 			if (type != 0x0)
 			{
-				if (sym[i].lst.n_value == 0x0)
+				if (sym[i].lst.n_value == 0x0 && type != 'T')
 					printf("%18c %s\n", type, sym[i].str);
 				else
 					printf("%016llx %c %s\n", sym[i].lst.n_value, type, sym[i].str);
@@ -140,9 +140,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 //	printf("?? %d pour %lld et %d\n", offset, file.inf.st_size, sgm.nsects);
 	ft_memcpy(&sgm, file.content + offset, sizeof(SGM_64));
 	if ((offset += sizeof(SGM_64)) > file.inf.st_size)
-	{
 		return (-1);
-	}
 	while (i < sgm.nsects)
 	{
 		ft_memcpy(&sct, file.content + offset, sizeof(SCT_64));
@@ -171,19 +169,15 @@ static void		handle_64(t_file_inf file, int offset)
 	i = 0;
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
-	ft_memcpy(&inf.hdr, file.content, sizeof(HDR_64));
+	ft_memcpy(&inf.hdr, file.content + offset, sizeof(HDR_64));
 	off = offset;
 	offset += sizeof(HDR_64);
 	while (i < (int)inf.hdr.ncmds)
 	{
-		ft_putstr("kek\n");
 		ft_memcpy(&inf.ld, file.content + offset, sizeof(LD));
-		ft_putstr("duh\n");
 		if (inf.ld.cmd == LC_SEGMENT_64)
 		{
-			SGM		truc;
-			ft_memcpy(&truc, file.content + offset, sizeof(SGM));
-			if (pars_section(file, off, (int *)&sect_idx, &i_sct) == -1)
+			if (pars_section(file, offset, (int *)&sect_idx, &i_sct) == -1)
 			{
 				ft_nm_put_error(file.name, NOT_VALID);
 				return ;
@@ -194,9 +188,7 @@ static void		handle_64(t_file_inf file, int offset)
 		{
 			ft_memcpy(&inf.symtab, file.content + offset, sizeof(SYM));
 			sym_64(&inf, file, off);
-			printf("Cheh\n");
 		}
-		printf("Mdr\n");
 		offset += inf.ld.cmdsize;
 		i++;
 	}
@@ -211,23 +203,29 @@ static void		handle_arch(t_file_inf file)
 
 	offset = SARMAG;
 	ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
-	printf("%x\n", ft_atoi(hdr.ar_size) + SARMAG + (int)sizeof(AR_HDR));
+//	printf("%x\n", ft_atoi(hdr.ar_size) + SARMAG + (int)sizeof(AR_HDR));
 	offset += ft_atoi(hdr.ar_size) + (int)sizeof(AR_HDR);
 	while (offset < file.inf.st_size)
 	{
+		printf("\n");
+//		printf("offset debut : %x\n", offset);
 		ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
-		printf("%d\n", ft_atoi(hdr.ar_name + 3));
+//		printf("%d\n", ft_atoi(hdr.ar_name + 3));
+//		printf("membre size = %x\n", ft_atoi(hdr.ar_size));
 		if ((offset += (int)sizeof(AR_HDR)) > file.inf.st_size)
 			return ;
-		printf("%s\n", file.content + offset);
+//		printf("offset middle : %x\n", offset + ft_atoi(hdr.ar_size));
+		printf("%s(%s):\n", file.name, file.content + offset);
 		if ((offset += ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
 			return ;
-		printf("%x\n", offset);
+//		printf("offset fin : %x\n", offset + ft_atoi(hdr.ar_size));
 		ft_memcpy(&mach_hdr, file.content + offset, sizeof(HDR_64));
 		if (check_magic(mach_hdr.magic, file.name) == -1)
 			break ;
 		handle_64(file, offset);
-		break ;
+		if ((offset += ft_atoi(hdr.ar_size) - ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
+			break ;
+//		printf("dernier offset : %x\n", offset);
 	}
 }
 

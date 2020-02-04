@@ -1,0 +1,257 @@
+
+libft/libft.a(ft_atoi.o):
+0000000000000000 T _ft_atoi
+                 U _ft_isdigit
+                 U _ft_isspace
+                 U _ft_strcmp
+
+libft/libft.a(ft_bzero.o):
+0000000000000000 T _ft_bzero
+
+libft/libft.a(ft_isalnum.o):
+0000000000000000 T _ft_isalnum
+                 U _ft_isalpha
+                 U _ft_isdigit
+
+libft/libft.a(ft_isalpha.o):
+0000000000000000 T _ft_isalpha
+                 U _ft_islower
+                 U _ft_isupper
+
+libft/libft.a(ft_isascii.o):
+0000000000000000 T _ft_isascii
+
+libft/libft.a(ft_isdigit.o):
+0000000000000000 T _ft_isdigit
+
+libft/libft.a(ft_isprint.o):
+0000000000000000 T _ft_isprint
+
+libft/libft.a(ft_itoa.o):
+0000000000000080 t _bis
+0000000000000000 T _ft_itoa
+                 U _ft_strcpy
+0000000000000170 t _lennb
+                 U _malloc
+
+libft/libft.a(ft_lstnew.o):
+0000000000000000 T _ft_lstnew
+                 U _ft_memalloc
+                 U _ft_memcpy
+                 U _malloc
+
+libft/libft.a(ft_memalloc.o):
+0000000000000000 T _ft_memalloc
+                 U _malloc
+
+libft/libft.a(ft_memccpy.o):
+0000000000000000 T _ft_memccpy
+
+libft/libft.a(ft_memchr.o):
+0000000000000000 T _ft_memchr
+
+libft/libft.a(ft_memcmp.o):
+0000000000000000 T _ft_memcmp
+
+libft/libft.a(ft_memcpy.o):
+0000000000000000 T _ft_memcpy
+
+libft/libft.a(ft_memdel.o):
+                 U _free
+0000000000000000 T _ft_memdel
+
+libft/libft.a(ft_memmove.o):
+                 U _free
+                 U _ft_memcpy
+0000000000000000 T _ft_memmove
+                 U _malloc
+
+libft/libft.a(ft_memset.o):
+0000000000000000 T _ft_memset
+
+libft/libft.a(ft_putchar.o):
+0000000000000000 T _ft_putchar
+                 U _write
+
+libft/libft.a(ft_putchar_fd.o):
+0000000000000000 T _ft_putchar_fd
+                 U _write
+
+libft/libft.a(ft_putendl.o):
+                 U _ft_putchar
+0000000000000000 T _ft_putendl
+                 U _ft_putstr
+
+libft/libft.a(ft_putendl_fd.o):
+                 U _ft_putchar_fd
+0000000000000000 T _ft_putendl_fd
+                 U _ft_putstr_fd
+
+libft/libft.a(ft_putnbr.o):
+                 U _ft_putchar
+0000000000000000 T _ft_putnbr
+
+libft/libft.a(ft_putnbr_fd.o):
+                 U _ft_putchar_fd
+0000000000000000 T _ft_putnbr_fd
+
+libft/libft.a(ft_putstr.o):
+0000000000000000 T _ft_putstr
+                 U _ft_strlen
+                 U _write
+
+libft/libft.a(ft_putstr_fd.o):
+0000000000000000 T _ft_putstr_fd
+                 U _ft_strlen
+                 U _write
+
+libft/libft.a(ft_strcat.o):
+0000000000000000 T _ft_strcat
+
+libft/libft.a(ft_strchr.o):
+0000000000000000 T _ft_strchr
+
+libft/libft.a(ft_strclr.o):
+0000000000000000 T _ft_strclr
+
+libft/libft.a(ft_strcmp.o):
+0000000000000000 T _ft_strcmp
+
+libft/libft.a(ft_strcpy.o):
+0000000000000000 T _ft_strcpy
+
+libft/libft.a(ft_strctrim.o):
+0000000000000130 t _check
+0000000000000000 T _ft_strctrim
+                 U _ft_strlen
+                 U _ft_strnew
+                 U _ft_strsub
+
+libft/libft.a(ft_strdel.o):
+                 U _free
+0000000000000000 T _ft_strdel
+
+libft/libft.a(ft_strdup.o):
+                 U _ft_strcpy
+0000000000000000 T _ft_strdup
+                 U _ft_strlen
+                 U _malloc
+
+libft/libft.a(ft_strequ.o):
+                 U _ft_strcmp
+0000000000000000 T _ft_strequ
+
+libft/libft.a(ft_striter.o):
+0000000000000000 T _ft_striter
+
+libft/libft.a(ft_striteri.o):
+0000000000000000 T _ft_striteri
+
+libft/libft.a(ft_strjoin.o):
+0000000000000000 T _ft_strjoin
+                 U _ft_strlen
+                 U _malloc
+
+libft/libft.a(ft_strlcat.o):
+0000000000000000 T _ft_strlcat
+                 U _ft_strlen
+
+libft/libft.a(ft_strlen.o):
+0000000000000000 T _ft_strlen
+
+libft/libft.a(ft_strmap.o):
+                 U _ft_strlen
+0000000000000000 T _ft_strmap
+                 U _malloc
+
+libft/libft.a(ft_strmapi.o):
+                 U _ft_strlen
+0000000000000000 T _ft_strmapi
+                 U _malloc
+
+libft/libft.a(ft_strncat.o):
+0000000000000000 T _ft_strncat
+
+libft/libft.a(ft_strncmp.o):
+0000000000000000 T _ft_strncmp
+
+libft/libft.a(ft_strncpy.o):
+                 U _ft_strlen
+0000000000000000 T _ft_strncpy
+
+libft/libft.a(ft_strnequ.o):
+                 U _ft_strncmp
+0000000000000000 T _ft_strnequ
+
+libft/libft.a(ft_strnew.o):
+0000000000000000 T _ft_strnew
+                 U _malloc
+
+libft/libft.a(ft_strnstr.o):
+0000000000000000 T _ft_strnstr
+
+libft/libft.a(ft_strrchr.o):
+0000000000000000 T _ft_strrchr
+
+libft/libft.a(ft_strrev.o):
+                 U _ft_strlen
+                 U _ft_strnew
+0000000000000000 T _ft_strrev
+
+libft/libft.a(ft_strsplit.o):
+0000000000000190 t _countoccurences
+0000000000000000 T _ft_strsplit
+                 U _ft_strsub
+0000000000000280 t _lenword
+                 U _malloc
+
+libft/libft.a(ft_strstr.o):
+0000000000000000 T _ft_strstr
+
+libft/libft.a(ft_strsub.o):
+0000000000000000 T _ft_strsub
+                 U _malloc
+
+libft/libft.a(ft_strtrim.o):
+0000000000000140 t _check
+                 U _ft_isspace
+                 U _ft_strlen
+                 U _ft_strnew
+                 U _ft_strsub
+0000000000000000 T _ft_strtrim
+
+libft/libft.a(ft_tolower.o):
+                 U _ft_isupper
+0000000000000000 T _ft_tolower
+
+libft/libft.a(ft_toupper.o):
+                 U _ft_islower
+0000000000000000 T _ft_toupper
+
+libft/libft.a(ft_lstdelone.o):
+                 U _free
+0000000000000000 T _ft_lstdelone
+
+libft/libft.a(ft_lstdel.o):
+                 U _free
+0000000000000000 T _ft_lstdel
+
+libft/libft.a(ft_lstadd.o):
+0000000000000000 T _ft_lstadd
+
+libft/libft.a(ft_lstiter.o):
+0000000000000000 T _ft_lstiter
+
+libft/libft.a(ft_lstmap.o):
+                 U _free
+0000000000000000 T _ft_lstmap
+                 U _malloc
+
+libft/libft.a(ft_isspace.o):
+0000000000000000 T _ft_isspace
+
+libft/libft.a(ft_islower.o):
+0000000000000000 T _ft_islower
+
+libft/libft.a(ft_isupper.o):
+0000000000000000 T _ft_isupper
