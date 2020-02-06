@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:17:03 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/21 17:41:15 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/06 11:24:26 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				main(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
+		file.cig = 0;
 		file.name = av[i];
 		if ((file.fd = open(av[i], O_RDONLY)) != -1)
 		{

@@ -6,13 +6,14 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/01/21 17:15:18 by rostroh          ###   ########.fr        #
+#    Updated: 2020/02/06 15:42:32 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_nm
 
-SRC = main.c error.c tools.c ft_nm.c
+SRC = main.c error.c tools.c ft_nm.c macho32.c macho64.c swap.c read_struct.c \
+	  read_struct_32.c read_struct_64.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,15 +44,12 @@ all:
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo mdr
 	gcc $(FLG) -I $(INC_DIR) -o $@ -c -fPIC $<
 
 $(OBJS): $(HEAD)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLG) $(OBJS) -o $@ $(LIB)
-	#$(CC) $(FLG) $(OBJS) $(LFT) -shared -o $@ $(LIB)
-	#ln -fs $(NAME) libft_malloc.so
 
 clean:
 	@rm -rf $(OBJ_DIR)

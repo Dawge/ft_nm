@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/01/28 21:36:29 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/06 15:34:32 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_file_inf
 {
 	int				fd;
 	int				sz;
+	int				cig;
 	char			*name;
 	char			*content;
 	struct stat		inf;
@@ -66,6 +67,23 @@ typedef struct		s_file_inf
 # define DATA_IDX 1
 # define BSS_IDX 2
 # define NB_SCT_INF 3
+
+typedef struct		s_list_inf_32
+{
+	char			*str;
+	LST				lst;
+	char			type;
+}					t_list_inf_32;
+
+typedef struct		s_macho32
+{
+	HDR				hdr;
+	LD				ld;
+	SGM				*sgm;
+	SCT				**sct;
+	SYM				symtab;
+	t_list_inf_32	*symbol;
+}					t_macho32;
 
 typedef struct		s_list_inf
 {
@@ -94,6 +112,43 @@ void				ft_read_error(char *name, int errno);
 **	ft_nm.c
 */
 void				ft_nm(t_file_inf file);
+
+/*
+**	macho32.c
+*/
+void				handle_32(t_file_inf file, int offset);
+
+/*
+**	macho64.c
+*/
+void				handle_64(t_file_inf file, int offset);
+
+/*
+**	read_struct.c
+*/
+void				read_load_command(LD *dst, void *src, size_t size, t_file_inf file);
+void				read_symtab(SYM *dst, void *src, size_t size, t_file_inf file);
+
+/*
+**	read_struct_32.c
+*/
+void				read_header_32(HDR *dst, void *src, size_t size, t_file_inf file);
+void				read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file);
+void				read_lst_32(LST *dst, void *src, size_t size, t_file_inf file);
+
+/*
+**	read_struct_64.c
+*/
+void				read_header_64(HDR_64 *dst, void *src, size_t size, t_file_inf file);
+void				read_seg_64(SGM_64 *dst, void *src, size_t size, t_file_inf file);
+void				read_lst_64(LST_64 *dst, void *src, size_t size, t_file_inf file);
+
+/*
+**	swap.c
+*/
+uint16_t			swap_u16(uint16_t nb);
+uint32_t			swap_u32(uint32_t nb);
+uint64_t			swap_u64(uint64_t nb);
 
 /*
 **	tools.c
