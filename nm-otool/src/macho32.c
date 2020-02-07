@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/06 15:45:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/07 16:01:32 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 		{
 			type = put_type(sym, i, tab);
 			if (sym[i].lst.n_type & N_STAB)
-				printf("-");
-			if (type != 0x0)
+				;//printf("-");
+			if (type != 0x0 && sym[i].lst.n_un.n_strx != 1)
 			{
 				if (sym[i].lst.n_value == 0x0 && type != 'T')
 					printf("%10c %s\n", type, sym[i].str);
@@ -93,7 +93,7 @@ static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 	}
 }
 
-static void		sym_32(t_macho32 *inf, t_file_inf file, int offset)
+static int		sym_32(t_macho32 *inf, t_file_inf file, int offset)
 {
 	int			i;
 	int			off;
@@ -101,16 +101,17 @@ static void		sym_32(t_macho32 *inf, t_file_inf file, int offset)
 	i = 0;
 	off = offset + inf->symtab.symoff;
 	if (!(inf->symbol = (t_list_inf_32 *)malloc(sizeof(t_list_inf_32) * inf->symtab.nsyms)))
-		return ;
+		return (ft_nm_put_error(file.name, NOT_VALID));
 	while (i < (int)inf->symtab.nsyms)
 	{
 		read_lst_32(&inf->symbol[i].lst, file.content + off, sizeof(LST), file);
-		//ft_memcpy(&inf->symbol[i].lst, file.content + off, sizeof(LST_64));
-		off += sizeof(LST);
+		if ((off += sizeof(LST)) > file.inf.st_size)
+			return (ft_nm_put_error(file.name, NOT_VALID));
 		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
 		i++;
 	}
 	sort_nlist(inf->symbol, inf->symtab.nsyms);
+	return (0);
 }
 
 static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
@@ -120,15 +121,16 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 	SCT			sct;
 
 	i = 0;
-//	printf("%s %s %s\n", SECT_TEXT, SECT_DATA, SECT_BSS);
-//	printf("?? %d pour %lld et %d\n", offset, file.inf.st_size, sgm.nsects);
 	read_seg_32(&sgm, file.content + offset, sizeof(SGM), file);
-	//ft_memcpy(&sgm, file.content + offset, sizeof(SGM_64));
+	if (offset + sgm.cmdsize > file.inf.st_size)
+		return (ft_nm_put_error(file.name, NOT_VALID));
 	if ((offset += sizeof(SGM)) > file.inf.st_size)
-		return (-1);
+		return (ft_nm_put_error(file.name, NOT_VALID));
 	while (i < sgm.nsects)
 	{
 		ft_memcpy(&sct, file.content + offset, sizeof(SCT));
+		if (offset + sct.size > file.inf.st_size)
+			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
 			tab[TEXT_IDX] = *i_sct + 1;
 		if (ft_strcmp(sct.sectname, SECT_DATA) == 0)
@@ -138,7 +140,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 		i++;
 		(*i_sct)++;
 		if ((offset += sizeof(SCT)) > file.inf.st_size)
-			return (-1);
+			return (ft_nm_put_error(file.name, NOT_VALID));
 	}
 	return (0);
 }
@@ -155,29 +157,27 @@ void			handle_32(t_file_inf file, int offset)
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
 	read_header_32(&inf.hdr, file.content + offset, sizeof(HDR), file);
-	//ft_memcpy(&inf.hdr, file.content + offset, sizeof(HDR_64));
 	off = offset;
 	offset += sizeof(HDR);
 	while (i < (int)inf.hdr.ncmds)
 	{
-		//ft_memcpy(&inf.ld, file.content + offset, sizeof(LD));
 		read_load_command(&inf.ld, file.content + offset, sizeof(LD), file);
 		if (inf.ld.cmd == LC_SEGMENT)
 		{
 			if (pars_section(file, offset, (int *)&sect_idx, &i_sct) == -1)
-			{
-				ft_nm_put_error(file.name, NOT_VALID);
 				return ;
-			}
-			//offset += sizeof(SGM_64);
 		}
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
-			//ft_memcpy(&inf.symtab, file.content + offset, sizeof(SYM));
-			sym_32(&inf, file, off);
+			if (sym_32(&inf, file, off) == -1)
+				return ;
 		}
-		offset += inf.ld.cmdsize;
+		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
+		{
+			ft_nm_put_error(file.name, NOT_VALID);
+			return ;
+		}
 		i++;
 	}
 	print_list(inf.symbol, inf.symtab.nsyms, (int*)&sect_idx);

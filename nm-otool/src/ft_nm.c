@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/06 16:08:18 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/07 14:27:44 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,46 @@ static void		handle_arch(t_file_inf file)
 	}
 }
 
+void			handle_fat32(t_file_inf file, int off)
+{
+	off = 0;
+	file.cig = 0;
+	printf("Ceci est un fat32, bonne journee\n");
+}
+
+void			handle_fat64(t_file_inf file, int off)
+{
+	FAT_HDR		hdr;
+
+	off = 0;
+	file.cig = 0;
+	printf("Ceci est un fat64, bonne journee\n");
+	ft_memcpy(&hdr, file.content + off, sizeof(FAT_HDR));
+	printf("size struct = %ld\nmagic = %x\nnumber = %d\n", sizeof(FAT_HDR), hdr.magic, hdr.nfat_arch);
+}
+
+void			cigam_fat32(t_file_inf file, int off)
+{
+	file.cig = 1;
+	off = 0;
+	printf("Ceci est un fat_cigam32, bonne journee\n");
+}
+
+void			cigam_fat64(t_file_inf file, int off)
+{
+	file.cig = 1;
+	off = 0;
+	printf("Ceci est un fat_cigam64, bonne journee\n");
+}
+
 void			ft_nm(t_file_inf file)
 {
 	int				idx;
 	uint32_t		magic;
-	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
+	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, &handle_fat32, &cigam_fat32, &handle_fat64, &cigam_fat64};
 
 	if (ft_strncmp(ARMAG, file.content, SARMAG) == 0)
 	{
-		printf("Huh ??\n");
 		handle_arch(file);
 		return ;
 	}

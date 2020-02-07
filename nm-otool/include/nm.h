@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/06 15:34:32 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/07 13:42:44 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define NB_MAGIC 8
 
 # define NOT_VALID " The file was not recognized as a valid object file\n"
+# define TRUNC_ERR " truncated or malformed object "
+# define SEG_ERR "(offset field plus size field of section 0 in LC_SEGMENT command 1 extends past the end of the file)\n"
 
 typedef struct		s_error
 {
@@ -60,6 +62,8 @@ typedef struct		s_file_inf
 # define SGM_64 struct segment_command_64
 # define SCT_64 struct section_64
 # define LST_64 struct nlist_64
+
+# define FAT_HDR struct fat_header
 
 # define AR_HDR struct ar_hdr
 
@@ -153,5 +157,6 @@ uint64_t			swap_u64(uint64_t nb);
 /*
 **	tools.c
 */
-void				ft_nm_put_error(char *name, char *error);
+int					sect_err(char *name, int sect);
+int					ft_nm_put_error(char *name, char *error);
 #endif
