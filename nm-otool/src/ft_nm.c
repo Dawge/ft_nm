@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 13:07:02 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:57:51 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,5 @@ void			ft_nm(t_file_inf file, int print)
 		return ;
 	if (idx <= 3 && print > 2)
 		printf("%s:\n", file.name);
-	printf("%d\n", idx);
 	func_dispenser[idx](file, 0);
 }
