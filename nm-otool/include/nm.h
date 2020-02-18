@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/12 21:15:31 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 15:59:55 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct		s_file_inf
 
 typedef struct		s_list_inf_32
 {
+	int				printed;
 	char			*str;
 	LST				lst;
 	char			type;
@@ -95,6 +96,7 @@ typedef struct		s_macho32
 
 typedef struct		s_list_inf
 {
+	int				printed;
 	char			*str;
 	LST_64			lst;
 	char			type;

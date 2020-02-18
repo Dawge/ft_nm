@@ -6,12 +6,12 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 15:47:02 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 16:13:04 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
-
+/*
 static void		sort_nlist(t_list_inf *symbol, int sz)
 {
 	int				i;
@@ -20,8 +20,10 @@ static void		sort_nlist(t_list_inf *symbol, int sz)
 	i = 0;
 	while (i < sz - 1)
 	{
+		//printf("%d\n", i);
 		if (ft_strcmp(symbol[i].str, symbol[i + 1].str) > 0 || (ft_strcmp(symbol[i].str, symbol[i + 1].str) == 0 && symbol[i].type > symbol[i + 1].type))
 		{
+			printf("swap %s et %s\n", symbol[i].str, symbol[i + 1].str);
 			tmp = symbol[i];
 			symbol[i] = symbol[i + 1];
 			symbol[i + 1] = tmp;
@@ -30,7 +32,7 @@ static void		sort_nlist(t_list_inf *symbol, int sz)
 		else
 			i++;
 	}
-}
+}*/
 
 static char		put_type(t_list_inf sym, int *tab)
 {
@@ -68,6 +70,54 @@ static char		put_type(t_list_inf sym, int *tab)
 	return (type);
 }
 
+static int		find_alph(t_list_inf *sym, int sz)
+{
+	int			i;
+	int			idx;
+
+	i = 0;
+	idx = 0;
+	while (i < sz)
+	{
+		if (ft_strcmp(sym[i].str, sym[idx].str) < 0 && sym[i].printed == 0)
+			idx = i;
+		else if (sym[idx].printed == 1)
+			idx = i;
+		i++;
+	}
+	return (idx);
+}
+
+static void		print_list(t_list_inf *sym, int sz, int *tab)
+{
+	int			i;
+	int			idx;
+	char		type;
+
+	i = 0;
+	type = 0x0;
+	while (i < sz)
+	{
+		idx = find_alph(sym, sz);
+		sym[idx].printed = 1;
+		if ((sym[idx].lst.n_type & N_PEXT) != N_PEXT)
+		{
+			type = put_type(sym[idx], tab);
+			if (sym[idx].lst.n_type & N_STAB)
+				;//printf("-");
+			if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
+			{
+				//printf("TYPE = 0x%x\n", sym[i].lst.n_type);
+				if (sym[idx].lst.n_value == 0x0 && type != 'T')
+					printf("%18c %s\n", type, sym[idx].str);
+				else
+					printf("%016llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+			}
+		}
+		i++;
+	}
+}
+/*
 static void		print_list(t_list_inf *sym, int sz, int *tab)
 {
 	int			i;
@@ -75,24 +125,10 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 
 	i = 0;
 	while (i < sz)
-	{
-		if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
-		{
-			type = put_type(sym[i], tab);
-			if (sym[i].lst.n_type & N_STAB)
-				;//printf("-");
-			if (type != 0x0 && sym[i].str[0] != '\0' && sym[i].lst.n_type != 0x20)
-			{
-				//printf("TYPE = 0x%x\n", sym[i].lst.n_type);
-				if (sym[i].lst.n_value == 0x0 && type != 'T')
-					printf("%18c %s\n", type, sym[i].str);
-				else
-					printf("%016llx %c %s\n", sym[i].lst.n_value, type, sym[i].str);
-			}
-		}//ft_putendl(sym[i].str);
+	{//ft_putendl(sym[i].str);
 		i++;
 	}
-}
+}*/
 
 static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
 {
@@ -110,9 +146,10 @@ static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
 			return (ft_nm_put_error(file.name, NOT_VALID));
 		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
 		inf->symbol[i].type = put_type(inf->symbol[i], tab);
+		inf->symbol[i].printed = 0;
 		i++;
 	}
-	sort_nlist(inf->symbol, inf->symtab.nsyms);
+	//sort_nlist(inf->symbol, inf->symtab.nsyms);
 	return (0);
 }
 
