@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_struct.c                                      :+:      :+:    :+:   */
+/*   read_struct_fat.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/06 13:48:09 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/12 20:46:59 by rostroh          ###   ########.fr       */
+/*   Created: 2020/02/07 16:04:57 by rostroh           #+#    #+#             */
+/*   Updated: 2020/02/07 16:27:20 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void		read_load_command(LD *dst, void *src, size_t size, t_file_inf file)
+void		read_arch(FAT_ARCH *dst, void *src, size_t sz, int cig)
 {
-	ft_memcpy(dst, src, size);
-	if (file.cig == 1)
+	ft_memcpy(dst, src, sz);
+	if (cig == 1)
 	{
-		dst->cmd = swap_u32(dst->cmd);
-		dst->cmdsize = swap_u32(dst->cmdsize);
+		dst->offset = swap_u32(dst->offset);
+		dst->size = swap_u32(dst->size);
 	}
 }
 
-void		read_symtab(SYM *dst, void *src, size_t size, t_file_inf file)
+void		read_header_fat(FAT_HDR *dst, void *src, size_t sz, int cig)
 {
-	ft_memcpy(dst, src, size);
-	if (file.cig == 1)
-	{
-		dst->symoff = swap_u32(dst->symoff);
-		dst->nsyms = swap_u32(dst->nsyms);
-		dst->stroff = swap_u32(dst->stroff);
-	}
+	ft_memcpy(dst, src, sz);
+	if (cig == 1)
+		dst->nfat_arch = swap_u32(dst->nfat_arch);
 }

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/07 14:27:44 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 13:07:02 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,33 @@ static void		handle_arch(t_file_inf file)
 
 void			handle_fat32(t_file_inf file, int off)
 {
+	uint32_t	i;
+	int			idx;
+	uint32_t	magic;
+	FAT_HDR		hdr;
+	FAT_ARCH	arch;
+	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
+
+	i = 0;
 	off = 0;
-	file.cig = 0;
-	printf("Ceci est un fat32, bonne journee\n");
+	read_header_fat(&hdr, file.content + off, sizeof(FAT_HDR), file.cig);
+	off += sizeof(FAT_HDR);
+	printf("Lol\n");
+	while (i < hdr.nfat_arch)
+	{
+		read_arch(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
+		put_arch(file.name, arch.cputype);
+		file.cig = 0;
+		ft_memcpy(&magic, file.content + arch.offset, sizeof(uint32_t));
+		if ((idx = check_magic(magic, file.name)) < 0)
+			return ;
+		func_dispenser[idx](file, arch.offset);
+		off += sizeof(FAT_ARCH);
+		i++;
+		file.cig = 1;
+		if (i != hdr.nfat_arch)
+			ft_putchar('\n');
+	}
 }
 
 void			handle_fat64(t_file_inf file, int off)
@@ -90,16 +114,14 @@ void			handle_fat64(t_file_inf file, int off)
 
 	off = 0;
 	file.cig = 0;
-	printf("Ceci est un fat64, bonne journee\n");
+	printf("Lol\n");
 	ft_memcpy(&hdr, file.content + off, sizeof(FAT_HDR));
-	printf("size struct = %ld\nmagic = %x\nnumber = %d\n", sizeof(FAT_HDR), hdr.magic, hdr.nfat_arch);
 }
 
 void			cigam_fat32(t_file_inf file, int off)
 {
 	file.cig = 1;
-	off = 0;
-	printf("Ceci est un fat_cigam32, bonne journee\n");
+	handle_fat32(file, off);
 }
 
 void			cigam_fat64(t_file_inf file, int off)
@@ -109,7 +131,7 @@ void			cigam_fat64(t_file_inf file, int off)
 	printf("Ceci est un fat_cigam64, bonne journee\n");
 }
 
-void			ft_nm(t_file_inf file)
+void			ft_nm(t_file_inf file, int print)
 {
 	int				idx;
 	uint32_t		magic;
@@ -123,5 +145,8 @@ void			ft_nm(t_file_inf file)
 	ft_memcpy(&magic, file.content, sizeof(magic));
 	if ((idx = check_magic(magic, file.name)) == -1)
 		return ;
+	if (idx <= 3 && print > 2)
+		printf("%s:\n", file.name);
+	printf("%d\n", idx);
 	func_dispenser[idx](file, 0);
 }

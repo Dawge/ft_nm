@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:17:03 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/06 11:24:26 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/16 16:33:31 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int				main(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
+		if (ac > 2)
+			ft_putchar('\n');
 		file.cig = 0;
 		file.name = av[i];
 		if ((file.fd = open(av[i], O_RDONLY)) != -1)
 		{
 			fstat(file.fd, &file.inf);
 			get_content(&file);
-			ft_nm(file);
+			ft_nm(file, ac);
 		}
 		else
 			ft_open_error(av[i], errno);

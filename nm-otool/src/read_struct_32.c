@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 11:41:48 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/06 15:24:51 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/12 21:25:48 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file)
 	if (file.cig == 1)
 	{
 		dst->cmd = swap_u32(dst->cmd);
-		dst->cmdsize = swap_u32(dst->cmd);
+		dst->cmdsize = swap_u32(dst->cmdsize);
 		dst->nsects = swap_u32(dst->nsects);
 	}
 }
@@ -41,6 +41,15 @@ void		read_lst_32(LST *dst, void *src, size_t size, t_file_inf file)
 	if (file.cig == 1)
 	{
 		dst->n_un.n_strx = swap_u32(dst->n_un.n_strx);
-		dst->n_value = swap_u64(dst->n_value);
+		dst->n_value = swap_u32(dst->n_value);
+	}
+}
+
+void		read_sct_32(SCT *dst, void *src, size_t size, t_file_inf file)
+{
+	ft_memcpy(dst, src, size);
+	if (file.cig == 1)
+	{
+		dst->size = swap_u32(dst->size);
 	}
 }

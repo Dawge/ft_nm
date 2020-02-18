@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/07 13:42:44 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/12 21:15:31 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_file_inf
 # define LST_64 struct nlist_64
 
 # define FAT_HDR struct fat_header
+# define FAT_ARCH struct fat_arch
 
 # define AR_HDR struct ar_hdr
 
@@ -71,6 +72,9 @@ typedef struct		s_file_inf
 # define DATA_IDX 1
 # define BSS_IDX 2
 # define NB_SCT_INF 3
+
+# define PPC 0x12000000
+# define i386 0x7000000
 
 typedef struct		s_list_inf_32
 {
@@ -115,7 +119,7 @@ void				ft_read_error(char *name, int errno);
 /*
 **	ft_nm.c
 */
-void				ft_nm(t_file_inf file);
+void				ft_nm(t_file_inf file, int print);
 
 /*
 **	macho32.c
@@ -139,13 +143,19 @@ void				read_symtab(SYM *dst, void *src, size_t size, t_file_inf file);
 void				read_header_32(HDR *dst, void *src, size_t size, t_file_inf file);
 void				read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file);
 void				read_lst_32(LST *dst, void *src, size_t size, t_file_inf file);
-
+void				read_sct_32(SCT *dst, void *src, size_t size, t_file_inf file);
 /*
 **	read_struct_64.c
 */
 void				read_header_64(HDR_64 *dst, void *src, size_t size, t_file_inf file);
 void				read_seg_64(SGM_64 *dst, void *src, size_t size, t_file_inf file);
 void				read_lst_64(LST_64 *dst, void *src, size_t size, t_file_inf file);
+
+/*
+**	read_struct_fat.c
+*/
+void				read_arch(FAT_ARCH *dst, void *src, size_t size, int cig);
+void				read_header_fat(FAT_HDR *dst, void *src, size_t size, int cig);
 
 /*
 **	swap.c
@@ -159,4 +169,5 @@ uint64_t			swap_u64(uint64_t nb);
 */
 int					sect_err(char *name, int sect);
 int					ft_nm_put_error(char *name, char *error);
+void				put_arch(char *name, uint32_t arch);
 #endif

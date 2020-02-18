@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/07 14:19:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 13:08:03 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		sort_nlist(t_list_inf *symbol, int sz)
 	i = 0;
 	while (i < sz - 1)
 	{
-		if (ft_strcmp(symbol[i].str, symbol[i + 1].str) > 0)
+		if (ft_strcmp(symbol[i].str, symbol[i + 1].str) > 0 || (ft_strcmp(symbol[i].str, symbol[i + 1].str) == 0 && symbol[i].type > symbol[i + 1].type))
 		{
 			tmp = symbol[i];
 			symbol[i] = symbol[i + 1];
@@ -32,7 +32,7 @@ static void		sort_nlist(t_list_inf *symbol, int sz)
 	}
 }
 
-static char		put_type(t_list_inf *sym, int idx, int *tab)
+static char		put_type(t_list_inf sym, int *tab)
 {
 	int				i;
 	char			type;
@@ -40,30 +40,30 @@ static char		put_type(t_list_inf *sym, int idx, int *tab)
 
 	i = 0;
 	type = 0x0;
-	if ((sym[idx].lst.n_type & N_TYPE) == N_SECT)
+	if ((sym.lst.n_type & N_TYPE) == N_SECT)
 	{
 		type = 's';
 		while (i < NB_SCT_INF)
 		{
-			if (sym[idx].lst.n_sect == tab[i])
+			if (sym.lst.n_sect == tab[i])
 				type = tab_type[i];
 			i++;
 		}
 	}
-	if ((sym[idx].lst.n_type & N_TYPE) == N_UNDF)
+	if ((sym.lst.n_type & N_TYPE) == N_UNDF)
 	{
-		if (sym[idx].lst.n_value == 0)
+		if (sym.lst.n_value == 0)
 			type = 'U';
 		else
 			type = 'c';
 	}
-	if (sym[idx].lst.n_desc & N_WEAK_REF)
+	if (sym.lst.n_desc & N_WEAK_REF && type != 'U')
 		type = 'w';
-	else if ((sym[idx].lst.n_type & N_TYPE) == N_ABS)
+	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
 		type = 'a';
-	else if ((sym[idx].lst.n_type & N_TYPE) == N_INDR)
+	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
 		type = 'i';
-	else if (sym[idx].lst.n_type & N_EXT && type != 'U')
+	else if (sym.lst.n_type & N_EXT && type != 'U')
 		type -= 32;
 	return (type);
 }
@@ -78,11 +78,12 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 	{
 		if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
 		{
-			type = put_type(sym, i, tab);
+			type = put_type(sym[i], tab);
 			if (sym[i].lst.n_type & N_STAB)
 				;//printf("-");
-			if (type != 0x0)
+			if (type != 0x0 && sym[i].str[0] != '\0' && sym[i].lst.n_type != 0x20)
 			{
+				//printf("TYPE = 0x%x\n", sym[i].lst.n_type);
 				if (sym[i].lst.n_value == 0x0 && type != 'T')
 					printf("%18c %s\n", type, sym[i].str);
 				else
@@ -93,7 +94,7 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 	}
 }
 
-static int		sym_64(t_macho64 *inf, t_file_inf file, int offset)
+static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
 {
 	int			i;
 	int			off;
@@ -108,6 +109,7 @@ static int		sym_64(t_macho64 *inf, t_file_inf file, int offset)
 		if ((off += sizeof(LST_64)) > file.inf.st_size)
 			return (ft_nm_put_error(file.name, NOT_VALID));
 		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
+		inf->symbol[i].type = put_type(inf->symbol[i], tab);
 		i++;
 	}
 	sort_nlist(inf->symbol, inf->symtab.nsyms);
@@ -153,6 +155,7 @@ void			handle_64(t_file_inf file, int offset)
 	t_macho64		inf;
 	int				sect_idx[3];
 
+	ft_putstr("mdr\n");
 	i = 0;
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
@@ -170,7 +173,7 @@ void			handle_64(t_file_inf file, int offset)
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
-			if (sym_64(&inf, file, off) == -1)
+			if (sym_64(&inf, file, off, (int *)&sect_idx) == -1)
 				return ;
 		}
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
