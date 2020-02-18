@@ -1,349 +1,225 @@
-00006ee5 t -[VMUOptionParser dealloc]
-00007d4f t -[VMUOptionParser discussion]
-00006dd2 t -[VMUOptionParser init]
-00007dd2 t -[VMUOptionParser parametersShowAsAssignment]
-000075d7 t -[VMUOptionParser parseArgumentsWithBlock:]
-00007c7d t -[VMUOptionParser purposeDescription]
-00006fdc t -[VMUOptionParser registerOptionWithLongName:shortName:hasArgument:argumentName:optionDescription:handler:]
-00007d7c t -[VMUOptionParser setDiscussion:]
-00007dde t -[VMUOptionParser setParametersShowAsAssignment:]
-00007caa t -[VMUOptionParser setPurposeDescription:]
-00007dc4 t -[VMUOptionParser setSingleHyphenLongNames:]
-00007d13 t -[VMUOptionParser setSyntaxDescription:]
-00007db8 t -[VMUOptionParser singleHyphenLongNames]
-00007ce6 t -[VMUOptionParser syntaxDescription]
-0000795c t -[VMUOptionParser usage:]
-         U .objc_class_name_NSAssertionHandler
+
+/sgoinfre/goinfre/Perso/rostroh/binary_nm/safe/audiodevice (for architecture ppc):
+00002fc0 t +[SSAudioDeviceCenter initialize]
+00002d84 t -[SSAudioDevice canBeDefaultDevice]
+00002e10 t -[SSAudioDevice canBeDefaultSystemDevice]
+00002bf4 t -[SSAudioDevice compare:]
+00002e9c t -[SSAudioDevice coreAudioDeviceID]
+00002f30 t -[SSAudioDevice coreAudioIsInput]
+00002ea4 t -[SSAudioDevice coreAudioSourceType]
+00002f3c t -[SSAudioDevice coreAudioTransportType]
+00002a60 t -[SSAudioDevice dealloc]
+00002aa4 t -[SSAudioDevice description]
+00002eac t -[SSAudioDevice fetchCoreAudioSourceType]
+000029e0 t -[SSAudioDevice initWithAudioDeviceID:source:isInput:]
+00002b34 t -[SSAudioDevice isEqual:]
+00002c58 t -[SSAudioDevice name]
+00003104 t -[SSAudioDeviceCenter _allDevicesWithDeviceID:isInput:]
+0000363c t -[SSAudioDeviceCenter _defaultDeviceOfClass:]
+00003c8c t -[SSAudioDeviceCenter _devicePropertyChanged:]
+00003780 t -[SSAudioDeviceCenter _getAndSetVolume:forInput:]
+00003c84 t -[SSAudioDeviceCenter _headphoneDevice]
+000032bc t -[SSAudioDeviceCenter _loadDeviceList:]
+000035ac t -[SSAudioDeviceCenter _setDefaultDeviceOfClass:to:]
+0000374c t -[SSAudioDeviceCenter _stringForCAError:]
+00004140 t -[SSAudioDeviceCenter audioFollowsJack]
+0000309c t -[SSAudioDeviceCenter dealloc]
+0000345c t -[SSAudioDeviceCenter deviceWithID:isInput:]
+000034ec t -[SSAudioDeviceCenter devicesWithTransportType:isInput:]
+00003058 t -[SSAudioDeviceCenter init]
+0000343c t -[SSAudioDeviceCenter inputDevices]
+00003b20 t -[SSAudioDeviceCenter inputVolume]
+0000344c t -[SSAudioDeviceCenter outputDevices]
+00003b48 t -[SSAudioDeviceCenter outputVolume]
+000036e0 t -[SSAudioDeviceCenter selectedInputDevice]
+0000370c t -[SSAudioDeviceCenter selectedOutputDevice]
+00003738 t -[SSAudioDeviceCenter selectedSystemDevice]
+00003f94 t -[SSAudioDeviceCenter setAudioFollowsJack:]
+00003b38 t -[SSAudioDeviceCenter setInputVolume:]
+00003b60 t -[SSAudioDeviceCenter setOutputVolume:]
+000036c8 t -[SSAudioDeviceCenter setSelectedInputDevice:]
+000036f4 t -[SSAudioDeviceCenter setSelectedOutputDevice:]
+00003720 t -[SSAudioDeviceCenter setSelectedSystemDevice:]
+00003c04 t -[SSAudioDeviceCenter setSystemVolume:]
+00003efc t -[SSAudioDeviceCenter supportsAudioFollowsJack]
+00003b70 t -[SSAudioDeviceCenter systemVolume]
          U .objc_class_name_NSAutoreleasePool
-         U .objc_class_name_NSByteCountFormatter
-         U .objc_class_name_NSCharacterSet
          U .objc_class_name_NSDictionary
-         U .objc_class_name_NSError
-         U .objc_class_name_NSException
-         U .objc_class_name_NSJSONSerialization
          U .objc_class_name_NSMutableArray
-         U .objc_class_name_NSMutableDictionary
-         U .objc_class_name_NSMutableString
          U .objc_class_name_NSNumber
-         U .objc_class_name_NSNumberFormatter
          U .objc_class_name_NSObject
          U .objc_class_name_NSString
-         U .objc_class_name_VMUBacktrace
-         U .objc_class_name_VMUCallTreeRoot
-         U .objc_class_name_VMUDebugTimer
-         U .objc_class_name_VMUObjectIdentifier
-0000f1ec S .objc_class_name_VMUOptionParser
-         U .objc_class_name_VMUProcInfo
-         U .objc_class_name_VMUProcessDescription
-         U .objc_class_name_VMURangeArray
-         U _AuthorizationCopyRights
-         U _AuthorizationCreate
-         U _AuthorizationFree
-         U _AuthorizationFreeItemSet
-         U _CFArrayAppendValue
-         U _CFArrayCreateMutable
-         U _CFArrayGetCount
-         U _CFArrayGetValueAtIndex
-         U _CFDictionaryCreateMutable
-         U _CFDictionaryGetValue
-         U _CFDictionaryRemoveValue
-         U _CFDictionarySetValue
-         U _CFRelease
-         U _CSIsNull
-         U _CSRelease
-         U _CSSymbolGetName
-         U _CSSymbolicatorCreateWithTask
-         U _CSSymbolicatorGetSymbolWithAddressAtTime
-         U _NSCountMapTable
-         U _NSCreateHashTable
-         U _NSCreateMapTable
-         U _NSEndMapTableEnumeration
-         U _NSEnumerateHashTable
-         U _NSEnumerateMapTable
-         U _NSFreeHashTable
-         U _NSFreeMapTable
-         U _NSHashGet
-         U _NSHashInsert
-         U _NSIntegerMapKeyCallBacks
-         U _NSLocalizedDescriptionKey
-         U _NSMapGet
-         U _NSMapInsert
-         U _NSMapRemove
-         U _NSNextHashEnumeratorItem
-         U _NSNextMapEnumeratorPair
-         U _NSNonOwnedPointerHashCallBacks
-         U _NSNonOwnedPointerMapKeyCallBacks
-         U _NSObjectHashCallBacks
-         U _NSObjectMapValueCallBacks
-         U _NSOwnedPointerMapValueCallBacks
-         U _OSAtomicAdd32Barrier
-         U _OSAtomicCompareAndSwap32Barrier
-00006ce0 t _VMUOptionParserError
-00007dec t _VMUOptionParserRegisterFlag
-         U _VMUUniquifyString
-         U __Block_copy
-         U __Block_object_assign
-         U __Block_object_dispose
-         U __NSConcreteGlobalBlock
-         U __NSConcreteStackBlock
-         U __NSGetArgc
-         U __NSGetArgv
-         U __NSGetExecutablePath
-0000336a t ___Block_byref_object_copy_
-00003395 t ___Block_byref_object_dispose_
+         U .objc_class_name_NSURL
+00006108 S .objc_class_name_SSAudioDevice
+00006138 S .objc_class_name_SSAudioDeviceCenter
+         U _AudioDeviceAddPropertyListener
+         U _AudioDeviceGetProperty
+         U _AudioDeviceGetPropertyInfo
+         U _AudioDeviceRemovePropertyListener
+         U _AudioHardwareGetProperty
+         U _AudioHardwareGetPropertyInfo
+000051cc b _AudioHardwareServiceGetPropertyDataPtr
+000051d4 b _AudioHardwareServiceHasPropertyPtr
+000051d0 b _AudioHardwareServiceSetPropertyDataPtr
+         U _AudioHardwareSetProperty
+00004fcc s _C.198.95165
+00004fc4 s _C.199.95166
+00004fbc s _C.200.95167
+         U _CFBundleCreate
+         U _CFBundleGetFunctionPointerForName
+         U _GetSysBeepVolume
+         U _NSLog
+0000500c D _NXArgc
+00005008 D _NXArgv
+         U _SetSysBeepVolume
+         U _UTCreateStringForOSType
          U ___CFConstantStringClassReference
-00007ee9 t ___VMUOptionParserRegisterFlag_block_invoke
-0000a276 t ____request_port_from_parent_block_invoke
-0000e2b0 s ___block_descriptor_tmp
-0000e500 s ___block_descriptor_tmp
-0000e520 s ___block_descriptor_tmp
-0000e578 s ___block_descriptor_tmp105
-0000e470 s ___block_descriptor_tmp106
-0000e5a0 s ___block_descriptor_tmp109
-0000e490 s ___block_descriptor_tmp168
-0000e4a8 s ___block_descriptor_tmp218
-0000e4c0 s ___block_descriptor_tmp229
-0000e2d0 s ___block_descriptor_tmp28
-0000e4e0 s ___block_descriptor_tmp295
-0000e2f0 s ___block_descriptor_tmp33
-0000e310 s ___block_descriptor_tmp38
-0000e330 s ___block_descriptor_tmp43
-0000e350 s ___block_descriptor_tmp49
-0000e370 s ___block_descriptor_tmp55
-0000e390 s ___block_descriptor_tmp60
-0000e530 s ___block_descriptor_tmp62
-0000e3b0 s ___block_descriptor_tmp65
-0000e540 s ___block_descriptor_tmp65
-0000e550 s ___block_descriptor_tmp67
-0000e3d0 s ___block_descriptor_tmp70
-0000e3f0 s ___block_descriptor_tmp75
-0000e410 s ___block_descriptor_tmp80
-0000e430 s ___block_descriptor_tmp85
-0000e448 s ___block_descriptor_tmp94
-0000e458 s ___block_literal_global
-0000e560 s ___block_literal_global
-0000e588 s ___block_literal_global106
-         U ___bzero
-000033d7 t ___copy_helper_block_
-00007f00 t ___copy_helper_block_
-0000a2c7 t ___copy_helper_block_
-00003a3e t ___copy_helper_block_103
-00004dd0 t ___copy_helper_block_165
-0000628d t ___copy_helper_block_226
-00003444 t ___copy_helper_block_26
-000063c8 t ___copy_helper_block_293
-000034b1 t ___copy_helper_block_31
-0000351e t ___copy_helper_block_36
-0000358b t ___copy_helper_block_41
-000035e9 t ___copy_helper_block_47
-00003647 t ___copy_helper_block_53
-000036a5 t ___copy_helper_block_58
-00003703 t ___copy_helper_block_63
-00003761 t ___copy_helper_block_68
-000037bf t ___copy_helper_block_73
-0000381d t ___copy_helper_block_78
-0000387b t ___copy_helper_block_83
-0000e9b8 s ___crashreporter_info__
-00004ff5 t ___debugMallocStackLogging_block_invoke
-00003402 t ___destroy_helper_block_
-00007f2b t ___destroy_helper_block_
-0000a2f2 t ___destroy_helper_block_
-00003a87 t ___destroy_helper_block_104
-00004e9b t ___destroy_helper_block_166
-000062b8 t ___destroy_helper_block_227
-0000346f t ___destroy_helper_block_27
-0000642b t ___destroy_helper_block_294
-000034dc t ___destroy_helper_block_32
-00003549 t ___destroy_helper_block_37
-000035b6 t ___destroy_helper_block_42
-00003614 t ___destroy_helper_block_48
-00003672 t ___destroy_helper_block_54
-000036d0 t ___destroy_helper_block_59
-0000372e t ___destroy_helper_block_64
-0000378c t ___destroy_helper_block_69
-000037ea t ___destroy_helper_block_74
-00003848 t ___destroy_helper_block_79
-000038a6 t ___destroy_helper_block_84
-00009b6d t ___enumerateProcesses_block_invoke
-         U ___error
-         U ___mach_stack_logging_enumerate_records
-         U ___mach_stack_logging_frames_for_uniqued_stack
-         U ___mach_stack_logging_get_frames
-000033b6 t ___main_block_invoke
-00003abd t ___main_block_invoke123
-00003423 t ___main_block_invoke25
-00003490 t ___main_block_invoke30
-000034fd t ___main_block_invoke35
-0000356a t ___main_block_invoke40
-000035d7 t ___main_block_invoke46
-00003635 t ___main_block_invoke52
-00003693 t ___main_block_invoke57
-000036f1 t ___main_block_invoke62
-0000374f t ___main_block_invoke67
-000037ad t ___main_block_invoke72
-0000380b t ___main_block_invoke77
-00003869 t ___main_block_invoke82
-000038c7 t ___main_block_invoke87
-00003926 t ___main_block_invoke_2
-000054fa t ___printCallTree_block_invoke
-000061ae t ___printCallTree_block_invoke_2
-000092ac t ___respawnToolIfNecessary_block_invoke
-0000967d t ___respawnToolIfNecessary_block_invoke_2
-000096fd t ___respawnToolIfNecessary_block_invoke_3
-0000a17d t ___setupSignalHandlers_block_invoke
-         U ___stack_chk_fail
-         U ___stack_chk_guard
-         U ___stderrp
-         U ___stdinp
-         U ___strlcpy_chk
-         U ___udivdi3
-         U ___umoddi3
-00006ecb t __arrayFreeValue
-         U __dispatch_source_type_proc
-         U __exit
-00001000 T __mh_execute_header
-000098dd t __send_task_port
-         U __setjmp
-00009825 t __wait_for_port
-0000913c t __with_listening_mach_port
-         U _abort
-         U _access
-         U _asprintf
-         U _atoi
-0000ab86 t _backtraceLocationForIndex
-0000e9c0 s _backtracesContained
-         U _calloc
-         U _closedir$UNIX2003
-0000a4a2 t _create_uniquing_table
-         U _csops
-         U _csr_check
-0000e9c8 b _debugTimer
-00009df5 t _decapsulateIPS
-0000a5b6 t _destroy_uniquing_table
-         U _dispatch_async
-         U _dispatch_get_global_queue
-         U _dispatch_main
-         U _dispatch_once
-         U _dispatch_resume
-         U _dispatch_source_create
-         U _dispatch_source_set_event_handler
-0000ab98 t _enter_frames_in_table
-00009995 t _enumerateProcesses
-         U _environ
-         U _errc
+00005188 S ___darwin_gcc3_preregister_frame_info
+         U ___keymgr_dwarf2_register_sections
+00005000 D ___progname
+         U __cthread_init_routine
+00002388 t __dyld_func_lookup
+00001000 A __mh_execute_header
+00002024 t __start
+         U _atexit
+0000518c S _catch_exception_raise
+00005190 S _catch_exception_raise_state
+00005194 S _catch_exception_raise_state_identity
+00005198 S _clock_alarm_reply
+00003dd4 t _devicePropertyChanged
+0000519c S _do_mach_notify_dead_name
+000051a0 S _do_mach_notify_no_senders
+000051a4 S _do_mach_notify_port_deleted
+000051a8 S _do_mach_notify_send_once
+000051ac S _do_seqnos_mach_notify_dead_name
+000051b0 S _do_seqnos_mach_notify_no_senders
+000051b4 S _do_seqnos_mach_notify_port_deleted
+000051b8 S _do_seqnos_mach_notify_send_once
+00005004 D _environ
+         U _errno
          U _exit
-0000a5fc t _expand_uniquing_table
-         U _fgets
-         U _fileno
-00009c98 t _findStackLogFile
-         U _fprintf
          U _free
-         U _fwrite$UNIX2003
-0000a359 t _get_special_port
-         U _getenv
-         U _geteuid
-         U _getlogin
-         U _getopt_long_only
-         U _getpass
-         U _getpid
-         U _getppid
-         U _getprogname
-         U _getuid
-0000a1da t _handleSignal
-0000a313 t _hasSuffix
-00006343 t _highWaterMarkMallocBlockRecorder
-00004f30 t _highWaterMarkRecorder
-000064eb t _insertRecord
-0000a44d t _is_restrict
-         U _isatty
-0000e9d0 b _kTaskBeingPeeked
-         U _kill$UNIX2003
-00006203 t _liveMallocBlockRecorder
-         U _mach_error_string
-         U _mach_msg
-         U _mach_msg_send
-         U _mach_port_allocate
-         U _mach_port_deallocate
-         U _mach_port_insert_right
-         U _mach_task_self_
-         U _mach_vm_allocate
-         U _mach_vm_deallocate
-000029a0 t _main
+         U _mach_init_routine
+00002398 t _main
          U _malloc
-000062d9 t _mallocBlockStackIdentifierRecorder
-0000e9c4 b _mallocHistoryMode
-0000dd58 s _malloc_historyVersionNumber
-0000dd18 s _malloc_historyVersionString
-         U _memchr
-         U _memcpy
-0000e9bc s _nodesFull
-         U _objc_enumerationMutation
-         U _objc_exception_extract
-         U _objc_exception_match
-         U _objc_exception_throw
-         U _objc_exception_try_enter
-         U _objc_exception_try_exit
-         U _objc_getProperty
+         U _objc_msgSendSuper
+00005010 d _pointer_to__darwin_gcc3_preregister_frame_info
+         U _pow
+         U _printf$LDBL128
+         U _puts
+000051bc S _receive_samples
+         U _strcmp
+         U _sysctlbyname
+00002370 t dyld_stub_binding_helper
+00001ff0 T start
+
+/sgoinfre/goinfre/Perso/rostroh/binary_nm/safe/audiodevice (for architecture i386):
+000033a6 t +[SSAudioDeviceCenter initialize]
+000031a4 t -[SSAudioDevice canBeDefaultDevice]
+0000321e t -[SSAudioDevice canBeDefaultSystemDevice]
+00003029 t -[SSAudioDevice compare:]
+00003298 t -[SSAudioDevice coreAudioDeviceID]
+00003324 t -[SSAudioDevice coreAudioIsInput]
+000032a3 t -[SSAudioDevice coreAudioSourceType]
+00003330 t -[SSAudioDevice coreAudioTransportType]
+00002eda t -[SSAudioDevice dealloc]
+00002f04 t -[SSAudioDevice description]
+000032ae t -[SSAudioDevice fetchCoreAudioSourceType]
+00002e7a t -[SSAudioDevice initWithAudioDeviceID:source:isInput:]
+00002f88 t -[SSAudioDevice isEqual:]
+00003079 t -[SSAudioDevice name]
+000034a6 t -[SSAudioDeviceCenter _allDevicesWithDeviceID:isInput:]
+000039a2 t -[SSAudioDeviceCenter _defaultDeviceOfClass:]
+00003fbd t -[SSAudioDeviceCenter _devicePropertyChanged:]
+00003b1c t -[SSAudioDeviceCenter _getAndSetVolume:forInput:]
+00003fb6 t -[SSAudioDeviceCenter _headphoneDevice]
+00003652 t -[SSAudioDeviceCenter _loadDeviceList:]
+00003932 t -[SSAudioDeviceCenter _setDefaultDeviceOfClass:to:]
+00003af9 t -[SSAudioDeviceCenter _stringForCAError:]
+00004444 t -[SSAudioDeviceCenter audioFollowsJack]
+00003450 t -[SSAudioDeviceCenter dealloc]
+00003813 t -[SSAudioDeviceCenter deviceWithID:isInput:]
+0000388d t -[SSAudioDeviceCenter devicesWithTransportType:isInput:]
+00003426 t -[SSAudioDeviceCenter init]
+000037cb t -[SSAudioDeviceCenter inputDevices]
+00003e34 t -[SSAudioDeviceCenter inputVolume]
+000037ef t -[SSAudioDeviceCenter outputDevices]
+00003e8d t -[SSAudioDeviceCenter outputVolume]
+00003a37 t -[SSAudioDeviceCenter selectedInputDevice]
+00003a86 t -[SSAudioDeviceCenter selectedOutputDevice]
+00003ad5 t -[SSAudioDeviceCenter selectedSystemDevice]
+00004296 t -[SSAudioDeviceCenter setAudioFollowsJack:]
+00003e60 t -[SSAudioDeviceCenter setInputVolume:]
+00003eb9 t -[SSAudioDeviceCenter setOutputVolume:]
+00003a0c t -[SSAudioDeviceCenter setSelectedInputDevice:]
+00003a5b t -[SSAudioDeviceCenter setSelectedOutputDevice:]
+00003aaa t -[SSAudioDeviceCenter setSelectedSystemDevice:]
+00003f59 t -[SSAudioDeviceCenter setSystemVolume:]
+00004202 t -[SSAudioDeviceCenter supportsAudioFollowsJack]
+00003ee6 t -[SSAudioDeviceCenter systemVolume]
+         U .objc_class_name_NSAutoreleasePool
+         U .objc_class_name_NSDictionary
+         U .objc_class_name_NSMutableArray
+         U .objc_class_name_NSNumber
+         U .objc_class_name_NSObject
+         U .objc_class_name_NSString
+         U .objc_class_name_NSURL
+00006120 S .objc_class_name_SSAudioDevice
+00006160 S .objc_class_name_SSAudioDeviceCenter
+         U _AudioDeviceAddPropertyListener
+         U _AudioDeviceGetProperty
+         U _AudioDeviceGetPropertyInfo
+         U _AudioDeviceRemovePropertyListener
+         U _AudioHardwareGetProperty
+         U _AudioHardwareGetPropertyInfo
+00005158 b _AudioHardwareServiceGetPropertyDataPtr
+00005160 b _AudioHardwareServiceHasPropertyPtr
+0000515c b _AudioHardwareServiceSetPropertyDataPtr
+         U _AudioHardwareSetProperty
+         U _CFBundleCreate
+         U _CFBundleGetFunctionPointerForName
+         U _GetSysBeepVolume
+         U _NSLog
+0000500c D _NXArgc
+00005008 D _NXArgv
+         U _SetSysBeepVolume
+         U _UTCreateStringForOSType
+         U ___CFConstantStringClassReference
+         U ___keymgr_dwarf2_register_sections
+00005000 D ___progname
+         U __cthread_init_routine
+00002674 t __dyld_func_lookup
+00001000 A __mh_execute_header
+00002586 t __start
+         U _atexit
+00005118 S _catch_exception_raise
+0000511c S _catch_exception_raise_state
+00005120 S _catch_exception_raise_state_identity
+00005124 S _clock_alarm_reply
+000040e8 t _devicePropertyChanged
+00005128 S _do_mach_notify_dead_name
+0000512c S _do_mach_notify_no_senders
+00005130 S _do_mach_notify_port_deleted
+00005134 S _do_mach_notify_send_once
+00005138 S _do_seqnos_mach_notify_dead_name
+0000513c S _do_seqnos_mach_notify_no_senders
+00005140 S _do_seqnos_mach_notify_port_deleted
+00005144 S _do_seqnos_mach_notify_send_once
+00005004 D _environ
+         U _errno
+         U _exit
+         U _free
+         U _mach_init_routine
+0000267a t _main
+         U _malloc
          U _objc_msgSend
          U _objc_msgSendSuper
-         U _objc_msgSend_stret
-         U _objc_setProperty
-         U _opendir$INODE64$UNIX2003
-         U _optarg
-         U _optind
-         U _pidFromHint
-         U _pid_for_task
-         U _posix_spawn
-         U _posix_spawnattr_init
-         U _posix_spawnattr_setbinpref_np
-00004bb0 t _printAddressHistory
-0000477c t _printAllBySizeOrCount
-00006ac2 t _printRecord
-00006895 t _printStack
+         U _objc_msgSend_fpret
+         U _pow
          U _printf
-         U _proc_name
-         U _proc_pidinfo
-         U _proc_pidpath
-         U _psName
-         U _putchar
          U _puts
-         U _qsort
-         U _qsort_b
-         U _readdir$INODE64
-         U _realloc
-00008c62 t _respawnToolIfNecessary
-         U _sem_post
-         U _sem_trywait
-         U _sem_wait$UNIX2003
-000095de t _set_special_port
-         U _setenv$UNIX2003
-0000e9cc b _setupSignalHandlers.onceToken
-         U _signal
-         U _snprintf
-0000687c t _sortByCount
-0000684d t _sortBySize
-00009b8b t _stackLogsAvailable
+00005148 S _receive_samples
          U _strcmp
-         U _strdup
-         U _strerror$UNIX2003
-         U _strlen
-         U _strncmp
-         U _strncpy
-         U _strtoul
-         U _sysctl
-         U _task_for_pid
-         U _task_foreach_malloc_zone
-         U _task_get_exception_ports
-         U _task_get_malloc_ptrs_by_zone
-         U _task_peek_natural_size
-         U _task_set_exception_ports
-         U _task_start_peeking
-         U _task_stop_peeking
-00006474 t _throwExceptionIfPastHighWaterMark
-         U _unsetenv$UNIX2003
-         U _vm_page_size
-         U _waitpid$UNIX2003
-00007f4c t _whileTaskPeeking
-00008094 t _withTaskForPid
-         U _write$UNIX2003
-         U dyld_stub_binder
+         U _sysctlbyname
+00002668 t dyld_stub_binding_helper
+0000255c T start

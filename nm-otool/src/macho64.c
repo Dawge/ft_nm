@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 17:07:18 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 18:19:27 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static char		put_type(t_list_inf sym, int *tab)
 	if (sym.lst.n_desc & N_WEAK_REF && type != 'U')
 		type = 'w';
 	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
-		type = 'a';
+		type = 'A';
 	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
 		type = 'i';
-	else if (sym.lst.n_type & N_EXT && type != 'U')
+	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A')
 		type -= 32;
 	return (type);
 }

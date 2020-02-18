@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 17:07:03 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 18:36:58 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static char		put_type(t_list_inf_32 sym, int *tab)
 	if (sym.lst.n_desc & N_WEAK_REF && type != 'U')
 		type = 'w';
 	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
-		type = 'a';
+		type = 'A';
 	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
 		type = 'i';
-	else if (sym.lst.n_type & N_EXT && type != 'U')
+	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A')
 		type -= 32;
 	return (type);
 }
@@ -66,56 +66,6 @@ static int		find_alph(t_list_inf_32 *sym, int sz)
 	return (idx);
 }
 
-static int		find_name(t_list_inf_32 *sym, int idx, int sz)
-{
-	int			i;
-
-	i = 0;
-	while (i < sz)
-	{
-		if (i != idx && ft_strcmp(sym[i].str, sym[idx].str) == 0)
-		{
-			sym[idx].lst.n_value = sym[i].lst.n_value;
-			if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-static void		print_not_dupe(t_list_inf_32 *sym, int idx, int sz, int *tab)
-{
-	int				i;
-	char			type;
-	static char		tab_type[NB_SCT_INF] = {'t', 'd', 'b'};
-
-	i = 0;
-	type = 0x0;
-	if (find_name(sym, idx, sz) == 1)
-	{
-		while (i < NB_SCT_INF)
-		{
-			if (tab[i] == sym[idx].lst.n_sect)
-			{
-				type = tab_type[i];
-				break ;
-			}
-			i++;
-		}
-		if (type != 0x0 && sym[idx].str[0] != '\0')
-		{
-			if (sym[idx].lst.n_type == N_GSYM)
-				type = 's';
-			else if (sym[idx].lst.n_type == N_FUN)
-				type = 't';
-			else
-				return ;
-			printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
-		}
-	}
-}
-
 static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 {
 	int			i;
@@ -129,18 +79,13 @@ static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 	{
 		idx = find_alph(sym, sz);
 		sym[idx].printed = 1;
-		if ((sym[idx].lst.n_type & N_PEXT) != N_PEXT)
+		type = put_type(sym[idx], tab);
+		if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
 		{
-			type = put_type(sym[idx], tab);
-			if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
-			{
-				if (sym[idx].lst.n_value == 0x0 && type != 'T')
-					printf("%10c %s\n", type, sym[idx].str);
-				else
-					printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
-			}
+			if (sym[idx].lst.n_value == 0x0 && type != 'T')
+				printf("%10c %s\n", type, sym[idx].str);
 			else
-				print_not_dupe(sym, idx, sz, tab);
+				printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
 		}
 		i++;
 	}

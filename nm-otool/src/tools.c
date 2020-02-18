@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:43:13 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/16 18:49:01 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 18:16:07 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int		ft_nm_put_error(char *name, char *error)
 
 void	put_arch(char *name, uint32_t arch)
 {
-	printf("%s (for architecture ", name);
+	printf("\n%s (for architecture ", name);
 	if (arch == PPC)
 		printf("ppc):\n");
-	if (arch == i386)
+	else if (arch == i386)
 		printf("i386):\n");
 	else
 		printf("0x%x):\n", arch);

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 14:57:51 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 18:15:56 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,30 @@ static void		handle_arch(t_file_inf file)
 	}
 }
 
+static int		check_arch(t_file_inf file, int cputype, uint32_t fat_idx)
+{
+	uint32_t	i;
+	int			off;
+	FAT_HDR		hdr;
+	FAT_ARCH	arch;
+
+	i = 0;
+	read_header_fat(&hdr, file.content, sizeof(FAT_HDR), file.cig);
+	off = sizeof(FAT_HDR);
+	while (i < hdr.nfat_arch)
+	{
+		read_arch(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
+		if (i > fat_idx && arch.cputype == cputype)
+			return (0);
+		off += sizeof(FAT_ARCH);
+		i++;
+	}
+	return (1);
+}
+
 void			handle_fat32(t_file_inf file, int off)
 {
+	int			print;
 	uint32_t	i;
 	int			idx;
 	uint32_t	magic;
@@ -88,23 +110,26 @@ void			handle_fat32(t_file_inf file, int off)
 
 	i = 0;
 	off = 0;
+	print = 0;
 	read_header_fat(&hdr, file.content + off, sizeof(FAT_HDR), file.cig);
 	off += sizeof(FAT_HDR);
-	printf("Lol\n");
 	while (i < hdr.nfat_arch)
 	{
 		read_arch(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
-		put_arch(file.name, arch.cputype);
-		file.cig = 0;
-		ft_memcpy(&magic, file.content + arch.offset, sizeof(uint32_t));
-		if ((idx = check_magic(magic, file.name)) < 0)
-			return ;
-		func_dispenser[idx](file, arch.offset);
+		if (check_arch(file, arch.cputype, i) == 1)
+		{
+			if (i + 1 < hdr.nfat_arch || print != 0)
+				put_arch(file.name, arch.cputype);
+			file.cig = 0;
+			ft_memcpy(&magic, file.content + arch.offset, sizeof(uint32_t));
+			if ((idx = check_magic(magic, file.name)) < 0)
+				return ;
+			func_dispenser[idx](file, arch.offset);
+			file.cig = 1;
+			print++;
+		}
 		off += sizeof(FAT_ARCH);
 		i++;
-		file.cig = 1;
-		if (i != hdr.nfat_arch)
-			ft_putchar('\n');
 	}
 }
 
@@ -114,7 +139,6 @@ void			handle_fat64(t_file_inf file, int off)
 
 	off = 0;
 	file.cig = 0;
-	printf("Lol\n");
 	ft_memcpy(&hdr, file.content + off, sizeof(FAT_HDR));
 }
 
