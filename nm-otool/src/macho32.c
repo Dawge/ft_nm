@@ -6,33 +6,13 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 13:07:30 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 17:07:03 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-static void		sort_nlist(t_list_inf_32 *symbol, int sz)
-{
-	int				i;
-	t_list_inf_32		tmp;
-
-	i = 0;
-	while (i < sz - 1)
-	{
-		if (ft_strcmp(symbol[i].str, symbol[i + 1].str) > 0)
-		{
-			tmp = symbol[i];
-			symbol[i] = symbol[i + 1];
-			symbol[i + 1] = tmp;
-			i = 0;
-		}
-		else
-			i++;
-	}
-}
-
-static char		put_type(t_list_inf_32 *sym, int idx, int *tab)
+static char		put_type(t_list_inf_32 sym, int *tab)
 {
 	int				i;
 	char			type;
@@ -40,32 +20,50 @@ static char		put_type(t_list_inf_32 *sym, int idx, int *tab)
 
 	i = 0;
 	type = 0x0;
-	if ((sym[idx].lst.n_type & N_TYPE) == N_SECT)
+	if ((sym.lst.n_type & N_TYPE) == N_SECT)
 	{
 		type = 's';
 		while (i < NB_SCT_INF)
 		{
-			if (sym[idx].lst.n_sect == tab[i])
+			if (sym.lst.n_sect == tab[i])
 				type = tab_type[i];
 			i++;
 		}
 	}
-	if ((sym[idx].lst.n_type & N_TYPE) == N_UNDF)
+	if ((sym.lst.n_type & N_TYPE) == N_UNDF)
 	{
-		if (sym[idx].lst.n_value == 0)
+		if (sym.lst.n_value == 0)
 			type = 'U';
 		else
 			type = 'c';
 	}
-	if (sym[idx].lst.n_desc & N_WEAK_REF)
+	if (sym.lst.n_desc & N_WEAK_REF && type != 'U')
 		type = 'w';
-	else if ((sym[idx].lst.n_type & N_TYPE) == N_ABS)
+	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
 		type = 'a';
-	else if ((sym[idx].lst.n_type & N_TYPE) == N_INDR)
+	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
 		type = 'i';
-	else if (sym[idx].lst.n_type & N_EXT && type != 'U')
+	else if (sym.lst.n_type & N_EXT && type != 'U')
 		type -= 32;
 	return (type);
+}
+
+static int		find_alph(t_list_inf_32 *sym, int sz)
+{
+	int			i;
+	int			idx;
+
+	i = 0;
+	idx = 0;
+	while (i < sz)
+	{
+		if (ft_strcmp(sym[i].str, sym[idx].str) < 0 && sym[i].printed == 0)
+			idx = i;
+		else if (sym[idx].printed == 1)
+			idx = i;
+		i++;
+	}
+	return (idx);
 }
 
 static int		find_name(t_list_inf_32 *sym, int idx, int sz)
@@ -78,7 +76,6 @@ static int		find_name(t_list_inf_32 *sym, int idx, int sz)
 		if (i != idx && ft_strcmp(sym[i].str, sym[idx].str) == 0)
 		{
 			sym[idx].lst.n_value = sym[i].lst.n_value;
-//			printf("sym[%d] = %s et sym[%d] = %s\n", i, sym[i].str, idx, sym[idx].str);
 			if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
 				return (0);
 		}
@@ -115,7 +112,6 @@ static void		print_not_dupe(t_list_inf_32 *sym, int idx, int sz, int *tab)
 			else
 				return ;
 			printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
-			//printf("%d : name = %s\nchar1 = %d, ntype = 0x%x, nsect = 0x%x et desc = 0x%x\n", idx, sym[idx].str, sym[idx].str[0], sym[idx].lst.n_type, sym[idx].lst.n_sect, sym[idx].lst.n_desc);
 		}
 	}
 }
@@ -123,33 +119,34 @@ static void		print_not_dupe(t_list_inf_32 *sym, int idx, int sz, int *tab)
 static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 {
 	int			i;
+	int			idx;
 	char		type;
 
 	i = 0;
 	type = tab[0];
+	type = 0x0;
 	while (i < sz)
 	{
-		//printf("type = 0x%x, ntype = 0x%x, desc = 0x%x, value = 0x%x et sect = 0x%x\nstr = %s\n", type, sym[i].lst.n_type, sym[i].lst.n_desc, sym[i].lst.n_value, sym[i].lst.n_sect, sym[i].str);
-		if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
+		idx = find_alph(sym, sz);
+		sym[idx].printed = 1;
+		if ((sym[idx].lst.n_type & N_PEXT) != N_PEXT)
 		{
-			type = put_type(sym, i, tab);
-	//		if (sym[i].lst.n_type & N_STAB)
-	//			;//printf("-");
-			if (type != 0x0 && sym[i].str[0] != '\0' && sym[i].lst.n_type != 0x20)
+			type = put_type(sym[idx], tab);
+			if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
 			{
-				if (sym[i].lst.n_value == 0x0 && type != 'T')
-					printf("%10c %s\n", type, sym[i].str);
+				if (sym[idx].lst.n_value == 0x0 && type != 'T')
+					printf("%10c %s\n", type, sym[idx].str);
 				else
-					printf("%08x %c %s\n", sym[i].lst.n_value, type, sym[i].str);
+					printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
 			}
 			else
-				print_not_dupe(sym, i, sz, tab);
+				print_not_dupe(sym, idx, sz, tab);
 		}
 		i++;
 	}
 }
 
-static int		sym_32(t_macho32 *inf, t_file_inf file, int offset)
+static int		sym_32(t_macho32 *inf, t_file_inf file, int offset, int *tab)
 {
 	int			i;
 	int			off;
@@ -157,20 +154,17 @@ static int		sym_32(t_macho32 *inf, t_file_inf file, int offset)
 	i = 0;
 	off = offset + inf->symtab.symoff;
 	if (!(inf->symbol = (t_list_inf_32 *)malloc(sizeof(t_list_inf_32) * inf->symtab.nsyms)))
-	{
 		return (ft_nm_put_error(file.name, NOT_VALID));
-	}
 	while (i < (int)inf->symtab.nsyms)
 	{
 		read_lst_32(&inf->symbol[i].lst, file.content + off, sizeof(LST), file);
 		if ((off += sizeof(LST)) > file.inf.st_size)
-		{
 			return (ft_nm_put_error(file.name, NOT_VALID));
-		}
 		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
+		inf->symbol[i].type = put_type(inf->symbol[i], tab);
+		inf->symbol[i].printed = 0;
 		i++;
 	}
-	sort_nlist(inf->symbol, inf->symtab.nsyms);
 	return (0);
 }
 
@@ -182,21 +176,13 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 
 	i = 0;
 	read_seg_32(&sgm, file.content + offset, sizeof(SGM), file);
-	//printf("cig = %d, off = 0x%x, cmdsize = %d\n", file.cig, offset, sgm.cmdsize);
 	if (offset + sgm.cmdsize > file.inf.st_size)
-	{
-	//	ft_putstr("2\n");
 		return (ft_nm_put_error(file.name, NOT_VALID));
-	}
 	if ((offset += sizeof(SGM)) > file.inf.st_size)
-	{
-	//	ft_putstr("3\n");
 		return (ft_nm_put_error(file.name, NOT_VALID));
-	}
 	while (i < sgm.nsects)
 	{
 		read_sct_32(&sct, file.content + offset, sizeof(SCT), file);
-		//ft_memcpy(&sct, file.content + offset, sizeof(SCT));
 		if (offset + sct.size > file.inf.st_size)
 			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
@@ -208,10 +194,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 		i++;
 		(*i_sct)++;
 		if ((offset += sizeof(SCT)) > file.inf.st_size)
-		{
-	//		ft_putstr("1\n");
 			return (ft_nm_put_error(file.name, NOT_VALID));
-		}
 	}
 	return (0);
 }
@@ -224,7 +207,6 @@ void			handle_32(t_file_inf file, int offset)
 	t_macho32		inf;
 	int				sect_idx[3];
 
-	ft_putstr("MDR\n");
 	i = 0;
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
@@ -242,7 +224,7 @@ void			handle_32(t_file_inf file, int offset)
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
-			if (sym_32(&inf, file, off) == -1)
+			if (sym_32(&inf, file, off, (int *)&sect_idx) == -1)
 				return ;
 		}
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)

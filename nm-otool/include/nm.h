@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 15:59:55 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 16:41:25 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,12 +146,14 @@ void				read_header_32(HDR *dst, void *src, size_t size, t_file_inf file);
 void				read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file);
 void				read_lst_32(LST *dst, void *src, size_t size, t_file_inf file);
 void				read_sct_32(SCT *dst, void *src, size_t size, t_file_inf file);
+
 /*
 **	read_struct_64.c
 */
 void				read_header_64(HDR_64 *dst, void *src, size_t size, t_file_inf file);
 void				read_seg_64(SGM_64 *dst, void *src, size_t size, t_file_inf file);
 void				read_lst_64(LST_64 *dst, void *src, size_t size, t_file_inf file);
+void				read_sct_64(SCT_64 *dst, void *src, size_t size, t_file_inf file);
 
 /*
 **	read_struct_fat.c

@@ -78,8 +78,6 @@
          U _NSOwnedPointerMapValueCallBacks
          U _OSAtomicAdd32Barrier
          U _OSAtomicCompareAndSwap32Barrier
-00006ce0 t _VMUOptionParserError
-00007dec t _VMUOptionParserRegisterFlag
          U _VMUUniquifyString
          U __Block_copy
          U __Block_object_assign
@@ -143,7 +141,6 @@
 000037bf t ___copy_helper_block_73
 0000381d t ___copy_helper_block_78
 0000387b t ___copy_helper_block_83
-0000e9b8 s ___crashreporter_info__
 00004ff5 t ___debugMallocStackLogging_block_invoke
 00003402 t ___destroy_helper_block_
 00007f2b t ___destroy_helper_block_
@@ -210,16 +207,11 @@
          U _access
          U _asprintf
          U _atoi
-0000ab86 t _backtraceLocationForIndex
-0000e9c0 s _backtracesContained
          U _calloc
          U _closedir$UNIX2003
-0000a4a2 t _create_uniquing_table
          U _csops
          U _csr_check
 0000e9c8 b _debugTimer
-00009df5 t _decapsulateIPS
-0000a5b6 t _destroy_uniquing_table
          U _dispatch_async
          U _dispatch_get_global_queue
          U _dispatch_main
@@ -227,12 +219,9 @@
          U _dispatch_resume
          U _dispatch_source_create
          U _dispatch_source_set_event_handler
-0000ab98 t _enter_frames_in_table
-00009995 t _enumerateProcesses
          U _environ
          U _errc
          U _exit
-0000a5fc t _expand_uniquing_table
          U _fgets
          U _fileno
 00009c98 t _findStackLogFile
@@ -254,7 +243,6 @@
 00006343 t _highWaterMarkMallocBlockRecorder
 00004f30 t _highWaterMarkRecorder
 000064eb t _insertRecord
-0000a44d t _is_restrict
          U _isatty
 0000e9d0 b _kTaskBeingPeeked
          U _kill$UNIX2003
@@ -268,15 +256,11 @@
          U _mach_task_self_
          U _mach_vm_allocate
          U _mach_vm_deallocate
-000029a0 t _main
          U _malloc
 000062d9 t _mallocBlockStackIdentifierRecorder
 0000e9c4 b _mallocHistoryMode
-0000dd58 s _malloc_historyVersionNumber
-0000dd18 s _malloc_historyVersionString
          U _memchr
          U _memcpy
-0000e9bc s _nodesFull
          U _objc_enumerationMutation
          U _objc_exception_extract
          U _objc_exception_match
@@ -311,7 +295,6 @@
          U _qsort_b
          U _readdir$INODE64
          U _realloc
-00008c62 t _respawnToolIfNecessary
          U _sem_post
          U _sem_trywait
          U _sem_wait$UNIX2003
@@ -322,7 +305,6 @@
          U _snprintf
 0000687c t _sortByCount
 0000684d t _sortBySize
-00009b8b t _stackLogsAvailable
          U _strcmp
          U _strdup
          U _strerror$UNIX2003
@@ -343,7 +325,5 @@
          U _unsetenv$UNIX2003
          U _vm_page_size
          U _waitpid$UNIX2003
-00007f4c t _whileTaskPeeking
-00008094 t _withTaskForPid
          U _write$UNIX2003
          U dyld_stub_binder

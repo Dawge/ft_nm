@@ -6,33 +6,11 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 16:13:04 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 17:07:18 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
-/*
-static void		sort_nlist(t_list_inf *symbol, int sz)
-{
-	int				i;
-	t_list_inf		tmp;
-
-	i = 0;
-	while (i < sz - 1)
-	{
-		//printf("%d\n", i);
-		if (ft_strcmp(symbol[i].str, symbol[i + 1].str) > 0 || (ft_strcmp(symbol[i].str, symbol[i + 1].str) == 0 && symbol[i].type > symbol[i + 1].type))
-		{
-			printf("swap %s et %s\n", symbol[i].str, symbol[i + 1].str);
-			tmp = symbol[i];
-			symbol[i] = symbol[i + 1];
-			symbol[i + 1] = tmp;
-			i = 0;
-		}
-		else
-			i++;
-	}
-}*/
 
 static char		put_type(t_list_inf sym, int *tab)
 {
@@ -88,6 +66,56 @@ static int		find_alph(t_list_inf *sym, int sz)
 	return (idx);
 }
 
+static int		find_name(t_list_inf *sym, int idx, int sz)
+{
+	int			i;
+
+	i = 0;
+	while (i < sz)
+	{
+		if (i != idx && ft_strcmp(sym[i].str, sym[idx].str) == 0)
+		{
+			sym[idx].lst.n_value = sym[i].lst.n_value;
+			if ((sym[i].lst.n_type & N_PEXT) != N_PEXT)
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+static void		print_not_dupe(t_list_inf *sym, int idx, int sz, int *tab)
+{
+	int				i;
+	char			type;
+	static char		tab_type[NB_SCT_INF] = {'t', 'd', 'b'};
+
+	i = 0;
+	type = 0x0;
+	if (find_name(sym, idx, sz) == 1)
+	{
+		while (i < NB_SCT_INF)
+		{
+			if (tab[i] == sym[idx].lst.n_sect)
+			{
+				type = tab_type[i];
+				break ;
+			}
+			i++;
+		}
+		if (type != 0x0 && sym[idx].str[0] != '\0')
+		{
+			if (sym[idx].lst.n_type == N_GSYM)
+				type = 's';
+			else if (sym[idx].lst.n_type == N_FUN)
+				type = 't';
+			else
+				return ;
+			printf("%08llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+		}
+	}
+}
+
 static void		print_list(t_list_inf *sym, int sz, int *tab)
 {
 	int			i;
@@ -103,32 +131,19 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 		if ((sym[idx].lst.n_type & N_PEXT) != N_PEXT)
 		{
 			type = put_type(sym[idx], tab);
-			if (sym[idx].lst.n_type & N_STAB)
-				;//printf("-");
 			if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
 			{
-				//printf("TYPE = 0x%x\n", sym[i].lst.n_type);
 				if (sym[idx].lst.n_value == 0x0 && type != 'T')
 					printf("%18c %s\n", type, sym[idx].str);
 				else
 					printf("%016llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
 			}
+			else
+				print_not_dupe(sym, idx, sz, tab);
 		}
 		i++;
 	}
 }
-/*
-static void		print_list(t_list_inf *sym, int sz, int *tab)
-{
-	int			i;
-	char		type;
-
-	i = 0;
-	while (i < sz)
-	{//ft_putendl(sym[i].str);
-		i++;
-	}
-}*/
 
 static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
 {
@@ -149,7 +164,6 @@ static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
 		inf->symbol[i].printed = 0;
 		i++;
 	}
-	//sort_nlist(inf->symbol, inf->symtab.nsyms);
 	return (0);
 }
 
@@ -167,7 +181,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 		return (ft_nm_put_error(file.name, NOT_VALID));
 	while (i < sgm.nsects)
 	{
-		ft_memcpy(&sct, file.content + offset, sizeof(SCT_64));
+		read_sct_64(&sct, file.content + offset, sizeof(SCT_64), file);
 		if ((long)(offset + sct.size) > file.inf.st_size && ft_strcmp(sct.sectname, SECT_BSS) != 0)
 			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
