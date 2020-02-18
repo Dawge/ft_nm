@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 15:00:12 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/18 15:47:02 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 	while (i < sgm.nsects)
 	{
 		ft_memcpy(&sct, file.content + offset, sizeof(SCT_64));
-		printf("0x%X 0x%llX 0x%llX\n", offset, sct.size, file.inf.st_size);
-		if ((long)(offset + sct.size) > file.inf.st_size)
+		if ((long)(offset + sct.size) > file.inf.st_size && ft_strcmp(sct.sectname, SECT_BSS) != 0)
 			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
 			tab[TEXT_IDX] = *i_sct + 1;

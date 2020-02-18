@@ -1,37 +1,25 @@
-/sgoinfre/goinfre/Perso/rostroh/binary_nm/safe/audiodevice (architecture ppc):
+/sgoinfre/goinfre/Perso/rostroh/binary_nm/safe/PN548_HAL_OSX.dylib:
 Mach header
       magic cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
- 0xfeedface      18          0  0x00           2    20       3008 0x00000085
+ 0xfeedfacf 16777223          3  0x00           6    19       2096 0x02100085
 Load command 0
-      cmd LC_SEGMENT
-  cmdsize 56
-  segname __PAGEZERO
-   vmaddr 0x00000000
-   vmsize 0x00001000
-  fileoff 0
- filesize 0
-  maxprot 0x00000000
- initprot 0x00000000
-   nsects 0
-    flags 0x0
-Load command 1
-      cmd LC_SEGMENT
-  cmdsize 464
+      cmd LC_SEGMENT_64
+  cmdsize 632
   segname __TEXT
-   vmaddr 0x00001000
-   vmsize 0x00004000
+   vmaddr 0x0000000000000000
+   vmsize 0x000000000000b000
   fileoff 0
- filesize 16384
+ filesize 45056
   maxprot 0x00000007
  initprot 0x00000005
-   nsects 6
+   nsects 7
     flags 0x0
 Section
   sectname __text
    segname __TEXT
-      addr 0x00001ff0
-      size 0x0000215c
-    offset 4080
+      addr 0x0000000000000d08
+      size 0x0000000000008a56
+    offset 3336
      align 2^2 (4)
     reloff 0
     nreloc 0
@@ -39,24 +27,36 @@ Section
  reserved1 0
  reserved2 0
 Section
-  sectname __symbol_stub1
+  sectname __stubs
    segname __TEXT
-      addr 0x0000414c
-      size 0x00000180
-    offset 12620
-     align 2^2 (4)
+      addr 0x000000000000975e
+      size 0x000000000000026a
+    offset 38750
+     align 2^1 (2)
     reloff 0
     nreloc 0
      flags 0x80000408
  reserved1 0 (index into indirect symbol table)
- reserved2 16 (size of stubs)
+ reserved2 6 (size of stubs)
+Section
+  sectname __stub_helper
+   segname __TEXT
+      addr 0x00000000000099c8
+      size 0x0000000000000416
+    offset 39368
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
 Section
   sectname __cstring
    segname __TEXT
-      addr 0x000042cc
-      size 0x00000cef
-    offset 13004
-     align 2^2 (4)
+      addr 0x0000000000009de0
+      size 0x0000000000000fa9
+    offset 40416
+     align 2^4 (16)
     reloff 0
     nreloc 0
      flags 0x00000002
@@ -65,819 +65,260 @@ Section
 Section
   sectname __const
    segname __TEXT
-      addr 0x00004fbc
-      size 0x0000001c
-    offset 16316
-     align 2^2 (4)
+      addr 0x000000000000ad90
+      size 0x0000000000000070
+    offset 44432
+     align 2^4 (16)
     reloff 0
     nreloc 0
      flags 0x00000000
  reserved1 0
  reserved2 0
 Section
-  sectname __literal4
+  sectname __oslogstring
    segname __TEXT
-      addr 0x00004fd8
-      size 0x00000010
-    offset 16344
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000003
- reserved1 0
- reserved2 0
-Section
-  sectname __literal8
-   segname __TEXT
-      addr 0x00004fe8
-      size 0x00000018
-    offset 16360
-     align 2^3 (8)
-    reloff 0
-    nreloc 0
-     flags 0x00000004
- reserved1 0
- reserved2 0
-Load command 2
-      cmd LC_SEGMENT
-  cmdsize 532
-  segname __DATA
-   vmaddr 0x00005000
-   vmsize 0x00001000
-  fileoff 16384
- filesize 4096
-  maxprot 0x00000007
- initprot 0x00000003
-   nsects 7
-    flags 0x0
-Section
-  sectname __data
-   segname __DATA
-      addr 0x00005000
-      size 0x00000014
-    offset 16384
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __nl_symbol_ptr
-   segname __DATA
-      addr 0x00005014
-      size 0x0000000c
-    offset 16404
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000006
- reserved1 24 (index into indirect symbol table)
- reserved2 0
-Section
-  sectname __dyld
-   segname __DATA
-      addr 0x00005020
-      size 0x00000008
-    offset 16416
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __la_symbol_ptr
-   segname __DATA
-      addr 0x00005028
-      size 0x00000060
-    offset 16424
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000007
- reserved1 27 (index into indirect symbol table)
- reserved2 0
-Section
-  sectname __cfstring
-   segname __DATA
-      addr 0x00005088
-      size 0x00000100
-    offset 16520
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __common
-   segname __DATA
-      addr 0x00005188
-      size 0x00000038
-    offset 0
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000001
- reserved1 0
- reserved2 0
-Section
-  sectname __bss
-   segname __DATA
-      addr 0x000051c0
-      size 0x00000018
-    offset 0
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000001
- reserved1 0
- reserved2 0
-Load command 3
-      cmd LC_SEGMENT
-  cmdsize 736
-  segname __OBJC
-   vmaddr 0x00006000
-   vmsize 0x00001000
-  fileoff 20480
- filesize 4096
-  maxprot 0x00000007
- initprot 0x00000003
-   nsects 10
-    flags 0x0
-Section
-  sectname __message_refs
-   segname __OBJC
-      addr 0x00006000
-      size 0x000000c8
-    offset 20480
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000005
- reserved1 0
- reserved2 0
-Section
-  sectname __cls_refs
-   segname __OBJC
-      addr 0x000060c8
-      size 0x00000020
-    offset 20680
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000005
- reserved1 0
- reserved2 0
-Section
-  sectname __module_info
-   segname __OBJC
-      addr 0x000060e8
-      size 0x00000020
-    offset 20712
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __class
-   segname __OBJC
-      addr 0x00006108
-      size 0x00000060
-    offset 20744
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __meta_class
-   segname __OBJC
-      addr 0x00006168
-      size 0x00000060
-    offset 20840
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __cls_meth
-   segname __OBJC
-      addr 0x000061c8
-      size 0x00000014
-    offset 20936
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __inst_meth
-   segname __OBJC
-      addr 0x000061dc
-      size 0x00000208
-    offset 20956
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __instance_vars
-   segname __OBJC
-      addr 0x000063e4
-      size 0x00000044
-    offset 21476
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __symbols
-   segname __OBJC
-      addr 0x00006428
-      size 0x00000014
-    offset 21544
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __image_info
-   segname __OBJC
-      addr 0x0000643c
-      size 0x00000008
-    offset 21564
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Load command 4
-      cmd LC_SEGMENT
-  cmdsize 56
-  segname __LINKEDIT
-   vmaddr 0x00007000
-   vmsize 0x00002000
-  fileoff 24576
- filesize 4956
-  maxprot 0x00000007
- initprot 0x00000001
-   nsects 0
-    flags 0x0
-Load command 5
-     cmd LC_SYMTAB
- cmdsize 24
-  symoff 24576
-   nsyms 112
-  stroff 26252
- strsize 3280
-Load command 6
-            cmd LC_DYSYMTAB
-        cmdsize 80
-      ilocalsym 0
-      nlocalsym 55
-     iextdefsym 55
-     nextdefsym 22
-      iundefsym 77
-      nundefsym 35
-         tocoff 0
-           ntoc 0
-      modtaboff 0
-        nmodtab 0
-   extrefsymoff 0
-    nextrefsyms 0
- indirectsymoff 26048
-  nindirectsyms 51
-      extreloff 25920
-        nextrel 16
-      locreloff 0
-        nlocrel 0
-Load command 7
-          cmd LC_LOAD_DYLINKER
-      cmdsize 28
-         name /usr/lib/dyld (offset 12)
-Load command 8
-     cmd LC_UUID
- cmdsize 24
-    uuid 1E4CDA80-7958-A9BD-2A10-81AA7A51FE16
-Load command 9
-        cmd LC_UNIXTHREAD
-    cmdsize 176
-     flavor 1
-      count 40
-      state (Unknown cputype/cpusubtype)
-Load command 10
-          cmd LC_LOAD_DYLIB
-      cmdsize 96
-         name /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 567.37.0
-compatibility version 300.0.0
-Load command 11
-          cmd LC_LOAD_DYLIB
-      cmdsize 84
-         name /System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 11.0.0
-compatibility version 1.0.0
-Load command 12
-          cmd LC_LOAD_DYLIB
-      cmdsize 92
-         name /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 1.0.0
-compatibility version 1.0.0
-Load command 13
-          cmd LC_LOAD_DYLIB
-      cmdsize 88
-         name /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 128.0.0
-compatibility version 2.0.0
-Load command 14
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libgcc_s.1.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 1.0.0
-compatibility version 1.0.0
-Load command 15
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libSystem.B.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 88.3.10
-compatibility version 1.0.0
-Load command 16
-          cmd LC_LOAD_DYLIB
-      cmdsize 100
-         name /System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 18.0.0
-compatibility version 1.0.0
-Load command 17
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libobjc.A.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 227.0.0
-compatibility version 1.0.0
-Load command 18
-          cmd LC_LOAD_DYLIB
-      cmdsize 104
-         name /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 368.33.0
-compatibility version 150.0.0
-Load command 19
-          cmd LC_LOAD_DYLIB
-      cmdsize 112
-         name /System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 22.0.0
-compatibility version 1.0.0
-/sgoinfre/goinfre/Perso/rostroh/binary_nm/safe/audiodevice (architecture i386):
-Mach header
-      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
- 0xfeedface       7          3  0x00           2    21       2764 0x00000085
-Load command 0
-      cmd LC_SEGMENT
-  cmdsize 56
-  segname __PAGEZERO
-   vmaddr 0x00000000
-   vmsize 0x00001000
-  fileoff 0
- filesize 0
-  maxprot 0x00000000
- initprot 0x00000000
-   nsects 0
-    flags 0x0
-Load command 1
-      cmd LC_SEGMENT
-  cmdsize 260
-  segname __TEXT
-   vmaddr 0x00001000
-   vmsize 0x00004000
-  fileoff 0
- filesize 16384
-  maxprot 0x00000007
- initprot 0x00000005
-   nsects 3
-    flags 0x0
-Section
-  sectname __text
-   segname __TEXT
-      addr 0x0000255c
-      size 0x00001ef4
-    offset 5468
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x80000400
- reserved1 0
- reserved2 0
-Section
-  sectname __cstring
-   segname __TEXT
-      addr 0x00004450
-      size 0x00000b9e
-    offset 13392
-     align 2^2 (4)
+      addr 0x000000000000ae00
+      size 0x0000000000000046
+    offset 44544
+     align 2^4 (16)
     reloff 0
     nreloc 0
      flags 0x00000002
  reserved1 0
  reserved2 0
 Section
-  sectname __literal4
+  sectname __unwind_info
    segname __TEXT
-      addr 0x00004ff0
-      size 0x00000010
-    offset 16368
+      addr 0x000000000000ae48
+      size 0x00000000000001ac
+    offset 44616
      align 2^2 (4)
     reloff 0
     nreloc 0
-     flags 0x00000003
+     flags 0x00000000
  reserved1 0
  reserved2 0
-Load command 2
-      cmd LC_SEGMENT
-  cmdsize 396
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 632
   segname __DATA
-   vmaddr 0x00005000
-   vmsize 0x00001000
-  fileoff 16384
+   vmaddr 0x000000000000b000
+   vmsize 0x0000000000022000
+  fileoff 45056
  filesize 4096
   maxprot 0x00000007
  initprot 0x00000003
-   nsects 5
+   nsects 7
     flags 0x0
+Section
+  sectname __got
+   segname __DATA
+      addr 0x000000000000b000
+      size 0x0000000000000088
+    offset 45056
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000006
+ reserved1 103 (index into indirect symbol table)
+ reserved2 0
+Section
+  sectname __nl_symbol_ptr
+   segname __DATA
+      addr 0x000000000000b088
+      size 0x0000000000000010
+    offset 45192
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000006
+ reserved1 120 (index into indirect symbol table)
+ reserved2 0
+Section
+  sectname __la_symbol_ptr
+   segname __DATA
+      addr 0x000000000000b098
+      size 0x0000000000000338
+    offset 45208
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000007
+ reserved1 122 (index into indirect symbol table)
+ reserved2 0
+Section
+  sectname __const
+   segname __DATA
+      addr 0x000000000000b3d0
+      size 0x0000000000000390
+    offset 46032
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
 Section
   sectname __data
    segname __DATA
-      addr 0x00005000
-      size 0x00000010
-    offset 16384
+      addr 0x000000000000b760
+      size 0x0000000000000004
+    offset 46944
      align 2^2 (4)
     reloff 0
     nreloc 0
      flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __dyld
-   segname __DATA
-      addr 0x00005010
-      size 0x00000008
-    offset 16400
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __cfstring
-   segname __DATA
-      addr 0x00005018
-      size 0x00000100
-    offset 16408
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __common
-   segname __DATA
-      addr 0x00005118
-      size 0x00000034
-    offset 0
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000001
  reserved1 0
  reserved2 0
 Section
   sectname __bss
    segname __DATA
-      addr 0x0000514c
-      size 0x00000018
+      addr 0x000000000000b770
+      size 0x00000000000210d0 (past end of file)
     offset 0
-     align 2^2 (4)
+     align 2^4 (16)
     reloff 0
     nreloc 0
      flags 0x00000001
  reserved1 0
  reserved2 0
-Load command 3
-      cmd LC_SEGMENT
-  cmdsize 736
-  segname __OBJC
-   vmaddr 0x00006000
-   vmsize 0x00001000
-  fileoff 20480
- filesize 4096
-  maxprot 0x00000007
- initprot 0x00000003
-   nsects 10
-    flags 0x0
 Section
-  sectname __message_refs
-   segname __OBJC
-      addr 0x00006000
-      size 0x000000c8
-    offset 20480
-     align 2^2 (4)
+  sectname __common
+   segname __DATA
+      addr 0x000000000002c840
+      size 0x0000000000000018
+    offset 0
+     align 2^3 (8)
     reloff 0
     nreloc 0
-     flags 0x00000005
+     flags 0x00000001
  reserved1 0
  reserved2 0
-Section
-  sectname __cls_refs
-   segname __OBJC
-      addr 0x000060c8
-      size 0x00000020
-    offset 20680
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000005
- reserved1 0
- reserved2 0
-Section
-  sectname __module_info
-   segname __OBJC
-      addr 0x000060e8
-      size 0x00000020
-    offset 20712
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __class
-   segname __OBJC
-      addr 0x00006120
-      size 0x00000070
-    offset 20768
-     align 2^5 (32)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __meta_class
-   segname __OBJC
-      addr 0x000061a0
-      size 0x00000070
-    offset 20896
-     align 2^5 (32)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __cls_meth
-   segname __OBJC
-      addr 0x00006210
-      size 0x00000014
-    offset 21008
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __inst_meth
-   segname __OBJC
-      addr 0x00006240
-      size 0x00000224
-    offset 21056
-     align 2^5 (32)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __instance_vars
-   segname __OBJC
-      addr 0x00006480
-      size 0x00000044
-    offset 21632
-     align 2^5 (32)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __symbols
-   segname __OBJC
-      addr 0x000064c4
-      size 0x00000014
-    offset 21700
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Section
-  sectname __image_info
-   segname __OBJC
-      addr 0x000064d8
-      size 0x00000008
-    offset 21720
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000000
- reserved1 0
- reserved2 0
-Load command 4
-      cmd LC_SEGMENT
-  cmdsize 192
-  segname __IMPORT
-   vmaddr 0x00007000
-   vmsize 0x00001000
-  fileoff 24576
- filesize 4096
-  maxprot 0x00000007
- initprot 0x00000007
-   nsects 2
-    flags 0x0
-Section
-  sectname __pointers
-   segname __IMPORT
-      addr 0x00007000
-      size 0x0000000c
-    offset 24576
-     align 2^2 (4)
-    reloff 0
-    nreloc 0
-     flags 0x00000006
- reserved1 0 (index into indirect symbol table)
- reserved2 0
-Section
-  sectname __jump_table
-   segname __IMPORT
-      addr 0x00007040
-      size 0x0000008c
-    offset 24640
-     align 2^6 (64)
-    reloff 0
-    nreloc 0
-     flags 0x04000008
- reserved1 3 (index into indirect symbol table)
- reserved2 5 (size of stubs)
-Load command 5
-      cmd LC_SEGMENT
-  cmdsize 56
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 72
   segname __LINKEDIT
-   vmaddr 0x00008000
-   vmsize 0x00002000
-  fileoff 28672
- filesize 4740
+   vmaddr 0x000000000002d000
+   vmsize 0x0000000000007000
+  fileoff 49152
+ filesize 27824
   maxprot 0x00000007
  initprot 0x00000001
    nsects 0
     flags 0x0
-Load command 6
+Load command 3
+          cmd LC_ID_DYLIB
+      cmdsize 56
+         name /usr/lib/PN548_HAL_OSX.dylib (offset 24)
+   time stamp 1 Thu Jan  1 01:00:01 1970
+      current version 1.0.0
+compatibility version 1.0.0
+Load command 4
+            cmd LC_DYLD_INFO_ONLY
+        cmdsize 48
+     rebase_off 49152
+    rebase_size 56
+       bind_off 49208
+      bind_size 256
+  weak_bind_off 0
+ weak_bind_size 0
+  lazy_bind_off 49464
+ lazy_bind_size 2336
+     export_off 51800
+    export_size 2128
+Load command 5
      cmd LC_SYMTAB
  cmdsize 24
-  symoff 28672
-   nsyms 109
-  stroff 30232
- strsize 3180
-Load command 7
+  symoff 54632
+   nsyms 306
+  stroff 60428
+ strsize 6752
+Load command 6
             cmd LC_DYSYMTAB
         cmdsize 80
       ilocalsym 0
-      nlocalsym 51
-     iextdefsym 51
-     nextdefsym 21
-      iundefsym 72
-      nundefsym 37
+      nlocalsym 87
+     iextdefsym 87
+     nextdefsym 106
+      iundefsym 193
+      nundefsym 113
          tocoff 0
            ntoc 0
       modtaboff 0
         nmodtab 0
    extrefsymoff 0
     nextrefsyms 0
- indirectsymoff 30108
-  nindirectsyms 31
-      extreloff 29980
-        nextrel 16
+ indirectsymoff 59528
+  nindirectsyms 225
+      extreloff 0
+        nextrel 0
       locreloff 0
         nlocrel 0
-Load command 8
-          cmd LC_LOAD_DYLINKER
-      cmdsize 28
-         name /usr/lib/dyld (offset 12)
-Load command 9
+Load command 7
      cmd LC_UUID
  cmdsize 24
-    uuid F257AB6C-BAF6-0E72-4FB6-7197A333CB11
+    uuid 207DE5AD-8CDC-3E1F-BAC9-E2A192D80140
+Load command 8
+      cmd LC_VERSION_MIN_MACOSX
+  cmdsize 16
+  version 10.12
+      sdk 10.12
+Load command 9
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 272.4
 Load command 10
-        cmd LC_UNIXTHREAD
-    cmdsize 80
-     flavor i386_THREAD_STATE
-      count i386_THREAD_STATE_COUNT
-	    eax 0x00000000 ebx    0x00000000 ecx 0x00000000 edx 0x00000000
-	    edi 0x00000000 esi    0x00000000 ebp 0x00000000 esp 0x00000000
-	    ss  0x00000000 eflags 0x00000000 eip 0x0000255c cs  0x00000000
-	    ds  0x00000000 es     0x00000000 fs  0x00000000 gs  0x00000000
+      cmd LC_SEGMENT_SPLIT_INFO
+  cmdsize 16
+  dataoff 53928
+ datasize 480
 Load command 11
-          cmd LC_LOAD_DYLIB
-      cmdsize 96
-         name /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (offset 24)
+          cmd LC_LOAD_WEAK_DYLIB
+      cmdsize 128
+         name /System/Library/PrivateFrameworks/EmbeddedOSSupportHost.framework/Versions/A/EmbeddedOSSupportHost (offset 24)
    time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 567.37.0
-compatibility version 300.0.0
+      current version 1.0.0
+compatibility version 1.0.0
 Load command 12
           cmd LC_LOAD_DYLIB
-      cmdsize 84
-         name /System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (offset 24)
+      cmdsize 56
+         name /usr/lib/libnfshared.dylib (offset 24)
    time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 11.0.0
+      current version 1.0.0
 compatibility version 1.0.0
 Load command 13
-          cmd LC_LOAD_DYLIB
-      cmdsize 92
-         name /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 1.0.0
-compatibility version 1.0.0
-Load command 14
-          cmd LC_LOAD_DYLIB
-      cmdsize 88
-         name /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 128.0.0
-compatibility version 2.0.0
-Load command 15
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libgcc_s.1.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 1.0.0
-compatibility version 1.0.0
-Load command 16
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libSystem.B.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 88.3.10
-compatibility version 1.0.0
-Load command 17
-          cmd LC_LOAD_DYLIB
-      cmdsize 100
-         name /System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 18.0.0
-compatibility version 1.0.0
-Load command 18
-          cmd LC_LOAD_DYLIB
-      cmdsize 52
-         name /usr/lib/libobjc.A.dylib (offset 24)
-   time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 227.0.0
-compatibility version 1.0.0
-Load command 19
           cmd LC_LOAD_DYLIB
       cmdsize 104
          name /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (offset 24)
    time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 368.33.0
+      current version 1348.28.0
 compatibility version 150.0.0
-Load command 20
+Load command 14
           cmd LC_LOAD_DYLIB
-      cmdsize 112
-         name /System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (offset 24)
+      cmdsize 88
+         name /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (offset 24)
    time stamp 2 Thu Jan  1 01:00:02 1970
-      current version 22.0.0
+      current version 275.0.0
 compatibility version 1.0.0
+Load command 15
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 01:00:02 1970
+      current version 1238.0.0
+compatibility version 1.0.0
+Load command 16
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 54408
+ datasize 224
+Load command 17
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 54632
+ datasize 0
+Load command 18
+      cmd LC_CODE_SIGNATURE
+  cmdsize 16
+  dataoff 67184
+ datasize 9792
