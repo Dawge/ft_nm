@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 16:18:57 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/20 17:55:52 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		find_alph(t_list_inf *sym, int sz)
 	idx = 0;
 	while (i < sz)
 	{
-		if (ft_strcmp(sym[i].str, sym[idx].str) == 0)
+		if (ft_strcmp(sym[i].str, sym[idx].str) == 0 && sym[i].printed == 0)
 		{
 			if (sym[idx].type == 'I')
 				idx = i;
@@ -84,7 +84,7 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 		idx = find_alph(sym, sz);
 		sym[idx].printed = 1;
 		type = put_type(sym[idx], tab);
-		if (type != 0x0 && sym[idx].str[0] != '\0')
+		if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
 		{
 			if (type == 'I')
 				printf("%18c %s (indirect for %s)\n", type, sym[idx].str, sym[idx].str);

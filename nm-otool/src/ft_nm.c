@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 16:04:29 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/20 17:56:22 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,13 @@ static int		check_arch(t_file_inf file, uint32_t cputype, uint32_t fat_idx)
 	i = 0;
 	read_header_fat(&hdr, file.content, sizeof(FAT_HDR), file.cig);
 	off = sizeof(FAT_HDR);
+	fat_idx = 0;
+	if ((cputype & swap_u32(CPU_ARCH_ABI64)) == swap_u32(CPU_ARCH_ABI64))
+		return (1);
 	while (i < hdr.nfat_arch)
 	{
 		read_arch(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
-		if (i < fat_idx && (arch.cputype & CPU_ARCH_MASK) == (cputype & CPU_ARCH_MASK))
+		if ((cputype & CPU_ARCH_MASK) == (arch.cputype & CPU_ARCH_MASK) && (cputype & swap_u32(CPU_ARCH_ABI64)) == 0x0 && (arch.cputype & swap_u32(CPU_ARCH_ABI64)) == swap_u32(CPU_ARCH_ABI64))
 			return (0);
 		off += sizeof(FAT_ARCH);
 		i++;
