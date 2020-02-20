@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 18:39:19 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/20 16:18:57 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static char		put_type(t_list_inf sym, int *tab)
 	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
 		type = 'A';
 	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
-		type = 'i';
-	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A')
+		type = 'I';
+	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A' && type != 'I')
 		type -= 32;
 	return (type);
 }
@@ -57,6 +57,11 @@ static int		find_alph(t_list_inf *sym, int sz)
 	idx = 0;
 	while (i < sz)
 	{
+		if (ft_strcmp(sym[i].str, sym[idx].str) == 0)
+		{
+			if (sym[idx].type == 'I')
+				idx = i;
+		}
 		if (ft_strcmp(sym[i].str, sym[idx].str) < 0 && sym[i].printed == 0)
 			idx = i;
 		else if (sym[idx].printed == 1)
@@ -81,7 +86,9 @@ static void		print_list(t_list_inf *sym, int sz, int *tab)
 		type = put_type(sym[idx], tab);
 		if (type != 0x0 && sym[idx].str[0] != '\0')
 		{
-			if (sym[idx].lst.n_value == 0x0 && type != 'T')
+			if (type == 'I')
+				printf("%18c %s (indirect for %s)\n", type, sym[idx].str, sym[idx].str);
+			else if (sym[idx].lst.n_value == 0x0 && type != 'T' && type != 't')
 				printf("%18c %s\n", type, sym[idx].str);
 			else
 				printf("%016llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
@@ -154,6 +161,7 @@ void			handle_64(t_file_inf file, int offset)
 	i = 0;
 	i_sct = 0;
 	ft_bzero(&sect_idx, sizeof(int) * 3);
+	ft_bzero(&inf, sizeof(t_macho64));
 	read_header_64(&inf.hdr, file.content + offset, sizeof(HDR_64), file);
 	off = offset;
 	offset += sizeof(HDR_64);

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 18:39:21 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/20 16:11:27 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static char		put_type(t_list_inf_32 sym, int *tab)
 	else if ((sym.lst.n_type & N_TYPE) == N_ABS)
 		type = 'A';
 	else if ((sym.lst.n_type & N_TYPE) == N_INDR)
-		type = 'i';
-	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A')
+		type = 'I';
+	else if (sym.lst.n_type & N_EXT && type != 'U' && type != 'A' && type != 'I')
 		type -= 32;
 	return (type);
 }
@@ -81,7 +81,9 @@ static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 		type = put_type(sym[idx], tab);
 		if (type != 0x0 && sym[idx].str[0] != '\0')
 		{
-			if (sym[idx].lst.n_value == 0x0 && type != 'T')
+			if (type == 'I')
+				printf("%10c %s (indirect for %s\n)", type, sym[idx].str, sym[idx].str);
+			else if (sym[idx].lst.n_value == 0x0 && type != 'T' && type != 't')
 				printf("%10c %s\n", type, sym[idx].str);
 			else
 				printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);

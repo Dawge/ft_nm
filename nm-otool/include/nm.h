@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 16:41:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/20 15:29:30 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <mach-o/loader.h>
 # include <mach-o/ranlib.h>
 # include <mach-o/fat.h>
+# include <mach/machine.h>
 # include <ar.h>
 
 # define OPEN_ERROR 2
@@ -73,6 +74,7 @@ typedef struct		s_file_inf
 # define BSS_IDX 2
 # define NB_SCT_INF 3
 
+# define NB_CPU 2
 # define PPC 0x12000000
 # define i386 0x7000000
 

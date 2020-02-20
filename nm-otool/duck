@@ -1,0 +1,1192 @@
+491d490
+< 000000000000001f i __ZNKSt10bad_typeid4whatEv
+493c492
+< 0000000000000056 i __ZNKSt11logic_error4whatEv
+---
+>                  I __ZNKSt10bad_typeid4whatEv (indirect for __ZNKSt10bad_typeid4whatEv)
+495c494
+< 0000000000000090 i __ZNKSt13bad_exception4whatEv
+---
+>                  I __ZNKSt11logic_error4whatEv (indirect for __ZNKSt11logic_error4whatEv)
+497c496
+< 00000000000000cc i __ZNKSt13runtime_error4whatEv
+---
+>                  I __ZNKSt13bad_exception4whatEv (indirect for __ZNKSt13bad_exception4whatEv)
+498a498
+>                  I __ZNKSt13runtime_error4whatEv (indirect for __ZNKSt13runtime_error4whatEv)
+500d499
+< 000000000000013b i __ZNKSt20bad_array_new_length4whatEv
+501a501
+>                  I __ZNKSt20bad_array_new_length4whatEv (indirect for __ZNKSt20bad_array_new_length4whatEv)
+1205d1204
+< 000000000000701e i __ZNKSt8bad_cast4whatEv
+1207c1206
+< 000000000000704f i __ZNKSt9bad_alloc4whatEv
+---
+>                  I __ZNKSt8bad_cast4whatEv (indirect for __ZNKSt8bad_cast4whatEv)
+1209c1208
+< 0000000000007081 i __ZNKSt9exception4whatEv
+---
+>                  I __ZNKSt9bad_alloc4whatEv (indirect for __ZNKSt9bad_alloc4whatEv)
+1211c1210
+< 00000000000070b1 i __ZNSt10bad_typeidC1Ev
+---
+>                  I __ZNKSt9exception4whatEv (indirect for __ZNKSt9exception4whatEv)
+1213c1212
+< 00000000000070df i __ZNSt10bad_typeidC2Ev
+---
+>                  I __ZNSt10bad_typeidC1Ev (indirect for __ZNSt10bad_typeidC1Ev)
+1215c1214
+< 000000000000710d i __ZNSt10bad_typeidD0Ev
+---
+>                  I __ZNSt10bad_typeidC2Ev (indirect for __ZNSt10bad_typeidC2Ev)
+1217c1216
+< 000000000000713b i __ZNSt10bad_typeidD1Ev
+---
+>                  I __ZNSt10bad_typeidD0Ev (indirect for __ZNSt10bad_typeidD0Ev)
+1219c1218
+< 0000000000007169 i __ZNSt10bad_typeidD2Ev
+---
+>                  I __ZNSt10bad_typeidD1Ev (indirect for __ZNSt10bad_typeidD1Ev)
+1220a1220
+>                  I __ZNSt10bad_typeidD2Ev (indirect for __ZNSt10bad_typeidD2Ev)
+1227d1226
+< 00000000000072b4 i __ZNSt11logic_errorD0Ev
+1229c1228
+< 00000000000072e4 i __ZNSt11logic_errorD1Ev
+---
+>                  I __ZNSt11logic_errorD0Ev (indirect for __ZNSt11logic_errorD0Ev)
+1231c1230
+< 0000000000007314 i __ZNSt11logic_errorD2Ev
+---
+>                  I __ZNSt11logic_errorD1Ev (indirect for __ZNSt11logic_errorD1Ev)
+1232a1232
+>                  I __ZNSt11logic_errorD2Ev (indirect for __ZNSt11logic_errorD2Ev)
+1234d1233
+< 000000000000735f i __ZNSt11range_errorD0Ev
+1236c1235
+< 000000000000738f i __ZNSt11range_errorD1Ev
+---
+>                  I __ZNSt11range_errorD0Ev (indirect for __ZNSt11range_errorD0Ev)
+1238c1237
+< 00000000000073bf i __ZNSt11range_errorD2Ev
+---
+>                  I __ZNSt11range_errorD1Ev (indirect for __ZNSt11range_errorD1Ev)
+1240c1239
+< 00000000000073f0 i __ZNSt12domain_errorD0Ev
+---
+>                  I __ZNSt11range_errorD2Ev (indirect for __ZNSt11range_errorD2Ev)
+1242c1241
+< 0000000000007422 i __ZNSt12domain_errorD1Ev
+---
+>                  I __ZNSt12domain_errorD0Ev (indirect for __ZNSt12domain_errorD0Ev)
+1244c1243
+< 0000000000007454 i __ZNSt12domain_errorD2Ev
+---
+>                  I __ZNSt12domain_errorD1Ev (indirect for __ZNSt12domain_errorD1Ev)
+1246c1245
+< 0000000000007486 i __ZNSt12length_errorD0Ev
+---
+>                  I __ZNSt12domain_errorD2Ev (indirect for __ZNSt12domain_errorD2Ev)
+1248c1247
+< 00000000000074b8 i __ZNSt12length_errorD1Ev
+---
+>                  I __ZNSt12length_errorD0Ev (indirect for __ZNSt12length_errorD0Ev)
+1250c1249
+< 00000000000074ea i __ZNSt12length_errorD2Ev
+---
+>                  I __ZNSt12length_errorD1Ev (indirect for __ZNSt12length_errorD1Ev)
+1252c1251
+< 000000000000751c i __ZNSt12out_of_rangeD0Ev
+---
+>                  I __ZNSt12length_errorD2Ev (indirect for __ZNSt12length_errorD2Ev)
+1254c1253
+< 000000000000754e i __ZNSt12out_of_rangeD1Ev
+---
+>                  I __ZNSt12out_of_rangeD0Ev (indirect for __ZNSt12out_of_rangeD0Ev)
+1256c1255
+< 0000000000007580 i __ZNSt12out_of_rangeD2Ev
+---
+>                  I __ZNSt12out_of_rangeD1Ev (indirect for __ZNSt12out_of_rangeD1Ev)
+1258c1257
+< 00000000000075b3 i __ZNSt13bad_exceptionD0Ev
+---
+>                  I __ZNSt12out_of_rangeD2Ev (indirect for __ZNSt12out_of_rangeD2Ev)
+1260c1259
+< 00000000000075e7 i __ZNSt13bad_exceptionD1Ev
+---
+>                  I __ZNSt13bad_exceptionD0Ev (indirect for __ZNSt13bad_exceptionD0Ev)
+1262c1261
+< 000000000000761b i __ZNSt13bad_exceptionD2Ev
+---
+>                  I __ZNSt13bad_exceptionD1Ev (indirect for __ZNSt13bad_exceptionD1Ev)
+1263a1263
+>                  I __ZNSt13bad_exceptionD2Ev (indirect for __ZNSt13bad_exceptionD2Ev)
+1275d1274
+< 0000000000007802 i __ZNSt13runtime_errorD0Ev
+1277c1276
+< 0000000000007836 i __ZNSt13runtime_errorD1Ev
+---
+>                  I __ZNSt13runtime_errorD0Ev (indirect for __ZNSt13runtime_errorD0Ev)
+1279c1278
+< 000000000000786a i __ZNSt13runtime_errorD2Ev
+---
+>                  I __ZNSt13runtime_errorD1Ev (indirect for __ZNSt13runtime_errorD1Ev)
+1280a1280
+>                  I __ZNSt13runtime_errorD2Ev (indirect for __ZNSt13runtime_errorD2Ev)
+1282d1281
+< 00000000000078bc i __ZNSt14overflow_errorD0Ev
+1284c1283
+< 00000000000078f2 i __ZNSt14overflow_errorD1Ev
+---
+>                  I __ZNSt14overflow_errorD0Ev (indirect for __ZNSt14overflow_errorD0Ev)
+1286c1285
+< 0000000000007928 i __ZNSt14overflow_errorD2Ev
+---
+>                  I __ZNSt14overflow_errorD1Ev (indirect for __ZNSt14overflow_errorD1Ev)
+1288c1287
+< 000000000000795f i __ZNSt15underflow_errorD0Ev
+---
+>                  I __ZNSt14overflow_errorD2Ev (indirect for __ZNSt14overflow_errorD2Ev)
+1290c1289
+< 0000000000007997 i __ZNSt15underflow_errorD1Ev
+---
+>                  I __ZNSt15underflow_errorD0Ev (indirect for __ZNSt15underflow_errorD0Ev)
+1292c1291
+< 00000000000079cf i __ZNSt15underflow_errorD2Ev
+---
+>                  I __ZNSt15underflow_errorD1Ev (indirect for __ZNSt15underflow_errorD1Ev)
+1294c1293
+< 0000000000007a08 i __ZNSt16invalid_argumentD0Ev
+---
+>                  I __ZNSt15underflow_errorD2Ev (indirect for __ZNSt15underflow_errorD2Ev)
+1296c1295
+< 0000000000007a42 i __ZNSt16invalid_argumentD1Ev
+---
+>                  I __ZNSt16invalid_argumentD0Ev (indirect for __ZNSt16invalid_argumentD0Ev)
+1298c1297
+< 0000000000007a7c i __ZNSt16invalid_argumentD2Ev
+---
+>                  I __ZNSt16invalid_argumentD1Ev (indirect for __ZNSt16invalid_argumentD1Ev)
+1299a1299
+>                  I __ZNSt16invalid_argumentD2Ev (indirect for __ZNSt16invalid_argumentD2Ev)
+1305d1304
+< 0000000000007b4b i __ZNSt20bad_array_new_lengthC1Ev
+1307c1306
+< 0000000000007b8d i __ZNSt20bad_array_new_lengthC2Ev
+---
+>                  I __ZNSt20bad_array_new_lengthC1Ev (indirect for __ZNSt20bad_array_new_lengthC1Ev)
+1309c1308
+< 0000000000007bcf i __ZNSt20bad_array_new_lengthD0Ev
+---
+>                  I __ZNSt20bad_array_new_lengthC2Ev (indirect for __ZNSt20bad_array_new_lengthC2Ev)
+1311c1310
+< 0000000000007c11 i __ZNSt20bad_array_new_lengthD1Ev
+---
+>                  I __ZNSt20bad_array_new_lengthD0Ev (indirect for __ZNSt20bad_array_new_lengthD0Ev)
+1313c1312
+< 0000000000007c53 i __ZNSt20bad_array_new_lengthD2Ev
+---
+>                  I __ZNSt20bad_array_new_lengthD1Ev (indirect for __ZNSt20bad_array_new_lengthD1Ev)
+1314a1314
+>                  I __ZNSt20bad_array_new_lengthD2Ev (indirect for __ZNSt20bad_array_new_lengthD2Ev)
+2902d2901
+< 0000000000013802 i __ZNSt8bad_castC1Ev
+2904c2903
+< 000000000001382a i __ZNSt8bad_castC2Ev
+---
+>                  I __ZNSt8bad_castC1Ev (indirect for __ZNSt8bad_castC1Ev)
+2906c2905
+< 0000000000013852 i __ZNSt8bad_castD0Ev
+---
+>                  I __ZNSt8bad_castC2Ev (indirect for __ZNSt8bad_castC2Ev)
+2908c2907
+< 000000000001387a i __ZNSt8bad_castD1Ev
+---
+>                  I __ZNSt8bad_castD0Ev (indirect for __ZNSt8bad_castD0Ev)
+2910c2909
+< 00000000000138a2 i __ZNSt8bad_castD2Ev
+---
+>                  I __ZNSt8bad_castD1Ev (indirect for __ZNSt8bad_castD1Ev)
+2912c2911
+< 00000000000138cb i __ZNSt9bad_allocC1Ev
+---
+>                  I __ZNSt8bad_castD2Ev (indirect for __ZNSt8bad_castD2Ev)
+2914c2913
+< 00000000000138f5 i __ZNSt9bad_allocC2Ev
+---
+>                  I __ZNSt9bad_allocC1Ev (indirect for __ZNSt9bad_allocC1Ev)
+2916c2915
+< 000000000001391f i __ZNSt9bad_allocD0Ev
+---
+>                  I __ZNSt9bad_allocC2Ev (indirect for __ZNSt9bad_allocC2Ev)
+2918c2917
+< 0000000000013949 i __ZNSt9bad_allocD1Ev
+---
+>                  I __ZNSt9bad_allocD0Ev (indirect for __ZNSt9bad_allocD0Ev)
+2920c2919
+< 0000000000013973 i __ZNSt9bad_allocD2Ev
+---
+>                  I __ZNSt9bad_allocD1Ev (indirect for __ZNSt9bad_allocD1Ev)
+2922c2921
+< 000000000001399d i __ZNSt9exceptionD0Ev
+---
+>                  I __ZNSt9bad_allocD2Ev (indirect for __ZNSt9bad_allocD2Ev)
+2924c2923
+< 00000000000139c7 i __ZNSt9exceptionD1Ev
+---
+>                  I __ZNSt9exceptionD0Ev (indirect for __ZNSt9exceptionD0Ev)
+2926c2925
+< 00000000000139f1 i __ZNSt9exceptionD2Ev
+---
+>                  I __ZNSt9exceptionD1Ev (indirect for __ZNSt9exceptionD1Ev)
+2928c2927
+< 0000000000013a1b i __ZNSt9type_infoD0Ev
+---
+>                  I __ZNSt9exceptionD2Ev (indirect for __ZNSt9exceptionD2Ev)
+2930c2929
+< 0000000000013a45 i __ZNSt9type_infoD1Ev
+---
+>                  I __ZNSt9type_infoD0Ev (indirect for __ZNSt9type_infoD0Ev)
+2932c2931
+< 0000000000013a6f i __ZNSt9type_infoD2Ev
+---
+>                  I __ZNSt9type_infoD1Ev (indirect for __ZNSt9type_infoD1Ev)
+2934c2933
+< 0000000000013a97 i __ZSt10unexpectedv
+---
+>                  I __ZNSt9type_infoD2Ev (indirect for __ZNSt9type_infoD2Ev)
+2936c2935
+< 0000000000013ac0 i __ZSt13get_terminatev
+---
+>                  I __ZSt10unexpectedv (indirect for __ZSt10unexpectedv)
+2938c2937
+< 0000000000013af0 i __ZSt13set_terminatePFvvE
+---
+>                  I __ZSt13get_terminatev (indirect for __ZSt13get_terminatev)
+2940c2939
+< 0000000000013b21 i __ZSt14get_unexpectedv
+---
+>                  I __ZSt13set_terminatePFvvE (indirect for __ZSt13set_terminatePFvvE)
+2942c2941
+< 0000000000013b53 i __ZSt14set_unexpectedPFvvE
+---
+>                  I __ZSt14get_unexpectedv (indirect for __ZSt14get_unexpectedv)
+2944c2943
+< 0000000000013b86 i __ZSt15get_new_handlerv
+---
+>                  I __ZSt14set_unexpectedPFvvE (indirect for __ZSt14set_unexpectedPFvvE)
+2946c2945
+< 0000000000013bba i __ZSt15set_new_handlerPFvvE
+---
+>                  I __ZSt15get_new_handlerv (indirect for __ZSt15get_new_handlerv)
+2947a2947
+>                  I __ZSt15set_new_handlerPFvvE (indirect for __ZSt15set_new_handlerPFvvE)
+2955d2954
+< 0000000000013c8a i __ZSt9terminatev
+2956a2956
+>                  I __ZSt9terminatev (indirect for __ZSt9terminatev)
+2964d2963
+< 0000000000013e9e i __ZTIDi
+2966c2965
+< 0000000000013eae i __ZTIDn
+---
+>                  I __ZTIDi (indirect for __ZTIDi)
+2968c2967
+< 0000000000013ebe i __ZTIDs
+---
+>                  I __ZTIDn (indirect for __ZTIDn)
+2969a2969
+>                  I __ZTIDs (indirect for __ZTIDs)
+3091d3090
+< 0000000000015029 i __ZTIPDi
+3093c3092
+< 000000000001503b i __ZTIPDn
+---
+>                  I __ZTIPDi (indirect for __ZTIPDi)
+3095c3094
+< 000000000001504d i __ZTIPDs
+---
+>                  I __ZTIPDn (indirect for __ZTIPDn)
+3097c3096
+< 0000000000015060 i __ZTIPKDi
+---
+>                  I __ZTIPDs (indirect for __ZTIPDs)
+3099c3098
+< 0000000000015074 i __ZTIPKDn
+---
+>                  I __ZTIPKDi (indirect for __ZTIPKDi)
+3101c3100
+< 0000000000015088 i __ZTIPKDs
+---
+>                  I __ZTIPKDn (indirect for __ZTIPKDn)
+3103c3102
+< 000000000001509b i __ZTIPKa
+---
+>                  I __ZTIPKDs (indirect for __ZTIPKDs)
+3105c3104
+< 00000000000150ad i __ZTIPKb
+---
+>                  I __ZTIPKa (indirect for __ZTIPKa)
+3107c3106
+< 00000000000150bf i __ZTIPKc
+---
+>                  I __ZTIPKb (indirect for __ZTIPKb)
+3109c3108
+< 00000000000150d1 i __ZTIPKd
+---
+>                  I __ZTIPKc (indirect for __ZTIPKc)
+3111c3110
+< 00000000000150e3 i __ZTIPKe
+---
+>                  I __ZTIPKd (indirect for __ZTIPKd)
+3113c3112
+< 00000000000150f5 i __ZTIPKf
+---
+>                  I __ZTIPKe (indirect for __ZTIPKe)
+3115c3114
+< 0000000000015107 i __ZTIPKh
+---
+>                  I __ZTIPKf (indirect for __ZTIPKf)
+3117c3116
+< 0000000000015119 i __ZTIPKi
+---
+>                  I __ZTIPKh (indirect for __ZTIPKh)
+3119c3118
+< 000000000001512b i __ZTIPKj
+---
+>                  I __ZTIPKi (indirect for __ZTIPKi)
+3121c3120
+< 000000000001513d i __ZTIPKl
+---
+>                  I __ZTIPKj (indirect for __ZTIPKj)
+3123c3122
+< 000000000001514f i __ZTIPKm
+---
+>                  I __ZTIPKl (indirect for __ZTIPKl)
+3125c3124
+< 0000000000015161 i __ZTIPKs
+---
+>                  I __ZTIPKm (indirect for __ZTIPKm)
+3127c3126
+< 0000000000015173 i __ZTIPKt
+---
+>                  I __ZTIPKs (indirect for __ZTIPKs)
+3129c3128
+< 0000000000015185 i __ZTIPKv
+---
+>                  I __ZTIPKt (indirect for __ZTIPKt)
+3131c3130
+< 0000000000015197 i __ZTIPKw
+---
+>                  I __ZTIPKv (indirect for __ZTIPKv)
+3133c3132
+< 00000000000151a9 i __ZTIPKx
+---
+>                  I __ZTIPKw (indirect for __ZTIPKw)
+3135c3134
+< 00000000000151bb i __ZTIPKy
+---
+>                  I __ZTIPKx (indirect for __ZTIPKx)
+3137c3136
+< 00000000000151cc i __ZTIPa
+---
+>                  I __ZTIPKy (indirect for __ZTIPKy)
+3139c3138
+< 00000000000151dc i __ZTIPb
+---
+>                  I __ZTIPa (indirect for __ZTIPa)
+3141c3140
+< 00000000000151ec i __ZTIPc
+---
+>                  I __ZTIPb (indirect for __ZTIPb)
+3143c3142
+< 00000000000151fc i __ZTIPd
+---
+>                  I __ZTIPc (indirect for __ZTIPc)
+3145c3144
+< 000000000001520c i __ZTIPe
+---
+>                  I __ZTIPd (indirect for __ZTIPd)
+3147c3146
+< 000000000001521c i __ZTIPf
+---
+>                  I __ZTIPe (indirect for __ZTIPe)
+3149c3148
+< 000000000001522c i __ZTIPh
+---
+>                  I __ZTIPf (indirect for __ZTIPf)
+3151c3150
+< 000000000001523c i __ZTIPi
+---
+>                  I __ZTIPh (indirect for __ZTIPh)
+3153c3152
+< 000000000001524c i __ZTIPj
+---
+>                  I __ZTIPi (indirect for __ZTIPi)
+3155c3154
+< 000000000001525c i __ZTIPl
+---
+>                  I __ZTIPj (indirect for __ZTIPj)
+3157c3156
+< 000000000001526c i __ZTIPm
+---
+>                  I __ZTIPl (indirect for __ZTIPl)
+3159c3158
+< 000000000001527c i __ZTIPs
+---
+>                  I __ZTIPm (indirect for __ZTIPm)
+3161c3160
+< 000000000001528c i __ZTIPt
+---
+>                  I __ZTIPs (indirect for __ZTIPs)
+3163c3162
+< 000000000001529c i __ZTIPv
+---
+>                  I __ZTIPt (indirect for __ZTIPt)
+3165c3164
+< 00000000000152ac i __ZTIPw
+---
+>                  I __ZTIPv (indirect for __ZTIPv)
+3167c3166
+< 00000000000152bc i __ZTIPx
+---
+>                  I __ZTIPw (indirect for __ZTIPw)
+3169c3168
+< 00000000000152cc i __ZTIPy
+---
+>                  I __ZTIPx (indirect for __ZTIPx)
+3171c3170
+< 00000000000152e8 i __ZTISt10bad_typeid
+---
+>                  I __ZTIPy (indirect for __ZTIPy)
+3173c3172
+< 0000000000015311 i __ZTISt11logic_error
+---
+>                  I __ZTISt10bad_typeid (indirect for __ZTISt10bad_typeid)
+3175c3174
+< 000000000001533b i __ZTISt11range_error
+---
+>                  I __ZTISt11logic_error (indirect for __ZTISt11logic_error)
+3177c3176
+< 0000000000015366 i __ZTISt12domain_error
+---
+>                  I __ZTISt11range_error (indirect for __ZTISt11range_error)
+3179c3178
+< 0000000000015392 i __ZTISt12length_error
+---
+>                  I __ZTISt12domain_error (indirect for __ZTISt12domain_error)
+3181c3180
+< 00000000000153be i __ZTISt12out_of_range
+---
+>                  I __ZTISt12length_error (indirect for __ZTISt12length_error)
+3183c3182
+< 00000000000153eb i __ZTISt13bad_exception
+---
+>                  I __ZTISt12out_of_range (indirect for __ZTISt12out_of_range)
+3185c3184
+< 0000000000015419 i __ZTISt13runtime_error
+---
+>                  I __ZTISt13bad_exception (indirect for __ZTISt13bad_exception)
+3187c3186
+< 0000000000015448 i __ZTISt14overflow_error
+---
+>                  I __ZTISt13runtime_error (indirect for __ZTISt13runtime_error)
+3189c3188
+< 0000000000015479 i __ZTISt15underflow_error
+---
+>                  I __ZTISt14overflow_error (indirect for __ZTISt14overflow_error)
+3191c3190
+< 00000000000154ac i __ZTISt16invalid_argument
+---
+>                  I __ZTISt15underflow_error (indirect for __ZTISt15underflow_error)
+3192a3192
+>                  I __ZTISt16invalid_argument (indirect for __ZTISt16invalid_argument)
+3194d3193
+< 00000000000154fe i __ZTISt20bad_array_new_length
+3196c3195
+< 000000000001552d i __ZTISt8bad_cast
+---
+>                  I __ZTISt20bad_array_new_length (indirect for __ZTISt20bad_array_new_length)
+3198c3197
+< 0000000000015550 i __ZTISt9bad_alloc
+---
+>                  I __ZTISt8bad_cast (indirect for __ZTISt8bad_cast)
+3200c3199
+< 0000000000015574 i __ZTISt9exception
+---
+>                  I __ZTISt9bad_alloc (indirect for __ZTISt9bad_alloc)
+3202c3201
+< 0000000000015598 i __ZTISt9type_info
+---
+>                  I __ZTISt9exception (indirect for __ZTISt9exception)
+3204c3203
+< 00000000000155b1 i __ZTIa
+---
+>                  I __ZTISt9type_info (indirect for __ZTISt9type_info)
+3206c3205
+< 00000000000155bf i __ZTIb
+---
+>                  I __ZTIa (indirect for __ZTIa)
+3208c3207
+< 00000000000155cd i __ZTIc
+---
+>                  I __ZTIb (indirect for __ZTIb)
+3210c3209
+< 00000000000155db i __ZTId
+---
+>                  I __ZTIc (indirect for __ZTIc)
+3212c3211
+< 00000000000155e9 i __ZTIe
+---
+>                  I __ZTId (indirect for __ZTId)
+3214c3213
+< 00000000000155f7 i __ZTIf
+---
+>                  I __ZTIe (indirect for __ZTIe)
+3216c3215
+< 0000000000015605 i __ZTIh
+---
+>                  I __ZTIf (indirect for __ZTIf)
+3218c3217
+< 0000000000015613 i __ZTIi
+---
+>                  I __ZTIh (indirect for __ZTIh)
+3220c3219
+< 0000000000015621 i __ZTIj
+---
+>                  I __ZTIi (indirect for __ZTIi)
+3222c3221
+< 000000000001562f i __ZTIl
+---
+>                  I __ZTIj (indirect for __ZTIj)
+3224c3223
+< 000000000001563d i __ZTIm
+---
+>                  I __ZTIl (indirect for __ZTIl)
+3226c3225
+< 000000000001564b i __ZTIs
+---
+>                  I __ZTIm (indirect for __ZTIm)
+3228c3227
+< 0000000000015659 i __ZTIt
+---
+>                  I __ZTIs (indirect for __ZTIs)
+3230c3229
+< 0000000000015667 i __ZTIv
+---
+>                  I __ZTIt (indirect for __ZTIt)
+3232c3231
+< 0000000000015675 i __ZTIw
+---
+>                  I __ZTIv (indirect for __ZTIv)
+3234c3233
+< 0000000000015683 i __ZTIx
+---
+>                  I __ZTIw (indirect for __ZTIw)
+3236c3235
+< 0000000000015691 i __ZTIy
+---
+>                  I __ZTIx (indirect for __ZTIx)
+3238c3237
+< 00000000000156a0 i __ZTSDi
+---
+>                  I __ZTIy (indirect for __ZTIy)
+3240c3239
+< 00000000000156b0 i __ZTSDn
+---
+>                  I __ZTSDi (indirect for __ZTSDi)
+3242c3241
+< 00000000000156c0 i __ZTSDs
+---
+>                  I __ZTSDn (indirect for __ZTSDn)
+3244c3243
+< 00000000000156ee i __ZTSN10__cxxabiv116__enum_type_infoE
+---
+>                  I __ZTSDs (indirect for __ZTSDs)
+3246c3245
+< 000000000001573b i __ZTSN10__cxxabiv117__array_type_infoE
+---
+>                  I __ZTSN10__cxxabiv116__enum_type_infoE (indirect for __ZTSN10__cxxabiv116__enum_type_infoE)
+3248c3247
+< 0000000000015789 i __ZTSN10__cxxabiv117__class_type_infoE
+---
+>                  I __ZTSN10__cxxabiv117__array_type_infoE (indirect for __ZTSN10__cxxabiv117__array_type_infoE)
+3250c3249
+< 00000000000157d7 i __ZTSN10__cxxabiv117__pbase_type_infoE
+---
+>                  I __ZTSN10__cxxabiv117__class_type_infoE (indirect for __ZTSN10__cxxabiv117__class_type_infoE)
+3252c3251
+< 0000000000015827 i __ZTSN10__cxxabiv119__pointer_type_infoE
+---
+>                  I __ZTSN10__cxxabiv117__pbase_type_infoE (indirect for __ZTSN10__cxxabiv117__pbase_type_infoE)
+3254c3253
+< 000000000001587a i __ZTSN10__cxxabiv120__function_type_infoE
+---
+>                  I __ZTSN10__cxxabiv119__pointer_type_infoE (indirect for __ZTSN10__cxxabiv119__pointer_type_infoE)
+3256c3255
+< 00000000000158ce i __ZTSN10__cxxabiv120__si_class_type_infoE
+---
+>                  I __ZTSN10__cxxabiv120__function_type_infoE (indirect for __ZTSN10__cxxabiv120__function_type_infoE)
+3258c3257
+< 0000000000015923 i __ZTSN10__cxxabiv121__vmi_class_type_infoE
+---
+>                  I __ZTSN10__cxxabiv120__si_class_type_infoE (indirect for __ZTSN10__cxxabiv120__si_class_type_infoE)
+3260c3259
+< 000000000001597b i __ZTSN10__cxxabiv123__fundamental_type_infoE
+---
+>                  I __ZTSN10__cxxabiv121__vmi_class_type_infoE (indirect for __ZTSN10__cxxabiv121__vmi_class_type_infoE)
+3262c3261
+< 00000000000159db i __ZTSN10__cxxabiv129__pointer_to_member_type_infoE
+---
+>                  I __ZTSN10__cxxabiv123__fundamental_type_infoE (indirect for __ZTSN10__cxxabiv123__fundamental_type_infoE)
+3263a3263
+>                  I __ZTSN10__cxxabiv129__pointer_to_member_type_infoE (indirect for __ZTSN10__cxxabiv129__pointer_to_member_type_infoE)
+3385d3384
+< 000000000001666f i __ZTSPDi
+3387c3386
+< 0000000000016681 i __ZTSPDn
+---
+>                  I __ZTSPDi (indirect for __ZTSPDi)
+3389c3388
+< 0000000000016693 i __ZTSPDs
+---
+>                  I __ZTSPDn (indirect for __ZTSPDn)
+3391c3390
+< 00000000000166a6 i __ZTSPKDi
+---
+>                  I __ZTSPDs (indirect for __ZTSPDs)
+3393c3392
+< 00000000000166ba i __ZTSPKDn
+---
+>                  I __ZTSPKDi (indirect for __ZTSPKDi)
+3395c3394
+< 00000000000166ce i __ZTSPKDs
+---
+>                  I __ZTSPKDn (indirect for __ZTSPKDn)
+3397c3396
+< 00000000000166e1 i __ZTSPKa
+---
+>                  I __ZTSPKDs (indirect for __ZTSPKDs)
+3399c3398
+< 00000000000166f3 i __ZTSPKb
+---
+>                  I __ZTSPKa (indirect for __ZTSPKa)
+3401c3400
+< 0000000000016705 i __ZTSPKc
+---
+>                  I __ZTSPKb (indirect for __ZTSPKb)
+3403c3402
+< 0000000000016717 i __ZTSPKd
+---
+>                  I __ZTSPKc (indirect for __ZTSPKc)
+3405c3404
+< 0000000000016729 i __ZTSPKe
+---
+>                  I __ZTSPKd (indirect for __ZTSPKd)
+3407c3406
+< 000000000001673b i __ZTSPKf
+---
+>                  I __ZTSPKe (indirect for __ZTSPKe)
+3409c3408
+< 000000000001674d i __ZTSPKh
+---
+>                  I __ZTSPKf (indirect for __ZTSPKf)
+3411c3410
+< 000000000001675f i __ZTSPKi
+---
+>                  I __ZTSPKh (indirect for __ZTSPKh)
+3413c3412
+< 0000000000016771 i __ZTSPKj
+---
+>                  I __ZTSPKi (indirect for __ZTSPKi)
+3415c3414
+< 0000000000016783 i __ZTSPKl
+---
+>                  I __ZTSPKj (indirect for __ZTSPKj)
+3417c3416
+< 0000000000016795 i __ZTSPKm
+---
+>                  I __ZTSPKl (indirect for __ZTSPKl)
+3419c3418
+< 00000000000167a7 i __ZTSPKs
+---
+>                  I __ZTSPKm (indirect for __ZTSPKm)
+3421c3420
+< 00000000000167b9 i __ZTSPKt
+---
+>                  I __ZTSPKs (indirect for __ZTSPKs)
+3423c3422
+< 00000000000167cb i __ZTSPKv
+---
+>                  I __ZTSPKt (indirect for __ZTSPKt)
+3425c3424
+< 00000000000167dd i __ZTSPKw
+---
+>                  I __ZTSPKv (indirect for __ZTSPKv)
+3427c3426
+< 00000000000167ef i __ZTSPKx
+---
+>                  I __ZTSPKw (indirect for __ZTSPKw)
+3429c3428
+< 0000000000016801 i __ZTSPKy
+---
+>                  I __ZTSPKx (indirect for __ZTSPKx)
+3431c3430
+< 0000000000016812 i __ZTSPa
+---
+>                  I __ZTSPKy (indirect for __ZTSPKy)
+3433c3432
+< 0000000000016822 i __ZTSPb
+---
+>                  I __ZTSPa (indirect for __ZTSPa)
+3435c3434
+< 0000000000016832 i __ZTSPc
+---
+>                  I __ZTSPb (indirect for __ZTSPb)
+3437c3436
+< 0000000000016842 i __ZTSPd
+---
+>                  I __ZTSPc (indirect for __ZTSPc)
+3439c3438
+< 0000000000016852 i __ZTSPe
+---
+>                  I __ZTSPd (indirect for __ZTSPd)
+3441c3440
+< 0000000000016862 i __ZTSPf
+---
+>                  I __ZTSPe (indirect for __ZTSPe)
+3443c3442
+< 0000000000016872 i __ZTSPh
+---
+>                  I __ZTSPf (indirect for __ZTSPf)
+3445c3444
+< 0000000000016882 i __ZTSPi
+---
+>                  I __ZTSPh (indirect for __ZTSPh)
+3447c3446
+< 0000000000016892 i __ZTSPj
+---
+>                  I __ZTSPi (indirect for __ZTSPi)
+3449c3448
+< 00000000000168a2 i __ZTSPl
+---
+>                  I __ZTSPj (indirect for __ZTSPj)
+3451c3450
+< 00000000000168b2 i __ZTSPm
+---
+>                  I __ZTSPl (indirect for __ZTSPl)
+3453c3452
+< 00000000000168c2 i __ZTSPs
+---
+>                  I __ZTSPm (indirect for __ZTSPm)
+3455c3454
+< 00000000000168d2 i __ZTSPt
+---
+>                  I __ZTSPs (indirect for __ZTSPs)
+3457c3456
+< 00000000000168e2 i __ZTSPv
+---
+>                  I __ZTSPt (indirect for __ZTSPt)
+3459c3458
+< 00000000000168f2 i __ZTSPw
+---
+>                  I __ZTSPv (indirect for __ZTSPv)
+3461c3460
+< 0000000000016902 i __ZTSPx
+---
+>                  I __ZTSPw (indirect for __ZTSPw)
+3463c3462
+< 0000000000016912 i __ZTSPy
+---
+>                  I __ZTSPx (indirect for __ZTSPx)
+3465c3464
+< 000000000001692e i __ZTSSt10bad_typeid
+---
+>                  I __ZTSPy (indirect for __ZTSPy)
+3467c3466
+< 0000000000016957 i __ZTSSt11logic_error
+---
+>                  I __ZTSSt10bad_typeid (indirect for __ZTSSt10bad_typeid)
+3469c3468
+< 0000000000016981 i __ZTSSt11range_error
+---
+>                  I __ZTSSt11logic_error (indirect for __ZTSSt11logic_error)
+3471c3470
+< 00000000000169ac i __ZTSSt12domain_error
+---
+>                  I __ZTSSt11range_error (indirect for __ZTSSt11range_error)
+3473c3472
+< 00000000000169d8 i __ZTSSt12length_error
+---
+>                  I __ZTSSt12domain_error (indirect for __ZTSSt12domain_error)
+3475c3474
+< 0000000000016a04 i __ZTSSt12out_of_range
+---
+>                  I __ZTSSt12length_error (indirect for __ZTSSt12length_error)
+3477c3476
+< 0000000000016a31 i __ZTSSt13bad_exception
+---
+>                  I __ZTSSt12out_of_range (indirect for __ZTSSt12out_of_range)
+3479c3478
+< 0000000000016a5f i __ZTSSt13runtime_error
+---
+>                  I __ZTSSt13bad_exception (indirect for __ZTSSt13bad_exception)
+3481c3480
+< 0000000000016a8e i __ZTSSt14overflow_error
+---
+>                  I __ZTSSt13runtime_error (indirect for __ZTSSt13runtime_error)
+3483c3482
+< 0000000000016abf i __ZTSSt15underflow_error
+---
+>                  I __ZTSSt14overflow_error (indirect for __ZTSSt14overflow_error)
+3485c3484
+< 0000000000016af2 i __ZTSSt16invalid_argument
+---
+>                  I __ZTSSt15underflow_error (indirect for __ZTSSt15underflow_error)
+3486a3486
+>                  I __ZTSSt16invalid_argument (indirect for __ZTSSt16invalid_argument)
+3488d3487
+< 0000000000016b44 i __ZTSSt20bad_array_new_length
+3490c3489
+< 0000000000016b73 i __ZTSSt8bad_cast
+---
+>                  I __ZTSSt20bad_array_new_length (indirect for __ZTSSt20bad_array_new_length)
+3492c3491
+< 0000000000016b96 i __ZTSSt9bad_alloc
+---
+>                  I __ZTSSt8bad_cast (indirect for __ZTSSt8bad_cast)
+3494c3493
+< 0000000000016bba i __ZTSSt9exception
+---
+>                  I __ZTSSt9bad_alloc (indirect for __ZTSSt9bad_alloc)
+3496c3495
+< 0000000000016bde i __ZTSSt9type_info
+---
+>                  I __ZTSSt9exception (indirect for __ZTSSt9exception)
+3498c3497
+< 0000000000016bf7 i __ZTSa
+---
+>                  I __ZTSSt9type_info (indirect for __ZTSSt9type_info)
+3500c3499
+< 0000000000016c05 i __ZTSb
+---
+>                  I __ZTSa (indirect for __ZTSa)
+3502c3501
+< 0000000000016c13 i __ZTSc
+---
+>                  I __ZTSb (indirect for __ZTSb)
+3504c3503
+< 0000000000016c21 i __ZTSd
+---
+>                  I __ZTSc (indirect for __ZTSc)
+3506c3505
+< 0000000000016c2f i __ZTSe
+---
+>                  I __ZTSd (indirect for __ZTSd)
+3508c3507
+< 0000000000016c3d i __ZTSf
+---
+>                  I __ZTSe (indirect for __ZTSe)
+3510c3509
+< 0000000000016c4b i __ZTSh
+---
+>                  I __ZTSf (indirect for __ZTSf)
+3512c3511
+< 0000000000016c59 i __ZTSi
+---
+>                  I __ZTSh (indirect for __ZTSh)
+3514c3513
+< 0000000000016c67 i __ZTSj
+---
+>                  I __ZTSi (indirect for __ZTSi)
+3516c3515
+< 0000000000016c75 i __ZTSl
+---
+>                  I __ZTSj (indirect for __ZTSj)
+3518c3517
+< 0000000000016c83 i __ZTSm
+---
+>                  I __ZTSl (indirect for __ZTSl)
+3520c3519
+< 0000000000016c91 i __ZTSs
+---
+>                  I __ZTSm (indirect for __ZTSm)
+3522c3521
+< 0000000000016c9f i __ZTSt
+---
+>                  I __ZTSs (indirect for __ZTSs)
+3524c3523
+< 0000000000016cad i __ZTSv
+---
+>                  I __ZTSt (indirect for __ZTSt)
+3526c3525
+< 0000000000016cbb i __ZTSw
+---
+>                  I __ZTSv (indirect for __ZTSv)
+3528c3527
+< 0000000000016cc9 i __ZTSx
+---
+>                  I __ZTSw (indirect for __ZTSw)
+3530c3529
+< 0000000000016cd7 i __ZTSy
+---
+>                  I __ZTSx (indirect for __ZTSx)
+3531a3531
+>                  I __ZTSy (indirect for __ZTSy)
+3540d3539
+< 0000000000016e55 i __ZTVN10__cxxabiv116__enum_type_infoE
+3542c3541
+< 0000000000016ea2 i __ZTVN10__cxxabiv117__array_type_infoE
+---
+>                  I __ZTVN10__cxxabiv116__enum_type_infoE (indirect for __ZTVN10__cxxabiv116__enum_type_infoE)
+3544c3543
+< 0000000000016ef0 i __ZTVN10__cxxabiv117__class_type_infoE
+---
+>                  I __ZTVN10__cxxabiv117__array_type_infoE (indirect for __ZTVN10__cxxabiv117__array_type_infoE)
+3546c3545
+< 0000000000016f3e i __ZTVN10__cxxabiv117__pbase_type_infoE
+---
+>                  I __ZTVN10__cxxabiv117__class_type_infoE (indirect for __ZTVN10__cxxabiv117__class_type_infoE)
+3548c3547
+< 0000000000016f8e i __ZTVN10__cxxabiv119__pointer_type_infoE
+---
+>                  I __ZTVN10__cxxabiv117__pbase_type_infoE (indirect for __ZTVN10__cxxabiv117__pbase_type_infoE)
+3550c3549
+< 0000000000016fe1 i __ZTVN10__cxxabiv120__function_type_infoE
+---
+>                  I __ZTVN10__cxxabiv119__pointer_type_infoE (indirect for __ZTVN10__cxxabiv119__pointer_type_infoE)
+3552c3551
+< 0000000000017035 i __ZTVN10__cxxabiv120__si_class_type_infoE
+---
+>                  I __ZTVN10__cxxabiv120__function_type_infoE (indirect for __ZTVN10__cxxabiv120__function_type_infoE)
+3554c3553
+< 000000000001708a i __ZTVN10__cxxabiv121__vmi_class_type_infoE
+---
+>                  I __ZTVN10__cxxabiv120__si_class_type_infoE (indirect for __ZTVN10__cxxabiv120__si_class_type_infoE)
+3556c3555
+< 00000000000170e2 i __ZTVN10__cxxabiv123__fundamental_type_infoE
+---
+>                  I __ZTVN10__cxxabiv121__vmi_class_type_infoE (indirect for __ZTVN10__cxxabiv121__vmi_class_type_infoE)
+3558c3557
+< 0000000000017142 i __ZTVN10__cxxabiv129__pointer_to_member_type_infoE
+---
+>                  I __ZTVN10__cxxabiv123__fundamental_type_infoE (indirect for __ZTVN10__cxxabiv123__fundamental_type_infoE)
+3559a3559
+>                  I __ZTVN10__cxxabiv129__pointer_to_member_type_infoE (indirect for __ZTVN10__cxxabiv129__pointer_to_member_type_infoE)
+3660d3659
+< 0000000000018072 i __ZTVSt10bad_typeid
+3662c3661
+< 000000000001809b i __ZTVSt11logic_error
+---
+>                  I __ZTVSt10bad_typeid (indirect for __ZTVSt10bad_typeid)
+3664c3663
+< 00000000000180c5 i __ZTVSt11range_error
+---
+>                  I __ZTVSt11logic_error (indirect for __ZTVSt11logic_error)
+3666c3665
+< 00000000000180f0 i __ZTVSt12domain_error
+---
+>                  I __ZTVSt11range_error (indirect for __ZTVSt11range_error)
+3668c3667
+< 000000000001811c i __ZTVSt12length_error
+---
+>                  I __ZTVSt12domain_error (indirect for __ZTVSt12domain_error)
+3670c3669
+< 0000000000018148 i __ZTVSt12out_of_range
+---
+>                  I __ZTVSt12length_error (indirect for __ZTVSt12length_error)
+3672c3671
+< 0000000000018175 i __ZTVSt13bad_exception
+---
+>                  I __ZTVSt12out_of_range (indirect for __ZTVSt12out_of_range)
+3674c3673
+< 00000000000181a3 i __ZTVSt13runtime_error
+---
+>                  I __ZTVSt13bad_exception (indirect for __ZTVSt13bad_exception)
+3676c3675
+< 00000000000181d2 i __ZTVSt14overflow_error
+---
+>                  I __ZTVSt13runtime_error (indirect for __ZTVSt13runtime_error)
+3678c3677
+< 0000000000018203 i __ZTVSt15underflow_error
+---
+>                  I __ZTVSt14overflow_error (indirect for __ZTVSt14overflow_error)
+3680c3679
+< 0000000000018236 i __ZTVSt16invalid_argument
+---
+>                  I __ZTVSt15underflow_error (indirect for __ZTVSt15underflow_error)
+3681a3681
+>                  I __ZTVSt16invalid_argument (indirect for __ZTVSt16invalid_argument)
+3683d3682
+< 0000000000018288 i __ZTVSt20bad_array_new_length
+3685c3684
+< 00000000000182b7 i __ZTVSt8bad_cast
+---
+>                  I __ZTVSt20bad_array_new_length (indirect for __ZTVSt20bad_array_new_length)
+3687c3686
+< 00000000000182da i __ZTVSt9bad_alloc
+---
+>                  I __ZTVSt8bad_cast (indirect for __ZTVSt8bad_cast)
+3689c3688
+< 00000000000182fe i __ZTVSt9exception
+---
+>                  I __ZTVSt9bad_alloc (indirect for __ZTVSt9bad_alloc)
+3691c3690
+< 0000000000018322 i __ZTVSt9type_info
+---
+>                  I __ZTVSt9exception (indirect for __ZTVSt9exception)
+3692a3692
+>                  I __ZTVSt9type_info (indirect for __ZTVSt9type_info)
+3805d3804
+< 0000000000018724 i __ZdaPv
+3807c3806
+< 0000000000018742 i __ZdaPvRKSt9nothrow_t
+---
+>                  I __ZdaPv (indirect for __ZdaPv)
+3808a3808
+>                  I __ZdaPvRKSt9nothrow_t (indirect for __ZdaPvRKSt9nothrow_t)
+3810d3809
+< 0000000000018769 i __ZdlPv
+3812c3811
+< 0000000000018787 i __ZdlPvRKSt9nothrow_t
+---
+>                  I __ZdlPv (indirect for __ZdlPv)
+3813a3813
+>                  I __ZdlPvRKSt9nothrow_t (indirect for __ZdlPvRKSt9nothrow_t)
+3815d3814
+< 00000000000187ad i __Znam
+3817c3816
+< 00000000000187c9 i __ZnamRKSt9nothrow_t
+---
+>                  I __Znam (indirect for __Znam)
+3819c3818
+< 00000000000187e5 i __Znwm
+---
+>                  I __ZnamRKSt9nothrow_t (indirect for __ZnamRKSt9nothrow_t)
+3821c3820
+< 0000000000018801 i __ZnwmRKSt9nothrow_t
+---
+>                  I __Znwm (indirect for __Znwm)
+3822a3822
+>                  I __ZnwmRKSt9nothrow_t (indirect for __ZnwmRKSt9nothrow_t)
+3829d3828
+< 0000000000018830 i ___cxa_allocate_exception
+3830a3830
+>                  I ___cxa_allocate_exception (indirect for ___cxa_allocate_exception)
+3832d3831
+< 000000000001885a i ___cxa_bad_cast
+3834c3833
+< 000000000001887c i ___cxa_bad_typeid
+---
+>                  I ___cxa_bad_cast (indirect for ___cxa_bad_cast)
+3836c3835
+< 00000000000188a1 i ___cxa_begin_catch
+---
+>                  I ___cxa_bad_typeid (indirect for ___cxa_bad_typeid)
+3838c3837
+< 00000000000188cb i ___cxa_call_unexpected
+---
+>                  I ___cxa_begin_catch (indirect for ___cxa_begin_catch)
+3840c3839
+< 0000000000018900 i ___cxa_current_exception_type
+---
+>                  I ___cxa_call_unexpected (indirect for ___cxa_call_unexpected)
+3841a3841
+>                  I ___cxa_current_exception_type (indirect for ___cxa_current_exception_type)
+3844d3843
+< 000000000001892e i ___cxa_demangle
+3846c3845
+< 000000000001894f i ___cxa_end_catch
+---
+>                  I ___cxa_demangle (indirect for ___cxa_demangle)
+3848c3847
+< 0000000000018976 i ___cxa_free_exception
+---
+>                  I ___cxa_end_catch (indirect for ___cxa_end_catch)
+3850c3849
+< 00000000000189a5 i ___cxa_get_exception_ptr
+---
+>                  I ___cxa_free_exception (indirect for ___cxa_free_exception)
+3852c3851
+< 00000000000189d1 i ___cxa_get_globals
+---
+>                  I ___cxa_get_exception_ptr (indirect for ___cxa_get_exception_ptr)
+3854c3853
+< 00000000000189fc i ___cxa_get_globals_fast
+---
+>                  I ___cxa_get_globals (indirect for ___cxa_get_globals)
+3856c3855
+< 0000000000018a27 i ___cxa_guard_abort
+---
+>                  I ___cxa_get_globals_fast (indirect for ___cxa_get_globals_fast)
+3858c3857
+< 0000000000018a4f i ___cxa_guard_acquire
+---
+>                  I ___cxa_guard_abort (indirect for ___cxa_guard_abort)
+3860c3859
+< 0000000000018a79 i ___cxa_guard_release
+---
+>                  I ___cxa_guard_acquire (indirect for ___cxa_guard_acquire)
+3861a3861
+>                  I ___cxa_guard_release (indirect for ___cxa_guard_release)
+3863d3862
+< 0000000000018aa2 i ___cxa_pure_virtual
+3865c3864
+< 0000000000018ac5 i ___cxa_rethrow
+---
+>                  I ___cxa_pure_virtual (indirect for ___cxa_pure_virtual)
+3866a3866
+>                  I ___cxa_rethrow (indirect for ___cxa_rethrow)
+3868d3867
+< 0000000000018ae1 i ___cxa_throw
+3869a3869
+>                  I ___cxa_throw (indirect for ___cxa_throw)
+3871d3870
+< 0000000000018aff i ___cxa_vec_cctor
+3873c3872
+< 0000000000018b23 i ___cxa_vec_cleanup
+---
+>                  I ___cxa_vec_cctor (indirect for ___cxa_vec_cctor)
+3875c3874
+< 0000000000018b46 i ___cxa_vec_ctor
+---
+>                  I ___cxa_vec_cleanup (indirect for ___cxa_vec_cleanup)
+3877c3876
+< 0000000000018b68 i ___cxa_vec_delete
+---
+>                  I ___cxa_vec_ctor (indirect for ___cxa_vec_ctor)
+3879c3878
+< 0000000000018b8d i ___cxa_vec_delete2
+---
+>                  I ___cxa_vec_delete (indirect for ___cxa_vec_delete)
+3881c3880
+< 0000000000018bb3 i ___cxa_vec_delete3
+---
+>                  I ___cxa_vec_delete2 (indirect for ___cxa_vec_delete2)
+3883c3882
+< 0000000000018bd6 i ___cxa_vec_dtor
+---
+>                  I ___cxa_vec_delete3 (indirect for ___cxa_vec_delete3)
+3885c3884
+< 0000000000018bf5 i ___cxa_vec_new
+---
+>                  I ___cxa_vec_dtor (indirect for ___cxa_vec_dtor)
+3887c3886
+< 0000000000018c14 i ___cxa_vec_new2
+---
+>                  I ___cxa_vec_new (indirect for ___cxa_vec_new)
+3889c3888
+< 0000000000018c34 i ___cxa_vec_new3
+---
+>                  I ___cxa_vec_new2 (indirect for ___cxa_vec_new2)
+3890a3890
+>                  I ___cxa_vec_new3 (indirect for ___cxa_vec_new3)
+3897d3896
+< 0000000000018c54 i ___dynamic_cast
+3898a3898
+>                  I ___dynamic_cast (indirect for ___dynamic_cast)
+3900d3899
+< 0000000000018c7a i ___gxx_personality_v0
+3901a3901
+>                  I ___gxx_personality_v0 (indirect for ___gxx_personality_v0)
