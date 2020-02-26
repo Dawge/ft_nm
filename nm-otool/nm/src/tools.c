@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:43:13 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 15:46:19 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:34:28 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,22 @@ int		get_type(uint32_t arch)
 	return (-1);
 }
 
-void	put_arch(char *name, uint32_t arch)
+char	*put_arch(char *name, uint32_t arch)
 {
 	int				idx;
+	char			*str;
 	static char		*arch_name[NB_CPU] = {"i386", "ppc"};
 
 	if ((idx = get_type(arch)) != -1)
-		printf("\n%s (for architecture %s):\n", name, arch_name[idx]);
+	{
+		str = ft_strjoin("\n", name);
+		str = ft_strjoin(str, " (for architecture ");
+		str = ft_strjoin(str, arch_name[idx]);
+		str = ft_strjoin(str, "):\n");
+		return (str);
+	}
+	return (NULL);
+	//	printf("\n%s (for architecture %s):\n", name, arch_name[idx]);
 }
 /*
 void	put_arch(char *name, uint32_t arch)

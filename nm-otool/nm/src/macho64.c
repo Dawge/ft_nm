@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/26 12:11:48 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:27:04 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,14 @@ static int		find_alph(t_list_inf *sym, int sz)
 		{
 			if (sym[idx].type == 'I')
 				idx = i;
+			if (sym[idx].printed == 1)
+				idx = i;
+			/*if (sym[i].lst.n_value < sym[idx].lst.n_value && sym[i].printed == 0)
+			{
+				printf("OUI !!!\n");
+				idx = i;
+			}*/
+			//printf("mdr %s %llx -- %llx\n", sym[idx].str, sym[i].lst.n_value, sym[idx].lst.n_value);
 		}
 		else
 		{
@@ -192,7 +200,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 	return (0);
 }
 
-void			handle_64(t_file_inf file, int offset)
+int				handle_64(t_file_inf file, int offset)
 {
 	int				off;
 	int				i;
@@ -213,20 +221,23 @@ void			handle_64(t_file_inf file, int offset)
 		if (inf.ld.cmd == LC_SEGMENT_64)
 		{
 			if (pars_section(file, offset, (int *)&sect_idx, &i_sct) == -1)
-				return ;
+				return (-1);
 		}
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
 			if (sym_64(&inf, file, off, (int *)&sect_idx) == -1)
-				return ;
+				return (-1);
 		}
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
 		{
 			ft_nm_put_error(file.name, NOT_VALID);
-			return ;
+			return (-1);
 		}
 		i++;
 	}
+	if (file.arch != NULL)
+		printf("%s", file.arch);
 	print_list(inf.symbol, inf.symtab.nsyms, (int*)&sect_idx);
+	return (0);
 }

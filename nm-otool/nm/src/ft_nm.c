@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 18:02:56 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:31:25 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ static int		check_magic(uint32_t magic, char *name)
 	return (-1);
 }
 
-void			cigam_64(t_file_inf file, int off)
+int				cigam_64(t_file_inf file, int off)
 {
 	file.cig = 1;
-	handle_64(file, off);
+	return (handle_64(file, off));
 }
 
-void			cigam_32(t_file_inf file, int off)
+int				cigam_32(t_file_inf file, int off)
 {
 	file.cig = 1;
-	handle_32(file, off);
+	return (handle_32(file, off));
 }
 
 static void		handle_arch(t_file_inf file)
@@ -47,7 +47,7 @@ static void		handle_arch(t_file_inf file)
 	int			offset;
 	AR_HDR		hdr;
 	HDR_64		mach_hdr;
-	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
+	static int		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
 
 	offset = SARMAG;
 	ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
@@ -102,7 +102,7 @@ static int		check_arch(t_file_inf file, uint32_t cputype, uint32_t fat_idx)
 	return (1);
 }
 
-void			handle_fat32(t_file_inf file, int off)
+int				handle_fat32(t_file_inf file, int off)
 {
 	int			print;
 	uint32_t	i;
@@ -110,7 +110,7 @@ void			handle_fat32(t_file_inf file, int off)
 	uint32_t	magic;
 	FAT_HDR		hdr;
 	FAT_ARCH	arch;
-	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
+	static int		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, NULL, NULL, NULL, NULL};
 
 	i = 0;
 	off = 0;
@@ -123,47 +123,49 @@ void			handle_fat32(t_file_inf file, int off)
 		if (check_arch(file, arch.cputype, i) == 1)
 		{
 			if (i + 1 < hdr.nfat_arch || print != 0)
-				put_arch(file.name, arch.cputype);
+				file.arch = put_arch(file.name, arch.cputype);
 			file.cig = 0;
 			ft_memcpy(&magic, file.content + arch.offset, sizeof(uint32_t));
 			if ((idx = check_magic(magic, file.name)) < 0)
-				return ;
-			func_dispenser[idx](file, arch.offset);
+				return (-1);
+			if (func_dispenser[idx](file, arch.offset) == -1)
+				return (-1);
 			file.cig = 1;
 			print++;
 		}
 		off += sizeof(FAT_ARCH);
 		i++;
 	}
+	return (0);
 }
 
-void			handle_fat64(t_file_inf file, int off)
+int			handle_fat64(t_file_inf file, int off)
 {
 	FAT_HDR		hdr;
 
 	off = 0;
 	file.cig = 0;
 	ft_memcpy(&hdr, file.content + off, sizeof(FAT_HDR));
+	return (0);
 }
 
-void			cigam_fat32(t_file_inf file, int off)
+int			cigam_fat32(t_file_inf file, int off)
 {
 	file.cig = 1;
-	handle_fat32(file, off);
+	return (handle_fat32(file, off));
 }
 
-void			cigam_fat64(t_file_inf file, int off)
+int			cigam_fat64(t_file_inf file, int off)
 {
 	file.cig = 1;
-	off = 0;
-	printf("Ceci est un fat_cigam64, bonne journee\n");
+	return (handle_fat64(file, off));
 }
 
 void			ft_nm(t_file_inf file, int print)
 {
 	int				idx;
 	uint32_t		magic;
-	static void		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, &handle_fat32, &cigam_fat32, &handle_fat64, &cigam_fat64};
+	static int		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = {&handle_32, &cigam_32, &handle_64, &cigam_64, &handle_fat32, &cigam_fat32, &handle_fat64, &cigam_fat64};
 
 	if (ft_strncmp(ARMAG, file.content, SARMAG) == 0)
 	{
@@ -175,5 +177,6 @@ void			ft_nm(t_file_inf file, int print)
 		return ;
 	if (idx <= 3 && print > 2)
 		printf("%s:\n", file.name);
+	file.arch = NULL;
 	func_dispenser[idx](file, 0);
 }

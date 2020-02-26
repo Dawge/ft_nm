@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 16:34:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:27:33 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ static int		pars_section(t_file_inf file, int offset, int *tab, int *i_sct)
 	return (0);
 }
 
-void			handle_32(t_file_inf file, int offset)
+int				handle_32(t_file_inf file, int offset)
 {
 	int				off;
 	int				i;
@@ -165,20 +165,23 @@ void			handle_32(t_file_inf file, int offset)
 		if (inf.ld.cmd == LC_SEGMENT)
 		{
 			if (pars_section(file, offset, (int *)&sect_idx, &i_sct) == -1)
-				return ;
+				return (-1);
 		}
 		else if (inf.ld.cmd == LC_SYMTAB)
 		{
 			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
 			if (sym_32(&inf, file, off, (int *)&sect_idx) == -1)
-				return ;
+				return (-1);
 		}
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
 		{
 			ft_nm_put_error(file.name, NOT_VALID);
-			return ;
+			return (-1);
 		}
 		i++;
 	}
+	if (file.arch != NULL)
+		printf("%s", file.arch);
 	print_list(inf.symbol, inf.symtab.nsyms, (int*)&sect_idx);
+	return (0);
 }

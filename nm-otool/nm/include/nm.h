@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/22 14:49:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/02/26 21:27:01 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_file_inf
 	int				sz;
 	int				cig;
 	char			*name;
+	char			*arch;
 	char			*content;
 	struct stat		inf;
 }					t_file_inf;
@@ -129,12 +130,12 @@ void				ft_nm(t_file_inf file, int print);
 /*
 **	macho32.c
 */
-void				handle_32(t_file_inf file, int offset);
+int					handle_32(t_file_inf file, int offset);
 
 /*
 **	macho64.c
 */
-void				handle_64(t_file_inf file, int offset);
+int					handle_64(t_file_inf file, int offset);
 
 /*
 **	read_struct.c
@@ -176,5 +177,5 @@ uint64_t			swap_u64(uint64_t nb);
 */
 int					sect_err(char *name, int sect);
 int					ft_nm_put_error(char *name, char *error);
-void				put_arch(char *name, uint32_t arch);
+char				*put_arch(char *name, uint32_t arch);
 #endif
