@@ -1,7 +1,18 @@
-for file in $1/*
+rm -rf diff_dir
+mkdir diff_dir
+for file in $1*
 do
 	subdir="$(basename -- $file)"
-	diff_file="./diff_$subdir"
-	./ft_nm $file > r1 && nm $file > r2 && diff r1 r2 > $diff_file
+	diff_file="./diff_dir/diff_$subdir"
+	./ft_nm $file > r1 && nm $file > r2
+	DIFF=$(diff r1 r2)
+	if [ "$DIFF" != "" ]
+	then
+		ERROR_NM="$(diff r1 r2 | sed 1d | cut -c3-7)"
+		if [ "$ERROR_NM" != "ft_nm" ]
+		then
+			diff r1 r2 > $diff_file
+		fi
+	fi
 	echo "done $file"
 done
