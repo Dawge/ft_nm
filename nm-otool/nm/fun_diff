@@ -1,0 +1,98 @@
+9c9
+< /*   Updated: 2020/02/18 16:52:02 by rostroh          ###   ########.fr       */
+---
+> /*   Updated: 2020/02/18 16:52:17 by rostroh          ###   ########.fr       */
+15c15
+< static char		put_type(t_list_inf_32 sym, int *tab)
+---
+> static char		put_type(t_list_inf sym, int *tab)
+51c51
+< static int		find_alph(t_list_inf_32 *sym, int sz)
+---
+> static int		find_alph(t_list_inf *sym, int sz)
+69c69
+< static int		find_name(t_list_inf_32 *sym, int idx, int sz)
+---
+> static int		find_name(t_list_inf *sym, int idx, int sz)
+87c87
+< static void		print_not_dupe(t_list_inf_32 *sym, int idx, int sz, int *tab)
+---
+> static void		print_not_dupe(t_list_inf *sym, int idx, int sz, int *tab)
+114c114
+< 			printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+---
+> 			printf("%08llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+119c119
+< static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
+---
+> static void		print_list(t_list_inf *sym, int sz, int *tab)
+137c137
+< 					printf("%10c %s\n", type, sym[idx].str);
+---
+> 					printf("%18c %s\n", type, sym[idx].str);
+139c139
+< 					printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+---
+> 					printf("%016llx %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+148c148
+< static int		sym_32(t_macho32 *inf, t_file_inf file, int offset, int *tab)
+---
+> static int		sym_64(t_macho64 *inf, t_file_inf file, int offset, int *tab)
+155c155
+< 	if (!(inf->symbol = (t_list_inf_32 *)malloc(sizeof(t_list_inf_32) * inf->symtab.nsyms)))
+---
+> 	if (!(inf->symbol = (t_list_inf *)malloc(sizeof(t_list_inf) * inf->symtab.nsyms)))
+159,160c159,160
+< 		read_lst_32(&inf->symbol[i].lst, file.content + off, sizeof(LST), file);
+< 		if ((off += sizeof(LST)) > file.inf.st_size)
+---
+> 		read_lst_64(&inf->symbol[i].lst, file.content + off, sizeof(LST_64), file);
+> 		if ((off += sizeof(LST_64)) > file.inf.st_size)
+173,174c173,174
+< 	SGM			sgm;
+< 	SCT			sct;
+---
+> 	SGM_64		sgm;
+> 	SCT_64		sct;
+177c177
+< 	read_seg_32(&sgm, file.content + offset, sizeof(SGM), file);
+---
+> 	read_seg_64(&sgm, file.content + offset, sizeof(SGM_64), file);
+180c180
+< 	if ((offset += sizeof(SGM)) > file.inf.st_size)
+---
+> 	if ((offset += sizeof(SGM_64)) > file.inf.st_size)
+184,185c184,185
+< 		read_sct_32(&sct, file.content + offset, sizeof(SCT), file);
+< 		if (offset + sct.size > file.inf.st_size)
+---
+> 		read_sct_64(&sct, file.content + offset, sizeof(SCT_64), file);
+> 		if ((long)(offset + sct.size) > file.inf.st_size && ft_strcmp(sct.sectname, SECT_BSS) != 0)
+195c195
+< 		if ((offset += sizeof(SCT)) > file.inf.st_size)
+---
+> 		if ((offset += sizeof(SCT_64)) > file.inf.st_size)
+201c201
+< void			handle_32(t_file_inf file, int offset)
+---
+> void			handle_64(t_file_inf file, int offset)
+206c206
+< 	t_macho32		inf;
+---
+> 	t_macho64		inf;
+212c212
+< 	read_header_32(&inf.hdr, file.content + offset, sizeof(HDR), file);
+---
+> 	read_header_64(&inf.hdr, file.content + offset, sizeof(HDR_64), file);
+214c214
+< 	offset += sizeof(HDR);
+---
+> 	offset += sizeof(HDR_64);
+218c218
+< 		if (inf.ld.cmd == LC_SEGMENT)
+---
+> 		if (inf.ld.cmd == LC_SEGMENT_64)
+226c226
+< 			if (sym_32(&inf, file, off, (int *)&sect_idx) == -1)
+---
+> 			if (sym_64(&inf, file, off, (int *)&sect_idx) == -1)

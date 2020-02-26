@@ -1,0 +1,676 @@
+En vie
+off = 1677721603
+type = 0x0
+8000000000000000 ? bad string index
+off = 251658242
+type = 0x1
+8100000001000046 C bad string index
+off = 1677721608
+type = 0x0
+8500000000000000 ? bad string index
+off = 16777219
+type = 0x0
+8700000000000000 ? bad string index
+off = 1677721604
+type = 0x0
+8700000000000000 ? bad string index
+off = 251658241
+type = 0x1
+8a00000001000031 C bad string index
+off = 1677721606
+type = 0x0
+8c00000000000000 ? bad string index
+off = 251658240
+type = 0x1
+8c0000000100003d C bad string index
+off = 234881034
+type = 0x1
+8d00000001000029 C bad string index
+off = 251658242
+type = 0x1
+8f0000000100004c C bad string index
+off = 771751936
+type = 0x1
+9300000001000014 C bad string index
+off = 771751936
+type = 0x1
+9400000001000011 C bad string index
+off = 771751936
+type = 0x1
+950000000100000f C bad string index
+off = 251658241
+type = 0x1
+9700000001000031 C bad string index
+off = 16777219
+type = 0x0
+9a00000000000000 ? bad string index
+off = 251658240
+type = 0x1
+9a00000001000033 C bad string index
+off = 251658242
+type = 0x1
+9c00000001000048 C bad string index
+off = 603979783
+type = 0x1
+9d00000001000011 C bad string index
+off = 234881034
+type = 0x1
+9f0000000100002b C bad string index
+off = 16777219
+type = 0x0
+a100000000000000 ? bad string index
+off = 603979781
+type = 0x1
+a10000000100000f C bad string index
+off = 603979785
+type = 0x1
+a100000001000014 C bad string index
+off = 251658240
+type = 0x1
+a500000001000024 C bad string index
+off = 16777219
+type = 0x0
+a700000000000000 ? bad string index
+off = 251658241
+type = 0x1
+a900000001000028 C bad string index
+off = 251658242
+type = 0x1
+a90000000100004a C bad string index
+off = 1677721603
+type = 0x0
+ab00000000000000 ? bad string index
+off = 251658240
+type = 0x1
+ae00000001000011 C bad string index
+off = 1677721603
+type = 0x0
+b200000000000000 ? bad string index
+off = 1677721603
+type = 0x0
+b400000000000000 ? bad string index
+off = 16777219
+type = 0x0
+b600000000000000 ? bad string index
+off = 1677721607
+type = 0x0
+b800000000000000 ? bad string index
+off = 251658242
+type = 0x1
+b800000001000018 C bad string index
+off = 234881034
+type = 0x1
+b80000000100002f C bad string index
+off = 251658240
+type = 0x1
+ba0000000100000f C bad string index
+off = 251658241
+type = 0x1
+bb0000000100002a C bad string index
+off = 16777219
+type = 0x0
+be00000000000000 ? bad string index
+off = 1677721605
+type = 0x0
+bf00000000000000 ? bad string index
+off = 1677721609
+type = 0x0
+c100000000000000 ? bad string index
+off = 771751936
+type = 0x1
+c300000001000013 C bad string index
+off = 16777219
+type = 0x0
+c400000000000000 ? bad string index
+off = 771751936
+type = 0x1
+c50000000100000d C bad string index
+off = 251658240
+type = 0x1
+c500000001000014 C bad string index
+off = 251658242
+type = 0x1
+c70000000100001e C bad string index
+off = 251658241
+type = 0x1
+c80000000100002d C bad string index
+off = 771751936
+type = 0x1
+ca00000001000010 C bad string index
+off = 16777219
+type = 0x0
+cc00000000000000 ? bad string index
+off = 234881034
+type = 0x1
+cd00000001000033 C bad string index
+off = 603979784
+type = 0x1
+ce00000001000013 C bad string index
+off = 603979780
+type = 0x1
+d00000000100000d C bad string index
+off = 16777219
+type = 0x0
+d200000000000000 ? bad string index
+off = 251658240
+type = 0x1
+d300000001000014 C bad string index
+off = 251658241
+type = 0x1
+d300000001000039 C bad string index
+off = 603979782
+type = 0x1
+d500000001000010 C bad string index
+off = 251658242
+type = 0x1
+d500000001000025 C bad string index
+off = 16777219
+type = 0x0
+d600000000000000 ? bad string index
+off = 16777219
+type = 0x0
+d900000000000000 ? bad string index
+off = 234881034
+type = 0x1
+da00000001000041 C bad string index
+off = 251658241
+type = 0x1
+dc00000001000035 C bad string index
+off = 1677721603
+type = 0x0
+de00000000000000 ? bad string index
+off = 251658240
+type = 0x1
+df00000001000014 C bad string index
+off = 1677721603
+type = 0x0
+e000000000000000 ? bad string index
+off = 251658241
+type = 0x1
+e200000001000014 C bad string index
+off = 1677721603
+type = 0x0
+e500000000000000 ? bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721600
+type = 0x1
+ea00000000000000 C bad string index
+off = 1677721608
+type = 0x0
+ea00000000000000 ? bad string index
+off = 251658240
+type = 0x1
+ea00000001000013 C bad string index
+off = 234881034
+type = 0x1
+ec00000001000049 C bad string index
+off = 1677721604
+type = 0x0
+ed00000000000000 ? bad string index
+off = 251658242
+type = 0x1
+ed00000001000043 C bad string index
+off = 251658241
+type = 0x1
+ed00000001000044 C bad string index
+off = 1677721606
+type = 0x0
+f200000000000000 ? bad string index
+off = 251658240
+type = 0x1
+f50000000100000d C bad string index
+off = 771751936
+type = 0x1
+f700000001000012 C bad string index
+off = 251658241
+type = 0x1
+fa00000001000045 C bad string index
+off = 771751936
+type = 0x1
+fe0000000100000f C bad string index
+off = 234881034
+type = 0x1
+fe0000000100004b C bad string index
+off = 771751936
+type = 0x1
+0000000001000014 C bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000000 ? bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = 1308622848
+type = 0x1
+0100000000000000 C bad string index
+off = -2080374780
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374780
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374779
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374779
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374778
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374778
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374778
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374777
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374777
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374776
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374776
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374776
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374775
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374775
+type = 0x0
+0100000000000000 ? bad string index
+off = -2080374774
+type = 0x0
+0100000000000000 ? bad string index
+off = 603979776
+type = 0x0
+0100000000000001 ? bad string index
+off = 1308622848
+type = 0x1
+0100000000000001 C bad string index
+off = 1711276036
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276036
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276036
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276037
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276037
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276038
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276038
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276038
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276039
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276039
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276040
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276040
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276040
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276041
+type = 0x3
+01000000005a832f A bad string index
+off = 1711276041
+type = 0x3
+01000000005a832f A bad string index
+off = 251658240
+type = 0x1
+0100000001000012 C bad string index
+off = 234881035
+type = 0x9
+0200000001000050 à bad string index
+off = 603979783
+type = 0x1
+0300000001000012 C bad string index
+off = 251658242
+type = 0x1
+0500000001000044 C bad string index
+off = 251658241
+type = 0x1
+070000000100003a C bad string index
+off = 603979781
+type = 0x1
+0a0000000100000f C bad string index
+off = 251658241
+type = 0x1
+0c00000001000012 C bad string index
+off = 603979786
+type = 0x1
+0c00000001000014 C bad string index
+off = 234881034
+type = 0x1
+120000000100004d C bad string index
+off = 1677721603
+type = 0x0
+1400000000000000 ? bad string index
+off = 251658242
+type = 0x1
+1400000001000035 C bad string index
+off = 1677721603
+type = 0x0
+1600000000000000 ? bad string index
+off = 251658240
+type = 0x1
+1600000001000000 C bad string index
+off = 251658241
+type = 0x1
+170000000100000f C bad string index
+off = 1677721603
+type = 0x0
+1b00000000000000 ? bad string index
+off = 251658243
+type = 0x1
+1c0000000100003f C bad string index
+off = 1677721600
+type = 0x1
+1d00000000000000 C bad string index
+off = 1677721608
+type = 0x0
+2000000000000000 ? bad string index
+off = 1677721604
+type = 0x0
+2200000000000000 ? bad string index
+off = 251658241
+type = 0x1
+220000000100000d C bad string index
+off = 251658242
+type = 0x1
+2400000001000015 C bad string index
+off = 1677721606
+type = 0x0
+2700000000000000 ? bad string index
+off = 771751936
+type = 0x1
+2800000001000014 C bad string index
+off = 234881035
+type = 0x1
+280000000100004e C bad string index
+off = 234881034
+type = 0x1
+2900000001000017 C bad string index
+off = 251658242
+type = 0x1
+2b00000001000026 C bad string index
+off = 771751936
+type = 0x1
+2c0000000100000e C bad string index
+off = 251658241
+type = 0x1
+2d00000001000010 C bad string index
+off = 251658240
+type = 0x1
+2d00000001000024 C bad string index
+off = 771751936
+type = 0x1
+3100000001000010 C bad string index
+off = 603979785
+type = 0x1
+3300000001000014 C bad string index
+off = 251658243
+type = 0x1
+3300000001000042 C bad string index
+off = 234881034
+type = 0x1
+3700000001000019 C bad string index
+off = 234881035
+type = 0x9
+3700000001000050 à bad string index
+off = 603979781
+type = 0x1
+380000000100000e C bad string index
+off = 251658241
+type = 0x1
+390000000100000e C bad string index
+off = 251658242
+type = 0x1
+3c00000001000025 C bad string index
+off = 603979783
+type = 0x1
+3d00000001000010 C bad string index
+off = 251658243
+type = 0x1
+4000000001000045 C bad string index
+off = 1677721603
+type = 0x0
+4300000000000000 ? bad string index
+off = 251658240
+type = 0x1
+430000000100003f C bad string index
+off = 251658241
+type = 0x1
+4500000001000010 C bad string index
+off = 234881034
+type = 0x1
+450000000100001a C bad string index
+off = 251658242
+type = 0x1
+4800000001000027 C bad string index
+off = 1677721603
+type = 0x0
+4900000000000000 ? bad string index
+off = 251658240
+type = 0x1
+4a0000000100003a C bad string index
+off = 251658243
+type = 0x1
+4d00000001000045 C bad string index
+off = 1677721603
+type = 0x0
+4e00000000000000 ? bad string index
+off = 251658241
+type = 0x1
+510000000100000f C bad string index
+off = 1677721609
+type = 0x0
+5200000000000000 ? bad string index
+off = 234881034
+type = 0x1
+520000000100001c C bad string index
+off = 1677721605
+type = 0x0
+5600000000000000 ? bad string index
+off = 251658240
+type = 0x1
+570000000100002e C bad string index
+off = 1677721607
+type = 0x0
+5800000000000000 ? bad string index
+off = 251658241
+type = 0x1
+5a00000001000034 C bad string index
+off = 771751936
+type = 0x1
+5e00000001000012 C bad string index
+off = 771751936
+type = 0x1
+600000000100000d C bad string index
+off = 234881034
+type = 0x1
+600000000100001f C bad string index
+off = 251658242
+type = 0x1
+6000000001000039 C bad string index
+off = 251658243
+type = 0x1
+6200000001000041 C bad string index
+off = 251658241
+type = 0x1
+6400000001000024 C bad string index
+off = 251658240
+type = 0x1
+640000000100003b C bad string index
+off = 771751936
+type = 0x1
+650000000100000f C bad string index
+off = 603979784
+type = 0x1
+6900000001000012 C bad string index
+off = 603979780
+type = 0x1
+6b0000000100000d C bad string index
+off = 234881034
+type = 0x1
+6e00000001000020 C bad string index
+off = 251658242
+type = 0x1
+6e00000001000027 C bad string index
+off = 603979782
+type = 0x1
+700000000100000f C bad string index
+off = 251658243
+type = 0x1
+7500000001000036 C bad string index
+off = 251658241
+type = 0x1
+7700000001000030 C bad string index
+off = 251658240
+type = 0x1
+780000000100003c C bad string index
+off = 1677721603
+type = 0x0
+7900000000000000 ? bad string index
+off = 1677721603
+type = 0x0
+7b00000000000000 ? bad string index
+off = 234881034
+type = 0x1
+7b00000001000022 C bad string index

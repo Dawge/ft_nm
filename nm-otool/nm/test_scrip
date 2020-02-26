@@ -1,0 +1,7 @@
+for file in $1/*
+do
+	subdir="$(basename -- $file)"
+	diff_file="./diff_$subdir"
+	./ft_nm $file > r1 && nm $file > r2 && diff r1 r2 > $diff_file
+	echo "done $file"
+done
