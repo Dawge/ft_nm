@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 14:43:56 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 18:06:54 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ typedef struct		s_list_inf
 	char			*str;
 	LST_64			lst;
 	char			type;
-	int				oof;
 }					t_list_inf;
 
 typedef struct		s_macho64
@@ -152,6 +151,22 @@ int					handle_32(t_file_inf file, int offset);
 int					handle_64(t_file_inf file, int offset);
 
 /*
+**	pars_sct.c
+*/
+int					pars_sct32(t_file_inf file, int offset, int *tab, int *i_sct);
+int					pars_sct64(t_file_inf file, int offset, int *tab, int *i_sct);
+
+/*
+**	print_list32.c
+*/
+void				print_list32(t_list_inf_32 *sym, int sz, int *tab);
+
+/*
+**	print_list64.c
+*/
+void				print_list64(t_list_inf *sym, int sz, int *tab);
+
+/*
 **	read_struct.c
 */
 void				read_load_command(LD *dst, void *src, size_t size, t_file_inf file);
@@ -192,4 +207,10 @@ uint64_t			swap_u64(uint64_t nb);
 int					sect_err(char *name, int sect);
 int					ft_nm_put_error(char *name, char *error);
 char				*put_arch(char *name, uint32_t arch);
+
+/*
+**	type.c
+*/
+char				put_type32(t_list_inf_32 sym, int *tab);
+char				put_type64(t_list_inf sym, int *tab);
 #endif
