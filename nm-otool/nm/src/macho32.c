@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/26 21:27:33 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 14:52:32 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ static void		print_list(t_list_inf_32 *sym, int sz, int *tab)
 		idx = find_alph(sym, sz);
 		sym[idx].printed = 1;
 		type = put_type(sym[idx], tab);
-		if (type != 0x0 && sym[idx].str[0] != '\0' && sym[idx].lst.n_type != 0x20)
+		if (type != 0x0 && sym[idx].str[0] != '\0' \
+				&& sym[idx].lst.n_type != 0x20)
 		{
 			if (type == 'I')
-				printf("%10c %s (indirect for %s\n)", type, sym[idx].str, sym[idx].str);
+				printf("%10c %s (indirect for %s\n)", type, sym[idx].str, \
+						sym[idx].str);
 			else if (sym[idx].lst.n_value == 0x0 && type != 'T' && type != 't')
 				printf("%10c %s\n", type, sym[idx].str);
 			else
-				printf("%08x %c %s\n", sym[idx].lst.n_value, type, sym[idx].str);
+				printf("%08x %c %s\n", sym[idx].lst.n_value, type, \
+						sym[idx].str);
 		}
 		i++;
 	}
@@ -99,14 +102,16 @@ static int		sym_32(t_macho32 *inf, t_file_inf file, int offset, int *tab)
 
 	i = 0;
 	off = offset + inf->symtab.symoff;
-	if (!(inf->symbol = (t_list_inf_32 *)malloc(sizeof(t_list_inf_32) * inf->symtab.nsyms)))
+	if (!(inf->symbol = (t_list_inf_32 *)malloc(sizeof(t_list_inf_32) * \
+					inf->symtab.nsyms)))
 		return (ft_nm_put_error(file.name, NOT_VALID));
 	while (i < (int)inf->symtab.nsyms)
 	{
 		read_lst_32(&inf->symbol[i].lst, file.content + off, sizeof(LST), file);
 		if ((off += sizeof(LST)) > file.inf.st_size)
 			return (ft_nm_put_error(file.name, NOT_VALID));
-		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + inf->symbol[i].lst.n_un.n_strx;
+		inf->symbol[i].str = file.content + offset + inf->symtab.stroff + \
+							inf->symbol[i].lst.n_un.n_strx;
 		inf->symbol[i].type = put_type(inf->symbol[i], tab);
 		inf->symbol[i].printed = 0;
 		i++;

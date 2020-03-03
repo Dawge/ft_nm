@@ -6,29 +6,12 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:43:13 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/26 21:34:28 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 14:50:09 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 #include <errno.h>
-/*
-int			ft_nm_read(t_file inf, void *buf, size_t nbytes)
-{
-	int			sz;
-
-	if ((sz = read(inf.fd, buf, nbytes)) == -1)
-	{
-		printf("%d\n", errno);
-		return (-1);
-	}
-	if ((uint64_t)sz < nbytes)
-	{
-		ft_nm_put_error(inf.name, NOT_VALID);
-		return (-1);
-	}
-	return (0);
-}*/
 
 int		sect_err(char *name, int sect)
 {
@@ -53,7 +36,7 @@ int		get_type(uint32_t arch)
 {
 	int					i;
 	static uint32_t		arch_type[NB_CPU] = {CPU_TYPE_I386, CPU_TYPE_POWERPC};
-	
+
 	i = 0;
 	while (i < NB_CPU)
 	{
@@ -79,16 +62,4 @@ char	*put_arch(char *name, uint32_t arch)
 		return (str);
 	}
 	return (NULL);
-	//	printf("\n%s (for architecture %s):\n", name, arch_name[idx]);
 }
-/*
-void	put_arch(char *name, uint32_t arch)
-{
-	printf("leaf = 0x%x\n", swap_u32(CPU_TYPE_I386));
-	if (arch == PPC)
-		printf("ppc):\n");
-	else if (arch == i386)
-		printf("i386):\n");
-	else
-		printf("0x%x):\n", arch);
-}*/

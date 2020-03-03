@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/26 21:27:04 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 15:51:23 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,7 @@ static int		find_addr(t_list_inf *sym, int sz)
 	while (i < sz)
 	{
 		if (sym[i].lst.n_value < sym[idx].lst.n_value && sym[i].printed == 0)
-			idx = i;/*
-		else if (sym[i].lst.n_value == sym[idx].lst.n_value && sym[i].printed == 0)
-		{
-			if (sym[i].lst.n_un.n_strx <= sym[idx].lst.n_un.n_strx && sym[idx].type != 'C')
-			{
-			//	printf("Hello 0x%x and 0x%x\n", sym[i].lst.n_un.n_strx, sym[idx].lst.n_un.n_strx);
-				idx = i;
-			}
-		}*/
+			idx = i;
 		if (sym[idx].printed == 1)
 			idx = i;
 		i++;
@@ -94,12 +86,6 @@ static int		find_alph(t_list_inf *sym, int sz)
 				idx = i;
 			if (sym[idx].printed == 1)
 				idx = i;
-			/*if (sym[i].lst.n_value < sym[idx].lst.n_value && sym[i].printed == 0)
-			{
-				printf("OUI !!!\n");
-				idx = i;
-			}*/
-			//printf("mdr %s %llx -- %llx\n", sym[idx].str, sym[i].lst.n_value, sym[idx].lst.n_value);
 		}
 		else
 		{

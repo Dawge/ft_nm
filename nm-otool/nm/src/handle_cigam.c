@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   handle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 11:33:23 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 13:47:46 by rostroh          ###   ########.fr       */
+/*   Created: 2020/03/03 14:30:13 by rostroh           #+#    #+#             */
+/*   Updated: 2020/03/03 14:35:57 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void			ft_open_error(char *name, int errno)
+int			cigam_32(t_file_inf file, int off)
 {
-	int					i;
-	static t_error		open_err[OPEN_ERROR] = {
-		{2, ": No such file or directory.\n"}, \
-		{13, ": Permission denied.\n"} \
-	};
+	file.cig = 1;
+	return (handle_32(file, off));
+}
 
-	i = 0;
-	while (i < OPEN_ERROR)
-	{
-		if (open_err[i].err == errno)
-		{
-			ft_nm_put_error(name, open_err[i].message);
-			break ;
-		}
-		i++;
-	}
+int			cigam_64(t_file_inf file, int off)
+{
+	file.cig = 1;
+	return (handle_64(file, off));
+}
+
+int			cigam_fat32(t_file_inf file, int off)
+{
+	file.cig = 1;
+	return (handle_fat32(file, off));
+}
+
+int			cigam_fat64(t_file_inf file, int off)
+{
+	file.cig = 1;
+	return (handle_fat64(file, off));
 }

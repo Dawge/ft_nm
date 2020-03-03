@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/26 21:27:01 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 14:43:56 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,20 @@ void				ft_read_error(char *name, int errno);
 **	ft_nm.c
 */
 void				ft_nm(t_file_inf file, int print);
+int					dispens(t_file_inf file, uint32_t magic, int offset);
+/*
+**	handle_cigam.c
+*/
+int					cigam_64(t_file_inf file, int off);
+int					cigam_32(t_file_inf file, int off);
+int					cigam_fat32(t_file_inf file, int off);
+int					cigam_fat64(t_file_inf file, int off);
+
+/*
+** handle_fat.c
+*/
+int					handle_fat32(t_file_inf file, int off);
+int					handle_fat64(t_file_inf file, int off);
 
 /*
 **	macho32.c
