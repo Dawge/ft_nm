@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 18:06:54 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 18:55:01 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_file_inf
 	int				fd;
 	int				sz;
 	int				cig;
+	int				off_arch;
 	char			*name;
 	char			*arch;
 	char			*content;
@@ -107,6 +108,8 @@ typedef struct		s_list_inf
 
 typedef struct		s_macho64
 {
+	int				sct_count;
+	int				sct_idx[3];
 	HDR_64			hdr;
 	LD				ld;
 	SGM_64			*sgm;
@@ -154,7 +157,7 @@ int					handle_64(t_file_inf file, int offset);
 **	pars_sct.c
 */
 int					pars_sct32(t_file_inf file, int offset, int *tab, int *i_sct);
-int					pars_sct64(t_file_inf file, int offset, int *tab, int *i_sct);
+int					pars_sct64(t_file_inf file, int offset, t_macho64 *inf);
 
 /*
 **	print_list32.c

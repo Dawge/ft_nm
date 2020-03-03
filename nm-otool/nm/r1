@@ -1,31 +1,14 @@
-0000010000002700 ? bad string index
-0000010000003b00 ? E
-0000010000004e00 ? E
-0000010000006b00 ? E
-0000010000008200 ? E
-0000010000009800 ? E
-000001000000a500 ? E
-000001000000c600 ? E
-000001000000d100 ? E
-000001000000e300 ? E
-000001000000f600 ? E
-0000010000011900 ? E
-0000010000012c00 ? E
-0000010000018c00 ? E
-0000010000027e00 ? E
-00010e0000039e00 ? bad string index
-00010e000003ad00 ? bad string index
-00010e000003b900 ? bad string index
-00010e000003ca00 ? bad string index
-00010e000003d700 ? bad string index
-00010e000003e400 ? bad string index
-00010e000003ee00 ? bad string index
-00050e000003fc00 ? bad string index
-000b0e0000040700 ? bad string index
-000b0e0000041400 ? bad string index
-000b0f0000001c00 ? bad string index
-000c0e0000041e00 ? bad string index
-000c0e0000042500 ? bad string index
-000c0e0000043000 ? bad string index
-10010f0000000200 ? bad string index
-9030078001c00b80 w bad string index
+                 U ___stack_chk_fail
+                 U ___stack_chk_guard
+                 U ___stderrp
+                 U ___stdoutp
+0000000100000000 T __mh_execute_header
+                 U _fprintf
+                 U _fwrite
+                 U _getenv
+                 U _strcmp
+                 U _strtoul_l
+                 U _uuid_generate
+                 U _uuid_generate_time
+                 U _uuid_unparse_upper
+                 U dyld_stub_binder
