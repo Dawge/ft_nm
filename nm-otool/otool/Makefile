@@ -6,14 +6,14 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/02/07 16:10:00 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/10 17:00:41 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_nm
+NAME = ft_otool
 
-SRC = main.c error.c tools.c ft_nm.c macho32.c macho64.c swap.c read_struct.c \
-	  read_struct_32.c read_struct_64.c read_struct_fat.c
+SRC = main.c tools.c ft_otool.c read_struct.c read_struct_32.c read_struct_64.c\
+	  read_struct_fat.c swap.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -23,18 +23,18 @@ INC_DIR = ./include
 
 OBJS = $(OBJ:%=$(OBJ_DIR)/%)
 
-INC = nm.h
+INC = ft_otool.h
 
 HEAD = $(INC_DIR)/$(INC)
 
 LIBFT = libft.a
-LIB_DIR = ./libft
+LIB_DIR = ../libft
 LFT = $(LIB_DIR)/$(LIBFT)
 LIB = -L $(LIB_DIR) -l$(LIBFT:lib%.a=%)
 
 OBJ_PATH = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-FLG = -Wall -Werror -Wextra
+FLG = -Wall -Werror -Wextra -fsanitize=address -g3
 
 CC = gcc
 
