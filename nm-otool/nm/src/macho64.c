@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 18:56:20 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/05 15:01:10 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ static int		sym_64(t_file_inf file, t_macho64 *inf)
 	return (0);
 }
 
+static int		pars_seg(t_file_inf file, int offset, t_macho64 *inf)
+{
+	if (inf->ld.cmd == LC_SEGMENT_64)
+	{
+		if (pars_sct64(file, offset, inf) == -1)
+			return (-1);
+	}
+	else if (inf->ld.cmd == LC_SYMTAB)
+	{
+		read_symtab(&(inf->symtab), file.content + offset, sizeof(SYM), file);
+		if (sym_64(file, inf) == -1)
+			return (-1);
+	}
+	return (0);
+}
+
 static int		pars_ld_cmd(t_file_inf file, int offset, t_macho64 inf)
 {
 	int				i;
@@ -49,17 +65,8 @@ static int		pars_ld_cmd(t_file_inf file, int offset, t_macho64 inf)
 	while (i < (int)inf.hdr.ncmds)
 	{
 		read_load_command(&inf.ld, file.content + offset, sizeof(LD), file);
-		if (inf.ld.cmd == LC_SEGMENT_64)
-		{
-			if (pars_sct64(file, offset, &inf) == -1)
-				return (-1);
-		}
-		else if (inf.ld.cmd == LC_SYMTAB)
-		{
-			read_symtab(&inf.symtab, file.content + offset, sizeof(SYM), file);
-			if (sym_64(file, &inf) == -1)
-				return (-1);
-		}
+		if (pars_seg(file, offset, &inf) == -1)
+			return (-1);
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
 		{
 			ft_nm_put_error(file.name, NOT_VALID);

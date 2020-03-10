@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:17:03 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/20 14:00:44 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/05 16:27:17 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,47 @@ static void		get_content(t_file_inf *file)
 		ft_nm_put_error(file->name, NOT_VALID);
 }
 
+static int		check_dir(struct stat inf, char *name)
+{
+	if (S_ISDIR(inf.st_mode))
+	{
+		printf("./ft_nm: %s: Is a directory\n", name);
+		return (-1);
+	}
+	return (0);
+}
+
+static void		file_gestion(char *file_name, int nb_arg)
+{
+	t_file_inf	file;
+
+	file.cig = 0;
+	file.name = file_name;
+	if ((file.fd = open(file_name, O_RDONLY)) != -1)
+	{
+		fstat(file.fd, &file.inf);
+		if (check_dir(file.inf, file.name) != -1)
+		{
+			get_content(&file);
+			ft_nm(file, nb_arg);
+		}
+	}
+	else
+		ft_open_error(file_name, errno);
+}
+
 int				main(int ac, char **av)
 {
 	int			i;
-	t_file_inf	file;
 
 	i = 1;
+	if (ac == 1)
+		file_gestion("a.out", 1);
 	while (i < ac)
 	{
 		if (ac > 2)
 			ft_putchar('\n');
-		file.cig = 0;
-		file.name = av[i];
-		if ((file.fd = open(av[i], O_RDONLY)) != -1)
-		{
-			fstat(file.fd, &file.inf);
-			get_content(&file);
-			ft_nm(file, ac);
-		}
-		else
-			ft_open_error(av[i], errno);
+		file_gestion(av[i], ac);
 		i++;
 	}
 	return (0);

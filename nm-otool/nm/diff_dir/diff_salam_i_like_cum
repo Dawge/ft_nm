@@ -1,0 +1,231 @@
+1,60c1,46
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+<                  ? bad string index
+<                  ? bad string index
+<                  ? bad string index
+<                  ? r
+---
+> 0000010000000000 ? _length
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+> 0000000000000000 ? bad string index
+72,101d57
+< 0000000000002800 ? r
+< 0000000000002800 ? r
+< 0000000000002900 ? r
+< 0000000000002900 ? r
+< 0000000000002d00 ? r
+< 0000000000002d00 ? r
+< 0000000000003300 ? r
+< 0000000000003300 ? r
+< 0000000000003900 ? r
+< 0000000000003900 ? r
+< 0000000000004500 ? r
+< 0000000000004500 ? r
+< 0000000000004c00 ? r
+< 0000000000004c00 ? r
+< 0000000000006200 ? r
+< 0000000000006200 ? r
+< 0000000000006300 ? r
+< 0000000000006300 ? r
+< 0000000000009600 ? r
+< 0000000000009600 ? r
+< 000000000000ad00 ? r
+< 000000000000ad00 ? r
+< 000000000000af00 ? r
+< 000000000000af00 ? r
+< 000000000000d100 ? r
+< 000000000000d100 ? r
+< 000000000000e400 ? r
+< 000000000000e400 ? r
+< 0000000000018d00 ? r
+< 0000000000018d00 ? r
+117,118d72
+< 0000010000000000 ? _length
+< 00000100000d0000 ? r
+121d74
+< 00000100000d7000 ? r
+124d76
+< 00000100000e2000 ? r
+127d78
+< 00000100000f1000 ? r
+130d80
+< 00000100000f4000 ? r
+133d82
+< 00000100000f8000 ? r
+136d84
+< 0000010000102000 ? r
+139d86
+< 0000010000106000 ? r
+142d88
+< 0000010000111000 ? r
+145d90
+< 000001000012a000 ? r
+148d92
+< 000001000012d000 ? r
+151d94
+< 0000010000134000 ? r
+154d96
+< 0000010000142000 ? r
+157d98
+< 0000010000145000 ? r
+160d100
+< 000001000014a000 ? r
+225a166,225
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000000000 ? r
+> 0000000000002800 ? r
+> 0000000000002800 ? r
+> 0000000000002900 ? r
+> 0000000000002900 ? r
+> 0000000000002d00 ? r
+> 0000000000002d00 ? r
+> 0000000000003300 ? r
+> 0000000000003300 ? r
+> 0000000000003900 ? r
+> 0000000000003900 ? r
+> 0000000000004500 ? r
+> 0000000000004500 ? r
+> 0000000000004c00 ? r
+> 0000000000004c00 ? r
+> 0000000000006200 ? r
+> 0000000000006200 ? r
+> 0000000000006300 ? r
+> 0000000000006300 ? r
+> 0000000000009600 ? r
+> 0000000000009600 ? r
+> 000000000000ad00 ? r
+> 000000000000ad00 ? r
+> 000000000000af00 ? r
+> 000000000000af00 ? r
+> 000000000000d100 ? r
+> 000000000000d100 ? r
+> 000000000000e400 ? r
+> 000000000000e400 ? r
+> 0000000000018d00 ? r
+> 0000000000018d00 ? r
+> 00000100000d0000 ? r
+> 00000100000d7000 ? r
+> 00000100000e2000 ? r
+> 00000100000f1000 ? r
+> 00000100000f4000 ? r
+> 00000100000f8000 ? r
+> 0000010000102000 ? r
+> 0000010000106000 ? r
+> 0000010000111000 ? r
+> 000001000012a000 ? r
+> 000001000012d000 ? r
+> 0000010000134000 ? r
+> 0000010000142000 ? r
+> 0000010000145000 ? r
+> 000001000014a000 ? r

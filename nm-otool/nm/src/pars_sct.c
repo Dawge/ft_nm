@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:44:16 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 18:55:05 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/05 15:14:01 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		sect_idx(char *sect_name)
 	return (-1);
 }
 
-int				pars_sct32(t_file_inf file, int offset, int *tab, int *i_sct)
+int				pars_sct32(t_file_inf file, int offset, t_macho32 *inf)
 {
 	int			idx;
 	uint32_t	i;
@@ -42,9 +42,9 @@ int				pars_sct32(t_file_inf file, int offset, int *tab, int *i_sct)
 		if (offset + sct.size > file.inf.st_size)
 			return (sect_err(file.name, i));
 		if ((idx = sect_idx(sct.sectname)) != -1)
-			tab[idx] = *i_sct + 1;
+			inf->sct_idx[idx] = inf->sct_count + 1;
 		i++;
-		(*i_sct)++;
+		inf->sct_count++;
 		if ((offset += sizeof(SCT)) > file.inf.st_size)
 			return (ft_nm_put_error(file.name, NOT_VALID));
 	}

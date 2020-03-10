@@ -6,7 +6,7 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/03/03 18:07:22 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/05 17:13:47 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ft_nm
 
 SRC = main.c error.c tools.c ft_nm.c macho32.c macho64.c swap.c read_struct.c \
 	  read_struct_32.c read_struct_64.c read_struct_fat.c handle_cigam.c \
-	  handle_fat.c type.c pars_sct.c print_list32.c print_list64.c
+	  handle_fat.c type.c pars_sct.c print_list32.c print_list64.c check_arch.c
 
 OBJ = $(SRC:.c=.o)
 

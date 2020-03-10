@@ -1,0 +1,25 @@
+0a1,2
+> 0b8001f05018801e ? 
+> 0200000001000032 ? bad string index
+2c4
+< 070000000100002f à bad string index
+---
+> 070000000100002f ? bad string index
+5c7
+<                  I bad string index (indirect for bad string index)
+---
+>                  I bad string index (indirect for ?)
+11c13
+<                  I bad string index (indirect for bad string index)
+---
+>                  I bad string index (indirect for ?)
+12a15
+> 2500000001000032 ? bad string index
+14c17
+<                  I bad string index (indirect for bad string index)
+---
+>                  I bad string index (indirect for ?)
+18a22
+> 3000000001000032 ? bad string index
+45d48
+< 8f00000000000000 c bad string index
