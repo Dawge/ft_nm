@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:45:05 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 18:18:51 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 19:22:10 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,30 @@ typedef struct					s_macho32
 	struct segment_command		*sgm;
 	struct section				**sct;
 }								t_macho32;
+
+typedef struct					s_macho64
+{
+	struct mach_header_64		hdr;
+	struct load_command			ld;
+	struct segment_command_64	*sgm;
+	struct section_64			**sct;
+}								t_macho64;
+
+/*
+**	cigam.c
+*/
+int								cigam_32(t_file_inf file, int off);
+int								cigam_64(t_file_inf file, int off);
+
+/*
+**	handle32.c
+*/
+int								handle_32(t_file_inf file, int offset);
+
+/*
+**	handle64.c
+*/
+int								handle_64(t_file_inf file, int offset);
 
 /*
 **	ft_otool.c
