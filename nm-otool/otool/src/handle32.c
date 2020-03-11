@@ -6,13 +6,13 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:48:19 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 19:11:06 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 13:36:30 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int				hexaout(t_file_inf file, struct section sct)
+static int				hexaout(t_file_inf file, struct section sct, int off)
 {
 	uint32_t		i;
 
@@ -21,15 +21,15 @@ static int				hexaout(t_file_inf file, struct section sct)
 	while (i < sct.size)
 	{
 		if (i % 16 == 0)
-			printf("\n%08x\t ", sct.addr+ i);
-		printf("%02x ", (unsigned char)*(file.content + sct.offset + i));
+			printf("\n%08x\t", sct.addr+ i);
+		printf("%02x ", (unsigned char)*(file.content + sct.offset + off + i));
 		i++;
 	}
 	printf("\n");
 	return (0);
 }
 
-static int				pars_sct32(t_file_inf file, int offset)
+static int				pars_sct32(t_file_inf file, int offset, int start_off)
 {
 	uint32_t						i;
 	struct segment_command			sgm;
@@ -45,10 +45,10 @@ static int				pars_sct32(t_file_inf file, int offset)
 	while (i < sgm.nsects)
 	{
 		read_sct_32(&sct, file.content + offset, sizeof(struct section), file);
-		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
-			return (hexaout(file, sct));
 		if (offset + sct.size > file.inf.st_size)
 			return (sect_err(file.name, i));
+		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
+			return (hexaout(file, sct, start_off));
 		i++;
 		if ((offset += sizeof(struct section)) > file.inf.st_size)
 			return (ft_otool_put_error(file.name, NOT_VALID));
@@ -56,18 +56,19 @@ static int				pars_sct32(t_file_inf file, int offset)
 	return (0);
 }
 
-static int				pars_seg(t_file_inf file, int offset, t_macho32 *inf)
+static int				pars_seg(t_file_inf file, int offset, t_macho32 *inf, \
+		int start_off)
 {
-
 	if (inf->ld.cmd == LC_SEGMENT)
 	{
-		if (pars_sct32(file, offset) == -1)
+		if (pars_sct32(file, offset, start_off) == -1)
 			return (-1);
 	}
 	return (0);
 }
 
-static int				pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf)
+static int				pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf,\
+		int start_off)
 {
 	int				i;
 
@@ -76,7 +77,7 @@ static int				pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf)
 	{
 		read_load_command(&inf.ld, file.content + offset, \
 				sizeof(struct load_command), file);
-		if (pars_seg(file, offset, &inf) == -1)
+		if (pars_seg(file, offset, &inf, start_off) == -1)
 			return (-1);
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
 		{
@@ -92,14 +93,16 @@ static int				pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf)
 
 int				handle_32(t_file_inf file, int offset)
 {
+	int				start_off;
 	t_macho32		inf;
 
+	start_off = offset;
 	ft_bzero(&inf, sizeof(t_macho32));
 	read_header_32(&inf.hdr, file.content + offset, \
 			sizeof(struct mach_header), file);
 	file.off_arch = offset;
 	offset += sizeof(struct mach_header);
-	if (pars_ld_cmd(file, offset, inf) == -1)
+	if (pars_ld_cmd(file, offset, inf, start_off) == -1)
 		return (-1);
 	return (0);
 }

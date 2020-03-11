@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 16:12:28 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 19:46:33 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 13:10:33 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ void			ft_otool(t_file_inf file)
 
 	if (ft_strncmp(ARMAG, file.content, SARMAG) == 0)
 	{
-		//printf("Salut l'archive !\n");
 		handle_arch(file);
 		return ;
 	}
+	if (file.arch == NULL)
+		printf("%s:\n", file.name);
 	ft_memcpy(&magic, file.content, sizeof(magic));
 	dispens(file, magic, 0);
 }

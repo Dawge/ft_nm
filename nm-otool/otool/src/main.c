@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:36:41 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 16:15:04 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 13:09:52 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void		file_gestion(char *file_name)
 
 	file.cig = 0;
 	file.name = file_name;
+	file.arch = NULL;
 	if ((file.fd = open(file_name, O_RDONLY)) != -1)
 	{
 		fstat(file.fd, &file.inf);
