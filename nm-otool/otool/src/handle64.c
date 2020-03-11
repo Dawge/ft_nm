@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:48:19 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 17:04:27 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:41:42 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int				hexaout(t_file_inf file, struct section_64 sct, \
 		}
 	}
 	printf("\n");
-	return (0);
+	return (1);
 }
 
 static int				pars_sct64(t_file_inf file, int offset, int start_off)
@@ -71,10 +71,15 @@ static int				pars_sct64(t_file_inf file, int offset, int start_off)
 static int				pars_seg(t_file_inf file, int offset, t_macho64 *inf, \
 		int start_off)
 {
+	int			ret;
+
 	if (inf->ld.cmd == LC_SEGMENT_64)
 	{
-		if (pars_sct64(file, offset, start_off) == -1)
+		ret = pars_sct64(file, offset, start_off);
+		if (ret == -1)
 			return (-1);
+		else if (ret == 1)
+			return (1);
 	}
 	return (0);
 }
@@ -83,14 +88,18 @@ static int				pars_ld_cmd(t_file_inf file, int offset, t_macho64 inf,\
 		int start_off)
 {
 	int				i;
+	int				ret;
 
 	i = 0;
 	while (i < (int)inf.hdr.ncmds)
 	{
 		read_load_command(&inf.ld, file.content + offset, \
 				sizeof(struct load_command), file);
-		if (pars_seg(file, offset, &inf, start_off) == -1)
+		ret = pars_seg(file, offset, &inf, start_off);
+		if (ret == -1)
 			return (-1);
+		//else if (ret == 1)
+		//	return (1);
 		if ((offset += inf.ld.cmdsize) > file.inf.st_size)
 		{
 			ft_otool_put_error(file.name, NOT_VALID);

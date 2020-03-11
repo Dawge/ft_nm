@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:57:09 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 17:01:55 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:10:09 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void		print_data32(char *content, int idx, int addr, int off)
 	printf("%02x", (unsigned char)*(content + off + idx));
 }
 
-void		print_data64(char *content, int idx, int addr, int off)
+void		print_data64(char *content, int idx, uint64_t addr, int off)
 {
 	if (idx % 16 == 0)
-		printf("\n%016x\t", addr + idx);
+		printf("\n%016llx\t", addr + idx);
 	printf("%02x", (unsigned char)*(content + off + idx));
 }

@@ -1,0 +1,18 @@
+rm -rf diff_dir
+mkdir diff_dir
+for file in $1*
+do
+	subdir="$(basename -- $file)"
+	diff_file="./diff_dir/diff_$subdir"
+	./ft_otool $file > r1 && otool -t $file > r2
+	DIFF=$(diff r1 r2)
+	if [ "$DIFF" != "" ]
+	then
+		ERROR_OTOOL="$(diff r1 r2 | sed 1d | cut -c3-10)"
+		if [ "$ERROR_OTOOL" != "ft_otool" ]
+		then
+			diff r1 r2 > $diff_file
+		fi
+	fi
+	echo "done $file"
+done

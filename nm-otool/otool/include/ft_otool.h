@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:45:05 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 17:03:10 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:21:09 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ int								cigam_fat64(t_file_inf file, int off);
 int								handle_fat32(t_file_inf file, int off);
 
 /*
+**	fat64.c
+*/
+int								handle_fat64(t_file_inf file, int off);
+
+/*
 **	ft_otool.c
 */
 void							ft_otool(t_file_inf file);
@@ -156,6 +161,6 @@ int								ft_otool_put_error(char *name, char *error);
 void							ft_open_error(char *name, int errno);
 void							print_data32(char *content, int idx, int addr, \
 		int off);
-void							print_data64(char *content, int idx, int addr, \
-		int off);
+void							print_data64(char *content, int idx, \
+		uint64_t addr, int off);
 #endif

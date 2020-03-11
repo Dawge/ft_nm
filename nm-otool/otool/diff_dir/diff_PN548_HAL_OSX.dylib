@@ -1,0 +1,5 @@
+2173,2174c2173
+< 00000000000094a8	ff 0f 29 a5 90 f7 fft_otool: /sgoinfre/goinfre/Perso/rostroh/binary_nm/hell/PN548_HAL_OSX.dylib truncated or malformated object (offset field plus size field of section 5 in LC_SEGMENT command 1 extends past the end of the file)
+< f ff 0f 29 ad a0 f7 ff ff 0f 
+---
+> 00000000000094a8	ff 0f 29 a5 90 f7 ff ff 0f 29 ad a0 f7 ff ff 0f 
