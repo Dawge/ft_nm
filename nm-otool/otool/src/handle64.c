@@ -6,25 +6,36 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:48:19 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 13:30:41 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:04:27 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int				hexaout(t_file_inf file, struct section_64 sct, int off)
+static int				hexaout(t_file_inf file, struct section_64 sct, \
+		int off, int cig)
 {
 	uint32_t		i;
 
 	i = 0;
-	//printf("off = %llx\n", sct.addr);
+	if (file.arch != NULL)
+		printf("%s", file.arch);
 	printf("Contents of (%s,%s) section", sct.segname, sct.sectname);
 	while (i < sct.size)
 	{
-		if (i % 16 == 0)
-			printf("\n%016llx\t", sct.addr + i);
-		printf("%02x ", (unsigned char)*(file.content + sct.offset + off + i));
+		if (cig == 0)
+			print_data64(file.content, i, sct.addr, sct.offset + off);
+		else
+			print_data64(file.content, i, swap_u32(sct.addr), \
+					swap_u32(sct.offset) + off);
 		i++;
+		if (cig == 0)
+			printf(" ");
+		else
+		{
+			if (i % 4 == 0)
+				printf(" ");
+		}
 	}
 	printf("\n");
 	return (0);
@@ -46,11 +57,10 @@ static int				pars_sct64(t_file_inf file, int offset, int start_off)
 	while (i < sgm.nsects)
 	{
 		read_sct_64(&sct, file.content + offset, sizeof(sct), file);
-		//printf("text off = %x\n", sct.offset);
 		if (offset + sct.size > (uint64_t)file.inf.st_size)
 			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
-			return (hexaout(file, sct, start_off));
+			return (hexaout(file, sct, start_off, file.cig));
 		i++;
 		if ((offset += sizeof(struct section_64)) > file.inf.st_size)
 			return (ft_otool_put_error(file.name, NOT_VALID));
@@ -61,11 +71,8 @@ static int				pars_sct64(t_file_inf file, int offset, int start_off)
 static int				pars_seg(t_file_inf file, int offset, t_macho64 *inf, \
 		int start_off)
 {
-	struct segment_command_64	sgm;
-
 	if (inf->ld.cmd == LC_SEGMENT_64)
 	{
-		read_seg_64(&sgm, file.content + offset, sizeof(sgm), file);
 		if (pars_sct64(file, offset, start_off) == -1)
 			return (-1);
 	}
@@ -91,8 +98,6 @@ static int				pars_ld_cmd(t_file_inf file, int offset, t_macho64 inf,\
 		}
 		i++;
 	}
-	if (file.arch != NULL)
-		printf("%s", file.arch);
 	return (0);
 }
 
@@ -102,6 +107,8 @@ int				handle_64(t_file_inf file, int offset)
 	t_macho64		inf;
 
 	start_off = offset;
+	if (file.arch == NULL && file.arch_idx != -1)
+		printf("%s:\n", file.name);
 	ft_bzero(&inf, sizeof(t_macho64));
 	read_header_64(&inf.hdr, file.content + offset, \
 			sizeof(struct mach_header_64), file);

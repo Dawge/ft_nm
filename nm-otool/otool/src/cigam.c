@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 19:11:10 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 19:21:11 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 16:56:17 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int				cigam_32(t_file_inf file, int off)
 {
-	file.fd = 0;
-	off = 0;
-	printf("Salut cigam32\n");
 	file.cig = 1;
-	handle_32(file, off);
-	return (0);
+	return (handle_32(file, off));
 }
 
 int				cigam_64(t_file_inf file, int off)
 {
-	file.fd = 0;
-	off = 0;
-	printf("Salut cigam64\n");
 	file.cig = 1;
-	handle_64(file, off);
-	return (0);
+	return (handle_64(file, off));
 }
+
+int			cigam_fat32(t_file_inf file, int off)
+{
+	file.cig = 1;
+	return (handle_fat32(file, off));
+}
+/*
+int			cigam_fat64(t_file_inf file, int off)
+{
+	file.cig = 1;
+	return (handle_fat64(file, off));
+}*/

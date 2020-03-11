@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 16:12:28 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 13:10:33 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 16:56:25 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				dispens(t_file_inf file, uint32_t magic, int offset)
 	int				idx;
 	static int		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = \
 	{&handle_32, &cigam_32, &handle_64, &cigam_64, \
-		NULL, NULL, NULL, NULL};
+		&handle_fat32, &cigam_fat32, NULL, NULL};
 
 	if ((idx = check_magic(magic, file.name)) < 0)
 		return (-1);
@@ -48,6 +48,7 @@ static void		handle_arch(t_file_inf file)
 	struct mach_header_64		mach_hdr;
 
 	offset = SARMAG;
+	file.arch_idx = -1;
 	ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
 	offset += ft_atoi(hdr.ar_size) + (int)sizeof(struct ar_hdr);
 	printf("Archive : %s\n", file.name);
@@ -77,8 +78,6 @@ void			ft_otool(t_file_inf file)
 		handle_arch(file);
 		return ;
 	}
-	if (file.arch == NULL)
-		printf("%s:\n", file.name);
 	ft_memcpy(&magic, file.content, sizeof(magic));
 	dispens(file, magic, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:45:05 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 19:22:10 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:03:10 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <mach/machine.h>
 # include <ar.h>
 
+# define NB_CPU 2
 # define NB_MAGIC 8
 
 # define OPEN_ERR 2
@@ -46,6 +47,7 @@ typedef struct					s_file_inf
 	int							fd;
 	int							cig;
 	int							off_arch;
+	int							arch_idx;
 	char						*name;
 	char						*arch;
 	char						*content;
@@ -73,6 +75,20 @@ typedef struct					s_macho64
 */
 int								cigam_32(t_file_inf file, int off);
 int								cigam_64(t_file_inf file, int off);
+int								cigam_fat32(t_file_inf file, int off);
+int								cigam_fat64(t_file_inf file, int off);
+
+/*
+**	fat32.c
+*/
+int								handle_fat32(t_file_inf file, int off);
+
+/*
+**	ft_otool.c
+*/
+void							ft_otool(t_file_inf file);
+int								dispens(t_file_inf file, uint32_t magic, \
+		int offset);
 
 /*
 **	handle32.c
@@ -85,9 +101,9 @@ int								handle_32(t_file_inf file, int offset);
 int								handle_64(t_file_inf file, int offset);
 
 /*
-**	ft_otool.c
+**	put_arch.c
 */
-void							ft_otool(t_file_inf file);
+char							*put_arch(char *name, uint32_t arch);
 
 /*
 **	read_struct.c
@@ -138,5 +154,8 @@ uint64_t						swap_u64(uint64_t nb);
 int								sect_err(char *name, int sect);
 int								ft_otool_put_error(char *name, char *error);
 void							ft_open_error(char *name, int errno);
-
+void							print_data32(char *content, int idx, int addr, \
+		int off);
+void							print_data64(char *content, int idx, int addr, \
+		int off);
 #endif

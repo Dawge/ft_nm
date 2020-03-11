@@ -6,24 +6,36 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:48:19 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 13:36:30 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/11 17:04:34 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int				hexaout(t_file_inf file, struct section sct, int off)
+static int				hexaout(t_file_inf file, struct section sct, int off, \
+		int cig)
 {
 	uint32_t		i;
 
 	i = 0;
+	if (file.arch != NULL)
+		printf("%s", file.arch);
 	printf("Contents of (%s,%s) section", sct.segname, sct.sectname);
 	while (i < sct.size)
 	{
-		if (i % 16 == 0)
-			printf("\n%08x\t", sct.addr+ i);
-		printf("%02x ", (unsigned char)*(file.content + sct.offset + off + i));
+		if (cig == 0)
+			print_data32(file.content, i, sct.addr, sct.offset + off);
+		else
+			print_data32(file.content, i, swap_u32(sct.addr), \
+					swap_u32(sct.offset) + off);
 		i++;
+		if (cig == 0)
+			printf(" ");
+		else
+		{
+			if (i % 4 == 0)
+				printf(" ");
+		}
 	}
 	printf("\n");
 	return (0);
@@ -48,7 +60,7 @@ static int				pars_sct32(t_file_inf file, int offset, int start_off)
 		if (offset + sct.size > file.inf.st_size)
 			return (sect_err(file.name, i));
 		if (ft_strcmp(sct.sectname, SECT_TEXT) == 0)
-			return (hexaout(file, sct, start_off));
+			return (hexaout(file, sct, start_off, file.cig));
 		i++;
 		if ((offset += sizeof(struct section)) > file.inf.st_size)
 			return (ft_otool_put_error(file.name, NOT_VALID));
@@ -86,8 +98,6 @@ static int				pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf,\
 		}
 		i++;
 	}
-	if (file.arch != NULL)
-		printf("%s", file.arch);
 	return (0);
 }
 
@@ -98,6 +108,8 @@ int				handle_32(t_file_inf file, int offset)
 
 	start_off = offset;
 	ft_bzero(&inf, sizeof(t_macho32));
+	if (file.arch == NULL && file.arch_idx != -1)
+		printf("%s:\n", file.name);
 	read_header_32(&inf.hdr, file.content + offset, \
 			sizeof(struct mach_header), file);
 	file.off_arch = offset;
