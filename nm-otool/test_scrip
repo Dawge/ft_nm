@@ -1,1 +1,0 @@
-./ft_nm $1 > r1 && nm $1 > r2 && diff r1 r2
