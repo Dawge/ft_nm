@@ -6,13 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 11:41:48 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/12 21:25:48 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 12:11:49 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void		read_header_32(HDR *dst, void *src, size_t size, t_file_inf file)
+void		read_header_32(struct mach_header *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -24,7 +25,8 @@ void		read_header_32(HDR *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file)
+void		read_seg_32(struct segment_command *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -35,7 +37,8 @@ void		read_seg_32(SGM *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_lst_32(LST *dst, void *src, size_t size, t_file_inf file)
+void		read_lst_32(struct nlist *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -45,7 +48,8 @@ void		read_lst_32(LST *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_sct_32(SCT *dst, void *src, size_t size, t_file_inf file)
+void		read_sct_32(struct section *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)

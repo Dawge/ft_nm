@@ -6,13 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:48:09 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/12 20:46:59 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 11:58:43 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void		read_load_command(LD *dst, void *src, size_t size, t_file_inf file)
+void		read_load_command(struct load_command *dst, void *src, size_t size,\
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -22,7 +23,8 @@ void		read_load_command(LD *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_symtab(SYM *dst, void *src, size_t size, t_file_inf file)
+void		read_symtab(struct symtab_command *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)

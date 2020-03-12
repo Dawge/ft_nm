@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_struct_fat.c                                  :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 16:04:57 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/07 16:27:20 by rostroh          ###   ########.fr       */
+/*   Created: 2020/01/17 11:33:23 by rostroh           #+#    #+#             */
+/*   Updated: 2020/03/03 13:47:46 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void		read_arch(FAT_ARCH *dst, void *src, size_t sz, int cig)
+void			ft_open_error(char *name, int errno)
 {
-	ft_memcpy(dst, src, sz);
-	if (cig == 1)
-	{
-		dst->offset = swap_u32(dst->offset);
-		dst->size = swap_u32(dst->size);
-	}
-}
+	int					i;
+	static t_error		open_err[OPEN_ERROR] = {
+		{2, ": No such file or directory.\n"}, \
+		{13, ": Permission denied.\n"} \
+	};
 
-void		read_header_fat(FAT_HDR *dst, void *src, size_t sz, int cig)
-{
-	ft_memcpy(dst, src, sz);
-	if (cig == 1)
-		dst->nfat_arch = swap_u32(dst->nfat_arch);
+	i = 0;
+	while (i < OPEN_ERROR)
+	{
+		if (open_err[i].err == errno)
+		{
+			ft_nm_put_error(name, open_err[i].message);
+			break ;
+		}
+		i++;
+	}
 }

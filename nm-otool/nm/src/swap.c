@@ -6,12 +6,11 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:20:37 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/12 19:51:07 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/03 14:49:23 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/nm.h"
-//#include <stdio.h>
+#include "nm.h"
 
 uint16_t			swap_u16(uint16_t nb)
 {
