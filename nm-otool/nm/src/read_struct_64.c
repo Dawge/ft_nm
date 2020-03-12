@@ -6,13 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 11:41:48 by rostroh           #+#    #+#             */
-/*   Updated: 2020/02/18 16:40:52 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 12:11:59 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-void		read_header_64(HDR_64 *dst, void *src, size_t size, t_file_inf file)
+void		read_header_64(struct mach_header_64 *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -24,7 +25,8 @@ void		read_header_64(HDR_64 *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_seg_64(SGM_64 *dst, void *src, size_t size, t_file_inf file)
+void		read_seg_64(struct segment_command_64 *dst, void *src, size_t size,\
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -35,7 +37,8 @@ void		read_seg_64(SGM_64 *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_lst_64(LST_64 *dst, void *src, size_t size, t_file_inf file)
+void		read_lst_64(struct nlist_64 *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)
@@ -45,7 +48,8 @@ void		read_lst_64(LST_64 *dst, void *src, size_t size, t_file_inf file)
 	}
 }
 
-void		read_sct_64(SCT_64 *dst, void *src, size_t size, t_file_inf file)
+void		read_sct_64(struct section_64 *dst, void *src, size_t size, \
+		t_file_inf file)
 {
 	ft_memcpy(dst, src, size);
 	if (file.cig == 1)

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/03 14:45:07 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 11:33:36 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,24 @@ int				dispens(t_file_inf file, uint32_t magic, int offset)
 
 static void		handle_arch(t_file_inf file)
 {
-	int			offset;
-	AR_HDR		hdr;
-	HDR_64		mach_hdr;
+	int							offset;
+	struct ar_hdr				hdr;
+	struct mach_header_64		mach_hdr;
 
 	offset = SARMAG;
-	ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
-	offset += ft_atoi(hdr.ar_size) + (int)sizeof(AR_HDR);
+	ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
+	offset += ft_atoi(hdr.ar_size) + (int)sizeof(struct ar_hdr);
 	while (offset < file.inf.st_size)
 	{
 		printf("\n");
-		ft_memcpy(&hdr, file.content + offset, sizeof(AR_HDR));
-		if ((offset += (int)sizeof(AR_HDR)) > file.inf.st_size)
+		ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
+		if ((offset += (int)sizeof(struct ar_hdr)) > file.inf.st_size)
 			return ;
 		printf("%s(%s):\n", file.name, file.content + offset);
 		if ((offset += ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
 			return ;
-		ft_memcpy(&mach_hdr, file.content + offset, sizeof(HDR_64));
+		ft_memcpy(&mach_hdr, file.content + offset, \
+				sizeof(struct mach_header_64));
 		dispens(file, mach_hdr.magic, offset);
 		if ((offset += ft_atoi(hdr.ar_size) - ft_atoi(hdr.ar_name + 3)) > \
 				file.inf.st_size)

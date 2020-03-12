@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 11:29:43 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 11:24:29 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 14:38:06 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 
 # define NOT_VALID " The file was not recognized as a valid object file\n"
 # define TRUNC_ERR " truncated or malformed object "
-# define SEG_ERR "(offset field plus size field of section 0 in LC_SEGMENT command 1 extends past the end of the file)\n"
 
 typedef struct					s_error
 {
@@ -55,33 +54,13 @@ typedef struct					s_file_inf
 	char						*content;
 	struct stat					inf;
 }								t_file_inf;
-/*
-# define HDR struct mach_header
-# define SGM struct segment_command
-# define SCT struct section
-# define SYM struct symtab_command
-# define LST struct nlist
-# define LD struct load_command
 
-# define HDR_64 struct mach_header_64
-# define SGM_64 struct segment_command_64
-# define SCT_64 struct section_64
-# define LST_64 struct nlist_64
-
-# define FAT_HDR struct fat_header
-# define FAT_ARCH struct fat_arch
-# define FAT_ARCH_64 struct fat_arch_64
-
-# define AR_HDR struct ar_hdr
-*/
 # define TEXT_IDX 0
 # define DATA_IDX 1
 # define BSS_IDX 2
 # define NB_SCT_INF 3
 
 # define NB_CPU 2
-# define PPC 0x12000000
-# define I386 0x7000000
 
 typedef struct					s_list_inf_32
 {

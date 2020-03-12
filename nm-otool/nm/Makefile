@@ -6,7 +6,7 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/03/05 17:13:47 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/10 15:26:06 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ INC = nm.h
 HEAD = $(INC_DIR)/$(INC)
 
 LIBFT = libft.a
-LIB_DIR = ./libft
+LIB_DIR = ../libft
 LFT = $(LIB_DIR)/$(LIBFT)
 LIB = -L $(LIB_DIR) -l$(LIBFT:lib%.a=%)
 

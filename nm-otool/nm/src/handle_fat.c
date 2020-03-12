@@ -6,13 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 14:36:03 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/05 17:16:15 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/10 11:40:36 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-static int		setup32(t_file_inf file, FAT_HDR hdr, FAT_ARCH arch, int print)
+static int		setup32(t_file_inf file, struct fat_header hdr, \
+		struct fat_arch arch, int print)
 {
 	uint32_t	magic;
 
@@ -32,28 +33,30 @@ static int		setup32(t_file_inf file, FAT_HDR hdr, FAT_ARCH arch, int print)
 
 int				handle_fat32(t_file_inf file, int off)
 {
-	int			print;
-	FAT_HDR		hdr;
-	FAT_ARCH	arch;
+	int						print;
+	struct fat_header		hdr;
+	struct fat_arch			arch;
 
 	off = 0;
 	print = 0;
 	file.arch_idx = 0;
-	read_header_fat(&hdr, file.content + off, sizeof(FAT_HDR), file.cig);
-	off += sizeof(FAT_HDR);
+	read_header_fat(&hdr, file.content + off, sizeof(struct fat_header), \
+			file.cig);
+	off += sizeof(struct fat_header);
 	while ((uint32_t)file.arch_idx < hdr.nfat_arch)
 	{
-		read_arch32(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
+		read_arch32(&arch, file.content + off, sizeof(struct fat_arch), \
+				file.cig);
 		if ((print = setup32(file, hdr, arch, print)) == -1)
 			return (-1);
-		off += sizeof(FAT_ARCH);
+		off += sizeof(struct fat_arch);
 		file.arch_idx++;
 	}
 	return (0);
 }
 
-static int		setup64(t_file_inf file, FAT_HDR hdr, FAT_ARCH_64 arch, \
-		int print)
+static int		setup64(t_file_inf file, struct fat_header hdr, \
+		struct fat_arch_64 arch, int print)
 {
 	uint32_t	magic;
 
@@ -73,21 +76,23 @@ static int		setup64(t_file_inf file, FAT_HDR hdr, FAT_ARCH_64 arch, \
 
 int				handle_fat64(t_file_inf file, int off)
 {
-	int			print;
-	FAT_HDR		hdr;
-	FAT_ARCH_64	arch;
+	int						print;
+	struct fat_header		hdr;
+	struct fat_arch_64		arch;
 
 	off = 0;
 	print = 0;
 	file.arch_idx = 0;
-	read_header_fat(&hdr, file.content + off, sizeof(FAT_HDR), file.cig);
-	off += sizeof(FAT_HDR);
+	read_header_fat(&hdr, file.content + off, sizeof(struct fat_header), \
+			file.cig);
+	off += sizeof(struct fat_header);
 	while ((uint32_t)file.arch_idx < hdr.nfat_arch)
 	{
-		read_arch64(&arch, file.content + off, sizeof(FAT_ARCH), file.cig);
+		read_arch64(&arch, file.content + off, sizeof(struct fat_arch), \
+				file.cig);
 		if ((print = setup64(file, hdr, arch, print)) == -1)
 			return (-1);
-		off += sizeof(FAT_ARCH);
+		off += sizeof(struct fat_arch);
 		file.arch_idx++;
 	}
 	return (0);
