@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:36:41 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 15:25:04 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 16:28:08 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int				main(int ac, char **av)
 	int			i;
 
 	i = 1;
-	
 	if (ac == 1)
 		printf("Error ./ft_otool: At least one file must be specified\n");
 	while (i < ac)

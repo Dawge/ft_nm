@@ -6,14 +6,15 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/03/11 16:57:10 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/12 16:31:17 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_otool
 
 SRC = main.c tools.c ft_otool.c read_struct.c read_struct_32.c read_struct_64.c\
-	  read_struct_fat.c swap.c handle32.c handle64.c cigam.c fat32.c put_arch.c
+	  read_struct_fat.c swap.c handle32.c handle64.c cigam.c fat32.c put_arch.c\
+	  hexa_out.c
 
 OBJ = $(SRC:.c=.o)
 

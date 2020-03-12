@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:45:05 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 17:21:09 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 16:33:01 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ typedef struct					s_macho32
 	struct mach_header			hdr;
 	struct load_command			ld;
 	struct segment_command		*sgm;
-	struct section				**sct;
+	struct section				text;
+	struct symtab_command		symtab;
 }								t_macho32;
 
 typedef struct					s_macho64
@@ -67,7 +68,8 @@ typedef struct					s_macho64
 	struct mach_header_64		hdr;
 	struct load_command			ld;
 	struct segment_command_64	*sgm;
-	struct section_64			**sct;
+	struct section_64			text;
+	struct symtab_command		symtab;
 }								t_macho64;
 
 /*
@@ -106,6 +108,14 @@ int								handle_32(t_file_inf file, int offset);
 int								handle_64(t_file_inf file, int offset);
 
 /*
+**	hexa_out.c
+*/
+int								hexa_out32(t_file_inf file, \
+		struct section sct, int off, int cig);
+int								hexa_out64(t_file_inf file, \
+		struct section_64 sct, int off, int cig);
+
+/*
 **	put_arch.c
 */
 char							*put_arch(char *name, uint32_t arch);
@@ -114,6 +124,8 @@ char							*put_arch(char *name, uint32_t arch);
 **	read_struct.c
 */
 void							read_load_command(struct load_command *dst, \
+		void *src, size_t size, t_file_inf file);
+void							read_symtab(struct symtab_command *dst, \
 		void *src, size_t size, t_file_inf file);
 
 /*
@@ -125,6 +137,8 @@ void							read_seg_32(struct segment_command *dst, \
 		void *src, size_t size, t_file_inf file);
 void							read_sct_32(struct section *dst, void *src, \
 		size_t size, t_file_inf file);
+void							read_lst_32(struct nlist *dst, void *src, \
+		size_t size, t_file_inf file);
 
 /*
 **	read_struct_64.c
@@ -134,6 +148,8 @@ void							read_header_64(struct mach_header_64 *dst, \
 void							read_seg_64(struct segment_command_64 *dst, \
 		void *src, size_t size, t_file_inf file);
 void							read_sct_64(struct section_64 *dst, void *src, \
+		size_t size, t_file_inf file);
+void							read_lst_64(struct nlist_64 *dst, void *src, \
 		size_t size, t_file_inf file);
 
 /*
