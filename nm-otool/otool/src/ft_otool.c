@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 16:12:28 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 16:56:25 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 16:42:40 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				dispens(t_file_inf file, uint32_t magic, int offset)
 	int				idx;
 	static int		(*func_dispenser[NB_MAGIC])(t_file_inf file, int off) = \
 	{&handle_32, &cigam_32, &handle_64, &cigam_64, \
-		&handle_fat32, &cigam_fat32, NULL, NULL};
+		&handle_fat32, &cigam_fat32, &handle_fat64, &cigam_fat64};
 
 	if ((idx = check_magic(magic, file.name)) < 0)
 		return (-1);
