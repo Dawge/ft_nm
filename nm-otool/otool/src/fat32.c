@@ -6,13 +6,14 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:47:24 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 16:49:40 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 16:35:46 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int			check_arch32(t_file_inf file, uint32_t cputype, uint32_t fat_idx)
+static int			check_arch32(t_file_inf file, uint32_t cputype, \
+		uint32_t fat_idx)
 {
 	uint32_t				i;
 	int						off;
