@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 10:07:56 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 11:46:59 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:53:59 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int		pars_ld_cmd(t_file_inf file, int offset, t_macho32 inf)
 		i++;
 	}
 	if (file.arch != NULL)
-		printf("%s", file.arch);
+		ft_printf("%s", file.arch);
 	print_list32(inf.symbol, inf.symtab.nsyms, inf.sct_idx);
 	return (0);
 }

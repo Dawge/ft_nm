@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:36:41 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/12 16:28:08 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:55:58 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		check_dir(struct stat inf, char *name)
 {
 	if (S_ISDIR(inf.st_mode))
 	{
-		printf("./ft_nm: %s: Is a directory\n", name);
+		ft_printf("./ft_nm: %s: Is a directory\n", name);
 		return (-1);
 	}
 	return (0);
@@ -63,7 +63,7 @@ int				main(int ac, char **av)
 
 	i = 1;
 	if (ac == 1)
-		printf("Error ./ft_otool: At least one file must be specified\n");
+		ft_printf("Error ./ft_otool: At least one file must be specified\n");
 	while (i < ac)
 	{
 		file_gestion(av[i]);

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 16:12:28 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/12 16:42:40 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:55:03 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static void		handle_arch(t_file_inf file)
 	file.arch_idx = -1;
 	ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
 	offset += ft_atoi(hdr.ar_size) + (int)sizeof(struct ar_hdr);
-	printf("Archive : %s\n", file.name);
+	ft_printf("Archive : %s\n", file.name);
 	while (offset < file.inf.st_size)
 	{
 		ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
 		if ((offset += (int)sizeof(struct ar_hdr)) > file.inf.st_size)
 			return ;
-		printf("%s(%s):\n", file.name, file.content + offset);
+		ft_printf("%s(%s):\n", file.name, file.content + offset);
 		if ((offset += ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
 			return ;
 		ft_memcpy(&mach_hdr, file.content + offset, \

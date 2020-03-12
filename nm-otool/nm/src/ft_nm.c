@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:07:26 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/10 11:33:36 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:51:50 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ static void		handle_arch(t_file_inf file)
 	offset += ft_atoi(hdr.ar_size) + (int)sizeof(struct ar_hdr);
 	while (offset < file.inf.st_size)
 	{
-		printf("\n");
+		ft_printf("\n");
 		ft_memcpy(&hdr, file.content + offset, sizeof(struct ar_hdr));
 		if ((offset += (int)sizeof(struct ar_hdr)) > file.inf.st_size)
 			return ;
-		printf("%s(%s):\n", file.name, file.content + offset);
+		ft_printf("%s(%s):\n", file.name, file.content + offset);
 		if ((offset += ft_atoi(hdr.ar_name + 3)) > file.inf.st_size)
 			return ;
 		ft_memcpy(&mach_hdr, file.content + offset, \
@@ -85,7 +85,7 @@ void			ft_nm(t_file_inf file, int print)
 	if ((idx = check_magic(magic, file.name)) == -1)
 		return ;
 	if (idx <= 3 && print > 2)
-		printf("%s:\n", file.name);
+		ft_printf("%s:\n", file.name);
 	file.arch = NULL;
 	func_dispenser[idx](file, 0);
 }

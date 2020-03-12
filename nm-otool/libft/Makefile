@@ -6,7 +6,7 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 18:41:32 by rostroh           #+#    #+#              #
-#    Updated: 2019/12/17 16:59:47 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/12 17:47:35 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,12 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	  ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strrev.c \
 	  ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c \
 	  ft_toupper.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
-	  ft_lstmap.c ft_isspace.c ft_islower.c ft_isupper.c
+	  ft_lstmap.c ft_isspace.c ft_islower.c ft_isupper.c ft_long_itoa.c \
+	  printf/binary_to_decimal.c printf/condition.c printf/conv.c \
+	  printf/ft_printf.c printf/ft_putwchar.c printf/gestion.c \
+	  printf/gestion_print.c printf/get_base.c printf/more_shitty_fonction.c \
+	  printf/params.c printf/print.c printf/shitty_fonction.c printf/space.c \
+	  printf/wchar_fonction.c
 
 HEAD = libft.h
 OBJ = $(SRC:.c=.o)
@@ -39,10 +44,11 @@ INC = $(HEAD_DIR)/$(HEAD)
 
 OBJ_PATH = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-FLG = -Wall -Werror -Wextra
+FLG = -Wall -Werror -Wextra #-fsanitize=address -g3
 
 all:
 	@mkdir -p ./obj
+	@mkdir -p ./obj/printf
 	@make $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -50,7 +56,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(NAME): $(OBJ_PATH)
 	@echo creat $(NAME)
-	ar rc $@ $(OBJ_PATH)
+	@ar rc $@ $(OBJ_PATH)
 
 clean:
 	@rm -rf $(OBJ_DIR)

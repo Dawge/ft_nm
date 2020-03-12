@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 18:48:19 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/12 16:33:44 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:55:17 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int						handle_32(t_file_inf file, int offset)
 	if (pars_ld_cmd(file, offset, &inf) == -1)
 		return (-1);
 	if (file.arch == NULL && file.arch_idx != -1)
-		printf("%s:\n", file.name);
+		ft_printf("%s:\n", file.name);
 	hexa_out32(file, inf.text, start_off, file.cig);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 15:57:09 by rostroh           #+#    #+#             */
-/*   Updated: 2020/03/11 17:10:09 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:55:47 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_otool_put_error(char *name, char *error)
 {
-	printf("ft_otool: %s%s", name, error);
+	ft_printf("ft_otool: %s%s", name, error);
 	return (-1);
 }
 
@@ -52,13 +52,13 @@ int			sect_err(char *name, int sect)
 void		print_data32(char *content, int idx, int addr, int off)
 {
 	if (idx % 16 == 0)
-		printf("\n%08x\t", addr + idx);
-	printf("%02x", (unsigned char)*(content + off + idx));
+		ft_printf("\n%08x\t", addr + idx);
+	ft_printf("%02x", (unsigned char)*(content + off + idx));
 }
 
 void		print_data64(char *content, int idx, uint64_t addr, int off)
 {
 	if (idx % 16 == 0)
-		printf("\n%016llx\t", addr + idx);
-	printf("%02x", (unsigned char)*(content + off + idx));
+		ft_printf("\n%016llx\t", addr + idx);
+	ft_printf("%02x", (unsigned char)*(content + off + idx));
 }

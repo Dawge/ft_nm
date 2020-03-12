@@ -6,7 +6,7 @@
 /*   By: rostroh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 17:02:48 by rostroh           #+#    #+#             */
-/*   Updated: 2016/11/11 23:11:02 by rostroh          ###   ########.fr       */
+/*   Updated: 2020/03/12 17:46:51 by rostroh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include "ft_printf.h"
 
 typedef	struct	s_list
 {
@@ -90,4 +91,6 @@ char			*ft_strrev(char const *s);
 int				ft_isspace(int c);
 int				ft_islower(int c);
 int				ft_isupper(int c);
+char			*ft_long_itoa(long n);
+
 #endif

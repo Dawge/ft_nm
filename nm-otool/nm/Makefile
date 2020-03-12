@@ -6,11 +6,11 @@
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/03/10 15:26:06 by rostroh          ###   ########.fr        #
+#    Updated: 2020/03/12 18:39:16 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_nm
+NAME = ../ft_nm
 
 SRC = main.c error.c tools.c ft_nm.c macho32.c macho64.c swap.c read_struct.c \
 	  read_struct_32.c read_struct_64.c read_struct_fat.c handle_cigam.c \
@@ -20,7 +20,7 @@ OBJ = $(SRC:.c=.o)
 
 SRC_DIR = ./src
 OBJ_DIR = ./obj
-INC_DIR = ./include
+INC_DIR = ../include
 
 OBJS = $(OBJ:%=$(OBJ_DIR)/%)
 

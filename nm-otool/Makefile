@@ -5,61 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rostroh <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/12/17 11:17:25 by rostroh           #+#    #+#              #
-#    Updated: 2020/02/07 16:10:00 by rostroh          ###   ########.fr        #
+#    Created: 2020/03/12 18:34:51 by rostroh           #+#    #+#              #
+#    Updated: 2020/03/12 18:48:49 by rostroh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_nm
+NM_DIR = ./nm/
+OTOOL_DIR = ./otool/
 
-SRC = main.c error.c tools.c ft_nm.c macho32.c macho64.c swap.c read_struct.c \
-	  read_struct_32.c read_struct_64.c read_struct_fat.c
+all: ft_otool ft_nm
 
-OBJ = $(SRC:.c=.o)
+ft_nm:
+	make -C $(NM_DIR)
 
-SRC_DIR = ./src
-OBJ_DIR = ./obj
-INC_DIR = ./include
-
-OBJS = $(OBJ:%=$(OBJ_DIR)/%)
-
-INC = nm.h
-
-HEAD = $(INC_DIR)/$(INC)
-
-LIBFT = libft.a
-LIB_DIR = ./libft
-LFT = $(LIB_DIR)/$(LIBFT)
-LIB = -L $(LIB_DIR) -l$(LIBFT:lib%.a=%)
-
-OBJ_PATH = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
-
-FLG = -Wall -Werror -Wextra
-
-CC = gcc
-
-all:
-	@make -C $(LIB_DIR)
-	@make $(NAME)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	gcc $(FLG) -I $(INC_DIR) -o $@ -c -fPIC $<
-
-$(OBJS): $(HEAD)
-
-$(NAME): $(OBJS)
-	$(CC) $(FLG) $(OBJS) -o $@ $(LIB)
+ft_otool:
+	make -C $(OTOOL_DIR)
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@make $@ -C $(LIB_DIR)
+	make $@ -C $(NM_DIR)
+	make $@ -C $(OTOOL_DIR)
 
-fclean: clean
-	@rm -rf $(NAME)
-	@make $@ -C $(LIB_DIR)
+fclean:
+	make $@ -C $(NM_DIR)
+	make $@ -C $(OTOOL_DIR)
 
 re: fclean all
-
-print-%:
-	@echo $*=$($*)
